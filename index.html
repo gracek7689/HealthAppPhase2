@@ -1,74 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <script src="research.js" defer></script> -->
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <link rel="stylesheet" href="style.css" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- <script src="research.js" defer></script> -->
-</head>
-
-<body>
-  <!-- Container for the tabs at the top. Make it 
+  <body>
+    <!-- Container for the tabs at the top. Make it 
         so we can have a full bar across, as well as 
         attaching the tabs together so we can scroll -->
-  <!-- https://www.w3schools.com/howto/howto_js_tabs.asp -->
-  <div class="navbar">
-    <div class="tab">
-      <button class="btn" onclick="openTab(event, 'Text')"><img src="assets/homeIcon.png"></button>
-      <button class="btn" onclick="openTab(event, 'Choices')">
-        <img src="assets/foodIcon.png">
-      </button>
-      <button class="btn" onclick="openTab(event, 'toDo')"><img src="assets/exerciseIcon.png"></button>
+    <!-- https://www.w3schools.com/howto/howto_js_tabs.asp -->
+    <div class="navbar">
+      <div class="tab">
+        <button class="btn" onclick="openTab(event, 'Home')">
+          <img src="assets/homeIcon.png" />
+        </button>
+        <button class="btn" onclick="openTab(event, 'Food')">
+          <img src="assets/foodIcon.png" />
+        </button>
+        <button class="btn" onclick="openTab(event, 'Exercise')">
+          <img src="assets/exerciseIcon.png" />
+        </button>
+      </div>
     </div>
-  </div>
-  <!-- Tabs themselves -->
-  <!-- Text Tab
+    <!-- Tabs themselves -->
+    <!-- Text Tab
         Just a bunch of paragraphs 
         so we can show the scroll 
         without losing the tabs -->
-  <div id="Text" class="tabcontent">
-    <h1>Home</h1>
-    
-  </div>
+    <div id="Home" class="tabcontent">
+      <h1>Home</h1>
+    </div>
 
-  <!-- Choices tab
+    <!-- Choices tab
       We make Choices on players 
       colors with na function guessing them. -->
-  <div id="Choices" class="tabcontent">
-    <h1>Food</h1>
-    
-  </div>
-  <!-- https://www.w3schools.com/howto/howto_js_todolist.asp -->
-  <div id="toDo" class="tabcontent">
-    <h1>Exercise</h1>
-    
-  </div>
-  <!-- 
+    <div id="Food" class="tabcontent">
+      <h1>Food</h1>
+    </div>
+    <!-- https://www.w3schools.com/howto/howto_js_todolist.asp -->
+    <div id="Exercise" class="tabcontent">
+      <h1>Exercise</h1>
+    </div>
+    <!-- 
          -->
-  <!-- This can be moved into it's own js file, had it here for quick work -->
-  <script>
-    // Function for the guessing game on the Choices tab
-    // Gets a the second element always right since
-    // we have to guarantee one of them
+    <!-- This can be moved into it's own js file, had it here for quick work -->
+    <script>
+      // Function for the guessing game on the Choices tab
+      // Gets a the second element always right since
+      // we have to guarantee one of them
 
-    /* 
-    Function that processes how tabs are opened
-    */
-    function openTab(evt, tabName) {
-      var i, tabcontent, tablinks;
-      tabcontent = document.getElementsByClassName("tabcontent");
-      for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-      }
-      tablinks = document.getElementsByClassName("tablinks");
-      for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-      }
-      document.getElementById(tabName).style.display = "block";
-      evt.currentTarget.className += " active";
-    }
-  </script>
-</body>
+      /*
+      Function that processes how tabs are opened
+      */
+      document.addEventListener("DOMContentLoaded", function() {
+        openTab(event,'Home');
+      });
 
+      function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+    </script>
+  </body>
 </html>
