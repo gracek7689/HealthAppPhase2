@@ -27,6 +27,9 @@ body {
   .tabHeader{
     text-align:center;
   }
+  .btn:focus{
+    background-color:#DDDDDD;
+  }
   
   /* Style the buttons inside the tab */
   .tab button {
