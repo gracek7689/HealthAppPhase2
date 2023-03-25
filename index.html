@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand navbar-light bg-light">
+  <nav class="navbar navbar-expand navbar-light ">
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mx-auto">
         <li class="nav-item">
@@ -50,6 +50,9 @@
     </div>
     <div id="ProfileSettings" class="tabcontent">
       <h1 class="tabHeader">Profile Settings</h1>
+      <p> Are you on a workout plan? </p>
+      <p> Do you wish to lose or gain weight </p>
+
     </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
@@ -69,11 +72,12 @@
       }
       tablinks = document.getElementsByClassName("nav-link");
       for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
+        tablinks[i].classList.remove("active");
       }
+      evt.currentTarget.classList.add("active");
       document.getElementById(tabName).style.display = "block";
-      evt.currentTarget.className += " active";
     }
+
   </script>
 </body>
 

@@ -1,68 +1,73 @@
 body {
-    font-family: Arial;
-    margin: 0;
-    min-width: 90 vh;
-    min-height: 100 vh;
-    background-color: #8fe3cf;
-    background-size: cover;
-    padding-bottom:80px;
-  }
-  
-  .profileContainer {
-    text-align: center;
-  }
-  
-  .smileyText {
-    text-align: center;
-  }
-  
-  /* Style the tab 
+  font-family: Arial;
+  margin: 0;
+  min-width: 90 vh;
+  min-height: 100 vh;
+  background-color: #8fe3cf;
+  background-size: cover;
+  padding-bottom: 80px;
+}
+
+.profileContainer {
+  text-align: center;
+}
+
+.smileyText {
+  text-align: center;
+}
+
+/* Style the tab 
      https://www.w3schools.com/howto/howto_js_tabs.asp
      */
-  .tab {
-    overflow: hidden;
-    /* background-color: #f1f1f1; */
-    display:inline-block;
-  }
-  .tabHeader{
-    text-align:center;
-  }
-  .btn:focus{
-    background-color:#DDDDDD;
-  }
-  
-  /* Style the buttons inside the tab */
-  .tab button {
-    background-color: inherit;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 10px 10px;
-    transition: 0.3s;
-    font-size: 10px;
-  }
-  
-  
-  /* Change background color of buttons on hover */
-  .tab button:hover {
-    background-color: #ddd;
-  }
-  
-  
-  /* Create an active/current tablink class */
- 
-  .navbar {
-    overflow: hidden;
-    background-color: #256D85;
-    position: fixed;
-    bottom: 0;
-    text-align:center;
-    width: 100%;
-    
-  }
-  
-  /* .navbar a {
+.tab {
+  overflow: hidden;
+  /* background-color: #f1f1f1; */
+  display: inline-block;
+}
+
+.tabHeader {
+  text-align: center;
+}
+
+.btn:focus {
+  background-color: #DDDDDD;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 10px;
+  transition: 0.3s;
+  font-size: 10px;
+}
+
+.nav-link.active {
+  background-color: #ddd;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+
+/* Create an active/current tablink class */
+
+.navbar {
+  overflow: hidden;
+  background-color: #256D85;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+
+}
+
+/* .navbar a {
     float: left;
     display: block;
     color: #f2f2f2;
@@ -72,28 +77,28 @@ body {
     font-size: 17px;
   } */
 
-  
-  .btn:active{
-    background-color:#256D85
-  }
-  
-  /* Style the tab content */
-  .tabcontent {
-    display: none;
-    /* padding: 8% 0%; */
-    /* padding: 40px 0px;
+
+.btn:active {
+  background-color: #256D85
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  /* padding: 8% 0%; */
+  /* padding: 40px 0px;
     margin-left: 5px;
     margin-right: 5px; */
-  
-    background-color: #8fe3cf
-  }
+
+  background-color: #8fe3cf
+}
 
 
-  /* When clicked on, add a background color and strike out text */
+/* When clicked on, add a background color and strike out text */
 
-  /* Style the close button */
+/* Style the close button */
 
-  
-  .bolded {
-    font-weight: bold;
-  }
+
+.bolded {
+  font-weight: bold;
+}
