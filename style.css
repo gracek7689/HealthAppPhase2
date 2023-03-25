@@ -107,3 +107,39 @@ body {
 .bolded {
   font-weight: bold;
 }
+.custom-list {
+  margin-bottom: 80px; /* adjust as needed */
+}
+#suggestions {
+  position: absolute;
+  width: 200px;
+  margin-top: 0.5rem;
+  padding: 0;
+  list-style-type: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  z-index:1;
+}
+
+#suggestions li {
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+#suggestions li:hover {
+  background-color: #f0f0f0;
+}
+#suggestions:empty {
+  display: none;
+}
+
+#description {
+  position: relative;
+  z-index: 2;
+}
+
+#quantity {
+  position: relative;
+  z-index: 2;
+}
+

@@ -1,150 +1,479 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Health App</title>
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="style.css" />
-  <title>Health App</title>
+  <body>
+    <nav class="navbar navbar-expand navbar-light">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <button
+              class="nav-link btn btn-link"
+              id="homeID"
+              onclick="openTab(event, 'Home')"
+            >
+              <img src="assets/homeIcon.png" />
+            </button>
+          </li>
+          <li class="nav-item">
+            <button
+              class="nav-link btn btn-link"
+              onclick="openTab(event, 'Food')"
+            >
+              <img src="assets/foodIcon.png" />
+            </button>
+          </li>
+          <li class="nav-item">
+            <button
+              class="nav-link btn btn-link"
+              onclick="openTab(event, 'Exercise')"
+            >
+              <img src="assets/exerciseIcon.png" />
+            </button>
+          </li>
+          <li class="nav-item">
+            <button
+              class="nav-link btn btn-link"
+              onclick="openTab(event, 'ProfileSettings')"
+            >
+              <img src="assets/homeIcon.png" />
+            </button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div id="Home" class="tabcontent">
+        <h1 class="tabHeader">Home</h1>
+      </div>
+      <!---------------------------- Food Tab Start: --------------------------->
+      <div id="Food" class="tabcontent">
+        <h1 class="tabHeader">Nutrition</h1>
+        <div class="container mt-5">
+          <h2>Enter Custom Food:</h2>
+          <div class="row">
+            <div class="col-md-4">
+              <label for="newItemInput">Name:</label>
+              <input
+                type="text"
+                id="newItemInput"
+                class="form-control"
+                oninput="showSuggestions()"
+                onkeydown="handleKeyDown(event)"
+              />
+            </div>
+            <ul id="suggestions"></ul>
 
-</head>
-
-<body>
-  <nav class="navbar navbar-expand navbar-light ">
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav mx-auto">
-        <li class="nav-item">
-          <button class="nav-link btn btn-link" id="homeID" onclick="openTab(event, 'Home')">
-            <img src="assets/homeIcon.png" />
-          </button>
-        </li>
-        <li class="nav-item">
-          <button class="nav-link btn btn-link" onclick="openTab(event, 'Food')">
-            <img src="assets/foodIcon.png" />
-          </button>
-        </li>
-        <li class="nav-item">
-          <button class="nav-link btn btn-link" onclick="openTab(event, 'Exercise')">
-            <img src="assets/exerciseIcon.png" />
-          </button>
-        </li>
-        <li class="nav-item">
-          <button class="nav-link btn btn-link" onclick="openTab(event, 'ProfileSettings')">
-            <img src="assets/homeIcon.png" />
-          </button>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  <div class="container-fluid">
-    <div id="Home" class="tabcontent">
-      <h1 class="tabHeader">Home</h1>
-
-    </div>
-    <div id="Food" class="tabcontent">
-      <h1 class="tabHeader">Food</h1>
-    </div>
-
-    <div id="Exercise" class="tabcontent">
-      <h1 class="tabHeader">Exercise</h1>
-    </div>
-    <div id="ProfileSettings" class="tabcontent">
-      <h1 class="tabHeader">Profile Settings</h1>
-      <section class="h-100 gradient-custom-2">
-        <div class="container py-5 h-100">
-          <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col col-lg-9 col-xl-7">
-              <div class="card">
-
-
-                <div class="card-body p-4 text-black">
-                  <div class="mb-5">
-                    <p class="lead fw-normal mb-1">About</p>
-                    <div class="p-4" style="background-color: #f8f9fa;">
-                      <table class="table">
-                        <tbody>
-                          <tr>
-                            <th scope="row">Name</th>
-                            <td>Jim Kam</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Fitness Level</th>
-                            <td>Advanced</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Age</th>
-                            <td>27 years</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Current Weight</th>
-                            <td>140 lbs</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Current Height</th>
-                            <td>6'3</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Preferred Workouts</th>
-                            <td>Cycling</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-
-                  </div>
-                  <div class="mb-5">
-                    <p class="lead fw-normal mb-1">Health Goals</p>
-                    <div class="p-4" style="background-color: #f8f9fa;">
-                      <ul class="list-group">
-                        <li class="list-group-item">Lose 10 pounds by June 23, 2023</li>
-                        <li class="list-group-item">Build Muscle</li>
-
-                      </ul>
-
-
-                    </div>
-                  </div>
-
-
-
+            <div class="col-md-4">
+              <label for="newItemDesc">Description:</label>
+              <input type="text" id="newItemDesc" class="form-control" />
+            </div>
+            <div class="col-md-4">
+              <label for="newItemQty">Quantity:</label>
+              <input type="number" id="newItemQty" class="form-control" />
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <button type="button" class="btn btn-primary" onclick="addItem()">
+                Add Item
+              </button>
+            </div>
+          </div>
+          <ul class="list-group mt-4 custom-list" id="itemList">
+            <li class="list-group-item">
+              <button
+                type="button"
+                class="btn btn-danger btn-sm float-right"
+                onclick="removeItem(this)"
+              >
+                Remove
+              </button>
+              <div class="row mt-2">
+                <div class="col-md-4"><label>Name:</label> Item 1</div>
+                <div class="col-md-4">
+                  <label>Description:</label> Item 1 Description
                 </div>
-                <button type="button" class="btn btn-outline-dark mx-auto" data-mdb-ripple-color="dark"
-                  style="z-index: 1; width: 150px;">
-                  Edit profile
-                </button>
+                <div class="col-md-4"><label>Quantity:</label> 1</div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <button
+                type="button"
+                class="btn btn-danger btn-sm float-right"
+                onclick="removeItem(this)"
+              >
+                Remove
+              </button>
+              <div class="row mt-2">
+                <div class="col-md-4"><label>Name:</label> Apple</div>
+                <div class="col-md-4">
+                  <label>Description:</label> Calories: 90....
+                </div>
+                <div class="col-md-4"><label>Quantity:</label> 2</div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <button
+                type="button"
+                class="btn btn-danger btn-sm float-right"
+                onclick="removeItem(this)"
+              >
+                Remove
+              </button>
+              <div class="row mt-2">
+                <div class="col-md-4"><label>Name:</label> Banana</div>
+                <div class="col-md-4">
+                  <label>Description:</label> Calories: 90...
+                </div>
+                <div class="col-md-4"><label>Quantity:</label> 3</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!------------------------- Food Tab End --------------------------->
+
+      <div id="Exercise" class="tabcontent">
+        <h1 class="tabHeader">Exercise</h1>
+      </div>
+      <div id="ProfileSettings" class="tabcontent">
+        <h1 class="tabHeader">Profile Settings</h1>
+        <section class="h-100 gradient-custom-2">
+          <div class="container py-5 h-100">
+            <div
+              class="row d-flex justify-content-center align-items-center h-100"
+            >
+              <div class="col col-lg-9 col-xl-7">
+                <div class="card">
+                  <div class="card-body p-4 text-black">
+                    <div class="mb-5">
+                      <p class="lead fw-normal mb-1">About</p>
+                      <div class="p-4" style="background-color: #f8f9fa">
+                        <table class="table">
+                          <tbody>
+                            <tr>
+                              <th scope="row">Name</th>
+                              <td>Jim Kam</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Fitness Level</th>
+                              <td>Advanced</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Age</th>
+                              <td>27 years</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Current Weight</th>
+                              <td>140 lbs</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Current Height</th>
+                              <td>6'3</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Preferred Workouts</th>
+                              <td>Cycling</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="mb-5">
+                      <p class="lead fw-normal mb-1">Health Goals</p>
+                      <div class="p-4" style="background-color: #f8f9fa">
+                        <ul class="list-group">
+                          <li class="list-group-item">
+                            Lose 10 pounds by June 23, 2023
+                          </li>
+                          <li class="list-group-item">Build Muscle</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    class="btn btn-outline-dark mx-auto"
+                    data-mdb-ripple-color="dark"
+                    style="z-index: 1; width: 150px"
+                  >
+                    Edit profile
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
+        </section>
+      </div>
     </div>
-  </div>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      openTab(event, 'Home');
-      document.getElementById("homeID").focus();
-    });
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+      let items = [];
 
-    function openTab(evt, tabName) {
-      var i, tabcontent, tablinks;
-      tabcontent = document.getElementsByClassName("tabcontent");
-      for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
+      // Make HTTP request to load JSON file
+      let xhr = new XMLHttpRequest();
+      xhr.open("GET", "items.json");
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          // Parse JSON response and store in items array
+          items = JSON.parse(xhr.responseText);
+        }
+      };
+      xhr.send();
+
+      document.addEventListener("DOMContentLoaded", function () {
+        openTab(event, "Home");
+        document.getElementById("homeID").focus();
+      });
+
+      function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("nav-link");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].classList.remove("active");
+        }
+        evt.currentTarget.classList.add("active");
+        document.getElementById(tabName).style.display = "block";
       }
-      tablinks = document.getElementsByClassName("nav-link");
-      for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].classList.remove("active");
+      function addItem() {
+        // Get the input field value
+        var newItem = document.getElementById("newItemInput").value;
+        var newDescription = document.getElementById("newItemDesc").value;
+        var newQty = document.getElementById("newItemQty").value;
+        var br = document.createElement("br");
+        console.log(newItem);
+        // Create a new li element with remove button
+        var li = document.createElement("li");
+        li.className = "list-group-item";
+        li.appendChild(document.createTextNode(newItem));
+        li.appendChild(document.createElement("br"));
+        li.appendChild(document.createTextNode(newDescription));
+        li.appendChild(document.createElement("br"));
+        li.appendChild(document.createTextNode(newQty));
+
+        var removeBtn = document.createElement("button");
+        removeBtn.className = "btn btn-danger btn-sm float-right";
+        removeBtn.appendChild(document.createTextNode("Remove"));
+        removeBtn.onclick = function () {
+          removeItem(this);
+        };
+        li.appendChild(removeBtn);
+
+        // Add the new li element to the list
+        document.getElementById("itemList").appendChild(li);
+
+        // Clear the input field
+        document.getElementById("newItemInput").value = "";
+        document.getElementById("newItemDesc").value = "";
+        document.getElementById("newItemQty").value = "";
       }
-      evt.currentTarget.classList.add("active");
-      document.getElementById(tabName).style.display = "block";
-    }
 
-  </script>
-</body>
+      function removeItem(button) {
+        // Get the parent li element
+        var li = button.parentNode;
 
+        // Remove the li element from the list
+        document.getElementById("itemList").removeChild(li);
+      }
+      function showSuggestions() {
+        let input = document.getElementById("newItemInput");
+        let inputValue = input.value.trim().toLowerCase();
+
+        // Get the list of items that match the input value
+        let matchingItems = items.filter((item) =>
+          item.name.toLowerCase().startsWith(inputValue)
+        );
+
+        // Clear the suggestions
+        clearSuggestions();
+
+        if (inputValue === "") {
+          return;
+        }
+
+        if (matchingItems.length === 0) {
+          let suggestionsList = document.getElementById("suggestions");
+          suggestionsList.style.display = "none";
+          return;
+        }
+
+        // Add the matching items to the suggestions list
+        let suggestionsList = document.getElementById("suggestions");
+        suggestionsList.style.display = "block";
+
+        // Position the suggestions list below the input element
+        let inputRect = input.getBoundingClientRect();
+        suggestionsList.style.left = inputRect.left + "px";
+        suggestionsList.style.top = inputRect.bottom + "px";
+
+        matchingItems.forEach((item) => {
+          let suggestion = document.createElement("li");
+          suggestion.textContent = item.name;
+          suggestion.addEventListener("click", () => {
+            fillFields(item);
+            clearSuggestions();
+          });
+          suggestionsList.appendChild(suggestion);
+        });
+      }
+
+      // function showSuggestions() {
+      //   let input = document.getElementById("newItemInput");
+      //   let inputValue = input.value.trim().toLowerCase();
+
+      //   // Get the list of items that match the input value
+      //   let matchingItems = items.filter((item) =>
+      //     item.name.toLowerCase().startsWith(inputValue)
+      //   );
+
+      //   // Clear the suggestions
+      //   clearSuggestions();
+
+      //   if (inputValue === "") {
+      //     return;
+      //   }
+
+      //   if (matchingItems.length === 0) {
+      //     let suggestionsList = document.getElementById("suggestions");
+      //     suggestionsList.style.display = "none";
+      //     return;
+      //   }
+
+      //   // Add the matching items to the suggestions list
+      //   let suggestionsList = document.getElementById("suggestions");
+      //   suggestionsList.style.display = "block";
+      //   matchingItems.forEach((item) => {
+      //     let suggestion = document.createElement("li");
+      //     suggestion.textContent = item.name;
+      //     suggestion.addEventListener("click", () => {
+      //       fillFields(item);
+      //       clearSuggestions();
+      //     });
+      //     suggestionsList.appendChild(suggestion);
+      //   });
+      // }
+
+      // function showSuggestions() {
+      //   let input = document.getElementById("newItemInput");
+      //   let inputValue = input.value.trim().toLowerCase();
+
+      //   // Get the list of items that match the input value
+      //   let matchingItems = items.filter((item) =>
+      //     item.name.toLowerCase().startsWith(inputValue)
+      //   );
+
+      //   // Clear the suggestions
+      //   clearSuggestions();
+
+      //   if (inputValue === "") {
+      //     return;
+      //   }
+
+      //   if (matchingItems.length === 0) {
+      //     let suggestionsList = document.getElementById("suggestions");
+      //     suggestionsList.style.display = "none";
+      //     return;
+      //   }
+
+      //   // Add the matching items to the suggestions list
+      //   let suggestionsList = document.getElementById("suggestions");
+      //   suggestionsList.style.display = "block";
+      //   matchingItems.forEach((item) => {
+      //     let suggestion = document.createElement("li");
+      //     suggestion.textContent = item.name;
+      //     suggestion.addEventListener("click", () => {
+      //       fillFields(item);
+      //       clearSuggestions();
+      //     });
+      //     suggestionsList.appendChild(suggestion);
+      //   });
+      // }
+
+      // function showSuggestions() {
+      //   let input = document.getElementById("newItemInput");
+      //   let suggestions = document.getElementById("suggestions");
+      //   let inputValue = input.value.trim().toLowerCase();
+      //   let matches = [];
+      //   let matchingItems = items.filter((item) =>
+      //     item.name.toLowerCase().startsWith(inputValue)
+      //   );
+
+      //   // Clear previous suggestions
+      //   suggestions.innerHTML = "";
+
+      //   // Find matching items in the items array
+      //   for (let i = 0; i < items.length; i++) {
+      //     let name = items[i].name;
+      //     if (name.toLowerCase().startsWith(inputValue.toLowerCase())) {
+      //       matches.push(items[i]);
+      //     }
+      //   }
+      //   let suggestionsList = document.getElementById("suggestions");
+      //   matchingItems.forEach((item) => {
+      //     let suggestion = document.createElement("li");
+      //     suggestion.textContent = item.name;
+      //     suggestion.addEventListener("click", () => {
+      //       fillFields(item);
+      //       clearSuggestions();
+      //     });
+      //     suggestionsList.appendChild(suggestion);
+      //   });
+      //   // Add matching items to the suggestions list
+      //   // for (let i = 0; i < matches.length; i++) {
+      //   //   let li = document.createElement("li");
+      //   //   li.textContent = matches[i].name;
+      //   //   li.addEventListener("click", function () {
+      //   //     // Update input field with selected name
+      //   //     input.value = matches[i].name;
+
+      //   //     // Autofill other fields
+      //   //     document.getElementById("newItemDesc").value =
+      //   //       matches[i].description;
+      //   //     document.getElementById("newItemQty").value =
+      //   //       matches[i].quantity;
+      //   //   });
+      //   //   suggestions.appendChild(li);
+      //   // }
+      // }
+      function handleKeyDown(event) {
+        let input = document.getElementById("newItemInput");
+        let inputValue = input.value;
+
+        // Check for backspace key
+        if (event.keyCode === 8 && inputValue.length === 0) {
+          clearSuggestions();
+        }
+      }
+      function fillFields(item) {
+        let nameField = document.getElementById("newItemInput");
+        let descField = document.getElementById("newItemDesc");
+        let qtyField = document.getElementById("newItemQty");
+
+        nameField.value = item.name;
+        descField.value = item.description;
+        qtyField.value = item.quantity;
+      }
+      function clearSuggestions() {
+        let suggestionsList = document.getElementById("suggestions");
+        suggestionsList.innerHTML = "";
+        suggestionsList.style.display = "none";
+      }
+    </script>
+  </body>
 </html>

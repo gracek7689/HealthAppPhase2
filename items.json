@@ -1,0 +1,17 @@
+[
+    {
+      "name": "Item 1",
+      "description": "Item 1 description",
+      "quantity": 1
+    },
+    {
+      "name": "Item 2",
+      "description": "Item 2 description",
+      "quantity": 2
+    },
+    {
+      "name": "Item 3",
+      "description": "Item 3 description",
+      "quantity": 3
+    }
+  ]
