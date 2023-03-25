@@ -1,81 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="style.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <script src="research.js" defer></script> -->
-  </head>
 
-  <body>
-    <!-- Container for the tabs at the top. Make it 
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+</head>
+
+<body>
+  <!-- Container for the tabs at the top. Make it 
         so we can have a full bar across, as well as 
         attaching the tabs together so we can scroll -->
-    <!-- https://www.w3schools.com/howto/howto_js_tabs.asp -->
-    <div class="navbar">
-      <div class="tab">
-        <button class="btn" id="homeID" onclick="openTab(event, 'Home')">
-          <img src="assets/homeIcon.png" />
-        </button>
-        <button class="btn" onclick="openTab(event, 'Food')">
-          <img src="assets/foodIcon.png" />
-        </button>
-        <button class="btn" onclick="openTab(event, 'Exercise')">
-          <img src="assets/exerciseIcon.png" />
-        </button>
+  <!-- https://www.w3schools.com/howto/howto_js_tabs.asp -->
+  <div class="navbar">
+    <div class="tab">
+      <button class="btn" onclick="openTab(event, 'Text')"><img src="assets/homeIcon.png"></button>
+      <button class="btn" onclick="openTab(event, 'Choices')">
+        <img src="assets/foodIcon.png">
+      </button>
+      <button class="btn" onclick="openTab(event, 'toDo')"><img src="assets/exerciseIcon.png"></button>
+    </div>
+  </div>
+  
+  <!-- Tabs themselves -->
+  <!-------------->
+  <!-- HOME TAB --> 
+  <!-------------->
+  <div id="Text" class="tabcontent home" style="display: block"> <!-- Need to highlight this by default-->
+    
+    <h1 id="title"><b>HOME</b></h1>
+    <div class="w3-container home-container">
+      <h2 id="date"></h2>
+      <br>
+      <h3 id="section-title"><b>NUTRITION</b></h3>
+      <div class = "w3-container w3-responsive nutrition-table-container">
+        <table class = "w3-table w3-hoverable w3-card nutrition-table">
+          <thead>
+            <tr>
+              <th>Nutrition Type</th>
+              <th>Total Intake </th>
+              <th>Recommended Intake</th>
+            </tr>
+          </thead>
+            <tbody>
+              <tr class="parent-nutrient"> 
+                <td id = "main-nutrient">Carbohydrate</td>
+                <td>189 g</td>
+                <td>270 g</td>
+              </tr> 
+              <tr class="child-nutrient carbohydrate">
+                <td>Sugars</td>
+                <td>16 g</td>
+                <td>20 g</td>
+              </tr>
+              <tr class="child-nutrient carbohydrate">
+                <td>Fiber</td>
+                <td>17 g</td>
+                <td>30 g</td>
+              </tr>
+              <tr class="child-nutrient carbohydrate">
+                <td>Starch</td>
+                <td>61 g</td>
+                <td>50 g</td>
+              </tr>
+              <tr class="parent-nutrient">
+                <td id = "main-nutrient">Protein</td>
+                <td>64 g</td>
+                <td>100 g</td>
+              </tr>
+              <tr class="child-nutrient protein">
+                <td>TBD</td>
+                <td>tbd</td>
+                <td>tbd</td>
+              </tr>
+              <tr class="child-nutrient protein">
+                <td>TBD</td>
+                <td>tbd</td>
+                <td>tbd</td>
+              </tr>
+              <tr class="parent-nutrient">
+                <td id = "main-nutrient">Fat</td>
+                <td>61 g</td>
+                <td>50 g</td>
+              </tr>
+              <tr class="child-nutrient fat">
+                <td>TBD</td>
+                <td>tbd</td>
+                <td>tbd</td>
+              </tr>
+              <tr class="child-nutrient fat">
+                <td>TBD</td>
+                <td>tbd</td>
+                <td>tbd</td>
+              </tr>
+          </tbody>
+        </table>
       </div>
-    </div>
-    <!-- Tabs themselves -->
-    <!-- Text Tab
-        Just a bunch of paragraphs 
-        so we can show the scroll 
-        without losing the tabs -->
-    <div id="Home" class="tabcontent">
-      <h1 class="tabHeader">Home</h1>
+
+      <br>
+      <div class="pie-chart-container"> 
+        <canvas id="myChart" style="width:100%"></canvas>
+        <!--https://www.chartjs.org/docs/latest/samples/other-charts/multi-series-pie.html-->
+        <!-- Not feeling this current pie chart, may need to use this ^^ -->
+      </div>
+
+      <br>
+      <div class="w3-container calories-table-container">
+        <img src="assets/exerciseIcon.png" alt="calories image" id="calories-image">
+        <table class="w3-card calories-table">
+          <tbody>
+            <tr>
+              <td>Calories Consumed</td>
+              <td>1128 cals</td>
+            </tr>
+            <tr>
+              <td>Recommended Calories</td>
+              <td>1800 cals</td>
+            </tr>
+        </table>
+      </div>
+      <br>
+
+      <h3 id="section-title"><b>ACTIVITY</b></h3>
+      <div class="w3-card activity-container">
+        <div class="w3-grey w3-round-large progress-bar">
+          <div class="w3-container w3-sand w3-round-large" style="width:25%">25%</div>
+        </div>
+        <br>    
+        <h1>STREAK</h1>
+        <h1>STEPS</h1>
+      </div>
 
     </div>
+  </div>
 
-    <!-- Choices tab
-      We make Choices on players 
-      colors with na function guessing them. -->
-    <div id="Food" class="tabcontent">
-      <h1 class="tabHeader">Food</h1>
-      
+  <!-------------->
+  <!-- FOOD TAB --> 
+  <!-------------->
+  <div id="Choices" class="tabcontent">
+    <h1>Food</h1>
+  </div>
 
-    </div>
-    <!-- https://www.w3schools.com/howto/howto_js_todolist.asp -->
-    <div id="Exercise" class="tabcontent">
-      <h1 class="tabHeader">Exercise</h1>
-    </div>
-    <!-- 
-         -->
-    <!-- This can be moved into it's own js file, had it here for quick work -->
-    <script>
-      // Function for the guessing game on the Choices tab
-      // Gets a the second element always right since
-      // we have to guarantee one of them
+  <!-------------->
+  <!-- EXCERCISE TAB --> 
+  <!-------------->
+  <div id="toDo" class="tabcontent">
+    <h1>Exercise</h1>
+  </div>
 
-      /*
-      Function that processes how tabs are opened
-      */
-      document.addEventListener("DOMContentLoaded", function() {
-        openTab(event,'Home');
-        document.getElementById("homeID").focus();
-      });
+  <script>
 
-      function openTab(evt, tabName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-          tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-          tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " active";
+    /* Logic for redering tabs*/
+    function openTab(evt, tabName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
       }
-    </script>
-  </body>
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(tabName).style.display = "block";
+    }
+
+    /* Rendering dates as needed for our app */
+    const options = { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' };
+    const currentDate = new Date();
+    const formattedDate = currentDate.toLocaleDateString('en-US', options);
+    const dateElement = document.getElementById("date");
+    dateElement.innerText = formattedDate;
+
+    /*******************************/
+    /********* HOME PAGE ***********/
+    /*******************************/
+
+    // Get all the parent rows
+    const parentRows = document.querySelectorAll('.parent-nutrient');
+    // Loop through each parent row and add a click event listener
+    parentRows.forEach(row => {
+      row.addEventListener('click', function() {
+        // Get the nutrient type of the clicked parent row
+        const nutrientType = this.querySelector('td:first-child').innerText.toLowerCase();
+        // Get all the child rows that belong to the nutrient type
+        const childRows = document.querySelectorAll(`.child-nutrient.${nutrientType}`);
+        // Toggle the visibility of the child rows
+        childRows.forEach(childRow => {
+          childRow.classList.toggle('show');
+        });
+        this.classList.toggle('expanded');
+      });
+    });
+
+
+    // CHARTS //
+    var xValues = ["Carbs", "Fats", "Vitamins", "Minerals", "Proteins"];
+    var yValues = [55, 49, 44, 24, 15];
+    var barColors = ["red", "green","blue","orange","brown"];
+
+    new Chart("myChart", {
+    type: "pie",
+    data: {
+      labels: xValues,
+      datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: "Total Breakdown of all Nutrients",
+        fontSize: 30
+      }
+    }
+  });
+
+
+  </script>
+</body>
+
 </html>
