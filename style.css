@@ -68,6 +68,7 @@ body {
   bottom: 0;
   text-align: center;
   width: 100%;
+  z-index: 10000;
 
 }
 
