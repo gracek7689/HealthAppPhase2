@@ -37,9 +37,11 @@
     </div>
   </nav>
   <div class="container-fluid">
-    <div id="Home" class="tabcontent">
+    <!---------------------------- Home Tab Start: ----------------------------->
+    <div id="Home" class="tabcontent" style="display: block">
       <h1 class="tabHeader">Home</h1>
     </div>
+    <!---------------------------- Home Tab End----------------------------->
     <!---------------------------- Food Tab Start: --------------------------->
     <div id="Food" class="tabcontent">
       <h1 class="tabHeader">Nutrition</h1>
@@ -215,9 +217,9 @@
       for (i = 0; i < tablinks.length; i++) {
         tablinks[i].classList.remove("active");
       }
-      evt.currentTarget.classList.add("active");
       document.getElementById(tabName).style.display = "block";
     }
+
     function addItem() {
       // Get the input field value
       var newItem = document.getElementById("newItemInput").value;
