@@ -143,20 +143,39 @@ body {
   z-index: 2;
 }
 
-/* Styling for exercises tab */
+/* Styling for exercises tab. 'wo' before each name is short for 'workout; */
 
-.cards {
+.exercise .card-list {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0;
+  margin: 20px;
   padding: 0;
 }
 
-.card {
+.exercise .card-container {
+  display: flex;
+  flex-direction: column;
+  /* align-items: start; */
+  list-style-type: none;
+  padding: 10px;
+  width: 550px;
+}
+
+.exercise .card-body {
+  align-items: space-between;
+} 
+
+.exercise .card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
   list-style: none;
-  margin: 10px 0;
-  max-width: 300px;
   width: 100%;
 }
 
+.exercise .card-title-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
