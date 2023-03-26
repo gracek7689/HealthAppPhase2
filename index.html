@@ -109,7 +109,7 @@
         </ul>
       </div>
     </div>
-    <!------------------------- Exercise Tab End --------------------------->
+    <!------------------------- Exercise Tab Start --------------------------->
 
     <div id="Exercise" class="tabcontent">
       <h1 class="tabHeader">Exercise</h1>
@@ -163,7 +163,14 @@
                 </div>
               </div>
             </li>
-  
+
+            <li class="card-container">
+              <h3>Today</h3>
+              <div class="plus-button" onclick="enterNewWorkout()">
+                <h1 style="font-weight:500">&#43;</h1>
+              </div>
+            </li>
+
           </ul>
         </div>
       </section>
@@ -379,6 +386,11 @@
       suggestionsList.innerHTML = "";
       suggestionsList.style.display = "none";
     }
+
+    function enterNewWorkout() {
+      console.log("This function will display search bar for workouts");
+    }
+    
   </script>
 </body>
 

@@ -179,3 +179,14 @@ body {
   flex-direction: row;
   justify-content: space-between;
 }
+
+.exercise .plus-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 530px;
+  padding: 10px;
+  height: 80px;
+  background-color: white;
+}
