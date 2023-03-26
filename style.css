@@ -8,13 +8,45 @@ body {
   padding-bottom: 80px;
 }
 
+#formContainer {
+  background-color: #f8f9fa;
+  padding: 5px;
+  width: 100%
+    /* add spacing around the form */
+}
+
+.container {
+  font-size: 2rem;
+}
+
 .profileContainer {
   text-align: center;
 }
 
+
+
 .smileyText {
   text-align: center;
 }
+
+
+label {
+  font-size: 2rem;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  transform: scale(2);
+  margin-right: 10px;
+  margin-left: 10px;
+
+}
+
+select option {
+  font-size: 10px;
+  /* adjust the font size as needed */
+}
+
 
 /* Style the tab 
      https://www.w3schools.com/howto/howto_js_tabs.asp
