@@ -184,7 +184,9 @@ select option {
   background-color: #8fe3cf
 }
 
-
+#healthGoals {
+  width: 150px; /* adjust this value to your liking */
+}
 /* When clicked on, add a background color and strike out text */
 
 /* Style the close button */
