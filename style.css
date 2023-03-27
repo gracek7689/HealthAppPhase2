@@ -22,9 +22,7 @@ body {
   margin: 20px;
   padding: 0;
 }
-.fakecss{
-  position:fixed;
-}
+
 .exercise .card {
   position: relative;
   display: flex;
