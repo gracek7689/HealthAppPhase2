@@ -1,6 +1,6 @@
 [
     {
-      "name": "Item 1",
+      "name": "Apple",
       "description": "Item 1 description",
       "quantity": 1
     },
@@ -14,4 +14,5 @@
       "description": "Item 3 description",
       "quantity": 3
     }
+    
   ]
