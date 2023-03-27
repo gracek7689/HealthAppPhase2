@@ -15,6 +15,7 @@ body {
 .smileyText {
   text-align: center;
 }
+
 .exercise .card-list {
   display: flex;
   flex-direction: column;
@@ -22,6 +23,7 @@ body {
   margin: 20px;
   padding: 0;
 }
+
 .exercise .card {
   position: relative;
   display: flex;
@@ -29,6 +31,7 @@ body {
   list-style: none;
   width: 100%;
 }
+
 .exercise .card-container {
   display: flex;
   flex-direction: column;
@@ -40,12 +43,14 @@ body {
 
 .exercise .card-body {
   align-items: space-between;
-} 
+}
+
 .exercise .card-title-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
+
 .exercise .plus-button {
   display: flex;
   flex-direction: column;
@@ -56,6 +61,7 @@ body {
   height: 80px;
   background-color: white;
 }
+
 /* Style the tab 
      https://www.w3schools.com/howto/howto_js_tabs.asp
      */
@@ -63,6 +69,18 @@ body {
   overflow: hidden;
   /* background-color: #f1f1f1; */
   display: inline-block;
+}
+
+.tabHeaderProfileSettings {
+  margin: 0;
+  margin-left: -2%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  text-align: center;
+  background-color: #2B3A55;
+  color: #FFF7E9;
+  margin-right: 0%;
+
 }
 
 .tabHeader {
@@ -105,8 +123,8 @@ body {
 #formContainer {
   background-color: #f8f9fa;
   padding: 5px;
-  width: 100%
-    /* add spacing around the form */
+  width: 100%;
+  /* add spacing around the form */
 }
 
 label {
@@ -129,6 +147,7 @@ select option {
 
 .container {
   font-size: 2rem;
+
 }
 
 
