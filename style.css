@@ -15,7 +15,47 @@ body {
 .smileyText {
   text-align: center;
 }
+.exercise .card-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  padding: 0;
+}
+.exercise .card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  width: 100%;
+}
+.exercise .card-container {
+  display: flex;
+  flex-direction: column;
+  /* align-items: start; */
+  list-style-type: none;
+  padding: 10px;
+  width: 550px;
+}
 
+.exercise .card-body {
+  align-items: space-between;
+} 
+.exercise .card-title-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.exercise .plus-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 530px;
+  padding: 10px;
+  height: 80px;
+  background-color: white;
+}
 /* Style the tab 
      https://www.w3schools.com/howto/howto_js_tabs.asp
      */
@@ -62,6 +102,35 @@ body {
   background-color: #ddd;
 }
 
+#formContainer {
+  background-color: #f8f9fa;
+  padding: 5px;
+  width: 100%
+    /* add spacing around the form */
+}
+
+label {
+  font-size: 2rem;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  transform: scale(2);
+  margin-right: 10px;
+  margin-left: 10px;
+
+}
+
+select option {
+  font-size: 10px;
+  /* adjust the font size as needed */
+}
+
+
+.container {
+  font-size: 2rem;
+}
+
 
 /* Create an active/current tablink class */
 
@@ -105,9 +174,12 @@ body {
 .bolded {
   font-weight: bold;
 }
+
 .custom-list {
-  margin-bottom: 80px; /* adjust as needed */
+  margin-bottom: 80px;
+  /* adjust as needed */
 }
+
 #suggestions {
   position: absolute;
   width: 200px;
@@ -116,7 +188,7 @@ body {
   list-style-type: none;
   background-color: #fff;
   border: 1px solid #ccc;
-  z-index:1;
+  z-index: 1;
 }
 
 #suggestions li {
@@ -127,6 +199,7 @@ body {
 #suggestions li:hover {
   background-color: #f0f0f0;
 }
+
 #suggestions:empty {
   display: none;
 }
@@ -144,7 +217,9 @@ body {
 /**********************/
 /* Home tab Elements */
 /**********************/
-.home #home-date, h1, h3{
+.home #home-date,
+h1,
+h3 {
   margin-top: 0;
   padding-top: 1%;
   padding-bottom: 1%;
@@ -165,70 +240,71 @@ body {
   overflow-x: auto;
   white-space: nowrap;
 }
-    
+
 .nutrition-table {
-background-color: #2B3A55;
-color: #FFF7E9;
-border-collapse: collapse;
-width: 100%;
+  background-color: #2B3A55;
+  color: #FFF7E9;
+  border-collapse: collapse;
+  width: 100%;
 }
 
-th, td {
-padding: 8px;
-text-align: left;
-/* border-bottom: 1px solid #ddd; */
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  /* border-bottom: 1px solid #ddd; */
 }
 
-.child-nutrient td{
-background-color: #256D85;
+.child-nutrient td {
+  background-color: #256D85;
 }
 
 .parent-nutrient {
-cursor: pointer;
+  cursor: pointer;
 }
 
 .child-nutrient {
-display: none;
-color: #FFF7E9;
+  display: none;
+  color: #FFF7E9;
 }
 
 .child-nutrient.show {
-display: table-row;
+  display: table-row;
 }
 
 /* Pie chart container */
 
 .pie-chart-container {
   margin-top: 5%;
-  margin-bottom: 5%;  
+  margin-bottom: 5%;
 }
 
 /* Calories Table */
-.calories-table-container{
-display: flex;
-align-items: center;
+.calories-table-container {
+  display: flex;
+  align-items: center;
 }
 
-#calories-image{
-margin-right: 1.5%;
+#calories-image {
+  margin-right: 1.5%;
 }
 
-.calories-table{
-width: 100%;
-background-color: #2B3A55;
-color: #FFF7E9;
-border: solid;
-/* border-color: #ccc; */
+.calories-table {
+  width: 100%;
+  background-color: #2B3A55;
+  color: #FFF7E9;
+  border: solid;
+  /* border-color: #ccc; */
 }
 
 /* Activity */
-.activity-container{
-padding: 5%;
-background-color: #2B3A55;
-margin-bottom: 5%;
+.activity-container {
+  padding: 5%;
+  background-color: #2B3A55;
+  margin-bottom: 5%;
 }
 
-.streak-container{
+.streak-container {
   display: flex;
   align-items: center;
 }
