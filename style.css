@@ -93,12 +93,6 @@ body {
 
 /* Style the tab content */
 .tabcontent {
-  display: none;
-  /* padding: 8% 0%; */
-  /* padding: 40px 0px;
-    margin-left: 5px;
-    margin-right: 5px; */
-
   background-color: #8fe3cf
 }
 
@@ -161,54 +155,17 @@ body {
 .home-container {
   overflow: auto;
   align-items: center;
-  position: fixed; 
   bottom: 100px;
   top: 5.5%;
 }
 
 /* Nutrition Table */
 .nutrition-table-container {
+  margin-top: 2%;
   overflow-x: auto;
   white-space: nowrap;
 }
-/* Styling for exercises tab. 'wo' before each name is short for 'workout; */
-
-.exercise .card-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 20px;
-  padding: 0;
-}
-
-.exercise .card-container {
-  display: flex;
-  flex-direction: column;
-  /* align-items: start; */
-  list-style-type: none;
-  padding: 10px;
-  width: 550px;
-}
-
-.exercise .card-body {
-  align-items: space-between;
-} 
-
-.exercise .card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  width: 100%;
-}
-
-.exercise .card-title-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
     
-
 .nutrition-table {
 background-color: #2B3A55;
 color: #FFF7E9;
@@ -238,13 +195,48 @@ color: #FFF7E9;
 .child-nutrient.show {
 display: table-row;
 }
-.exercise .plus-button {
+
+/* Pie chart container */
+
+.pie-chart-container {
+  margin-top: 5%;
+  margin-bottom: 5%;  
+}
+
+/* Calories Table */
+.calories-table-container{
+display: flex;
+align-items: center;
+}
+
+#calories-image{
+margin-right: 1.5%;
+}
+
+.calories-table{
+width: 100%;
+background-color: #2B3A55;
+color: #FFF7E9;
+border: solid;
+/* border-color: #ccc; */
+}
+
+/* Activity */
+.activity-container{
+padding: 5%;
+background-color: #2B3A55;
+margin-bottom: 5%;
+}
+
+.streak-container{
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 530px;
-  padding: 10px;
-  height: 80px;
-  background-color: white;
+}
+
+.streak-card {
+  text-align: left;
+  padding-left: 5%;
+  color: #FFF7E9;
+  width: 100%;
+  background-color: #2B3A55;
 }
