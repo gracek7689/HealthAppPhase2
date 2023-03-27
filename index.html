@@ -5,7 +5,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
   <title>Health App</title>
 </head>
 
@@ -37,9 +39,120 @@
     </div>
   </nav>
   <div class="container-fluid">
-    <div id="Home" class="tabcontent">
-      <h1 class="tabHeader">Home</h1>
+    <!---------------------------- Home Tab Start: ----------------------------->
+    <div id="Home" class="tabcontent home" style="display: block">
+      <h1 class="tabHeader"><b>Home</b></h1>
+      <div class="container home-container">
+        <h2 id="home-date"></h2>
+        <br>
+        <h3 id="section-title"><b>NUTRITION</b></h3>
+        <div class = "nutrition-table-container">
+          <table class = "w3-table w3-hoverable w3-card nutrition-table">
+            <thead>
+              <tr>
+                <th>Nutrition Type</th>
+                <th>Total Intake </th>
+                <th>Recommended Intake</th>
+              </tr>
+            </thead>
+              <tbody>
+                <tr class="parent-nutrient"> 
+                  <td id = "main-nutrient">Carbohydrate</td>
+                  <td>189 g</td>
+                  <td>270 g</td>
+                </tr> 
+                <tr class="child-nutrient carbohydrate">
+                  <td>Sugars</td>
+                  <td>16 g</td>
+                  <td>20 g</td>
+                </tr>
+                <tr class="child-nutrient carbohydrate">
+                  <td>Fiber</td>
+                  <td>17 g</td>
+                  <td>30 g</td>
+                </tr>
+                <tr class="child-nutrient carbohydrate">
+                  <td>Starch</td>
+                  <td>61 g</td>
+                  <td>50 g</td>
+                </tr>
+                <tr class="parent-nutrient">
+                  <td id = "main-nutrient">Protein</td>
+                  <td>64 g</td>
+                  <td>100 g</td>
+                </tr>
+                <tr class="child-nutrient protein">
+                  <td>TBD</td>
+                  <td>tbd</td>
+                  <td>tbd</td>
+                </tr>
+                <tr class="child-nutrient protein">
+                  <td>TBD</td>
+                  <td>tbd</td>
+                  <td>tbd</td>
+                </tr>
+                <tr class="parent-nutrient">
+                  <td id = "main-nutrient">Fat</td>
+                  <td>61 g</td>
+                  <td>50 g</td>
+                </tr>
+                <tr class="child-nutrient fat">
+                  <td>TBD</td>
+                  <td>tbd</td>
+                  <td>tbd</td>
+                </tr>
+                <tr class="child-nutrient fat">
+                  <td>TBD</td>
+                  <td>tbd</td>
+                  <td>tbd</td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <br>
+        <div class="pie-chart-container"> 
+          <canvas id="myChart" style="width:100%"></canvas>
+          <!--https://www.chartjs.org/docs/latest/samples/other-charts/multi-series-pie.html-->
+          <!-- Not feeling this current pie chart, may need to use this ^^ -->
+        </div>
+
+        <br>
+        <div class="container calories-table-container">
+          <img src="assets/exerciseIcon.png" alt="calories image" id="calories-image">
+          <table class="card calories-table">
+            <tbody>
+              <tr>
+                <td>Calories Consumed</td>
+                <td>1128 cals</td>
+              </tr>
+              <tr>
+                <td>Recommended Calories</td>
+                <td>1800 cals</td>
+              </tr>
+          </table>
+        </div>
+
+        <br>
+        <h3 id="section-title"><b>ACTIVITY</b></h3>
+        <div class="card activity-container">
+          <div class="w3-grey w3-round-large progress-bar">
+            <div class="w3-container w3-sand w3-round-large" style="width:25%">25%</div>
+          </div>
+          <br> 
+          <div class="container streak-container">
+            <img src="assets/exerciseIcon.png" alt="calories image" id="calories-image">
+            <div class="card streak-card">
+              <h2> Streak: </h2>
+              <h2 id="steak-number"> 8 Days</h2>
+              <p id="encouragement-message" style="margin: 1%"> Keep going!</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
+    <!---------------------------- Home Tab End----------------------------->
     <!---------------------------- Food Tab Start: --------------------------->
     <div id="Food" class="tabcontent">
       <h1 class="tabHeader">Nutrition</h1>
@@ -215,9 +328,9 @@
       for (i = 0; i < tablinks.length; i++) {
         tablinks[i].classList.remove("active");
       }
-      evt.currentTarget.classList.add("active");
       document.getElementById(tabName).style.display = "block";
     }
+
     function addItem() {
       // Get the input field value
       var newItem = document.getElementById("newItemInput").value;
@@ -324,6 +437,59 @@
       suggestionsList.innerHTML = "";
       suggestionsList.style.display = "none";
     }
+
+    /*******************************/
+    /********* HOME PAGE ***********/
+    /*******************************/
+
+    // * Rendering dates as needed for our app * //
+    const options = { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' };
+    const currentDate = new Date();
+    const formattedDate = currentDate.toLocaleDateString('en-US', options);
+    const dateElement = document.getElementById("home-date");
+    dateElement.innerText = formattedDate;
+
+    // * Logic to expand and collapse rows on the nutrition table * //
+    // Get all the parent rows
+    const parentRows = document.querySelectorAll('.parent-nutrient');
+    // Loop through each parent row and add a click event listener
+    parentRows.forEach(row => {
+      row.addEventListener('click', function() {
+        // Get the nutrient type of the clicked parent row
+        const nutrientType = this.querySelector('td:first-child').innerText.toLowerCase();
+        // Get all the child rows that belong to the nutrient type
+        const childRows = document.querySelectorAll(`.child-nutrient.${nutrientType}`);
+        // Toggle the visibility of the child rows
+        childRows.forEach(childRow => {
+          childRow.classList.toggle('show');
+        });
+        this.classList.toggle('expanded');
+      });
+    });
+
+    // CHARTS //
+    var xValues = ["Carbs", "Fats", "Vitamins", "Minerals", "Proteins"];
+    var yValues = [55, 49, 44, 24, 15];
+    var barColors = ["red", "green","blue","orange","brown"];
+
+    new Chart("myChart", {
+    type: "pie",
+    data: {
+      labels: xValues,
+      datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: "Total Breakdown of all Nutrients",
+        fontSize: 30
+      }
+    }
+  });
+
   </script>
 </body>
 

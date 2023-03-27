@@ -26,7 +26,14 @@ body {
 }
 
 .tabHeader {
+  margin: 0;
+  margin-left: -2%;
+  margin-right: -2%;
+  padding-top: 2%;
+  padding-bottom: 2%;
   text-align: center;
+  background-color: #2B3A55;
+  color: #FFF7E9;
 }
 
 .btn:focus {
@@ -48,9 +55,6 @@ body {
 .nav-link.active {
   background-color: #ddd;
 }
-
-
-
 
 
 /* Change background color of buttons on hover */
@@ -143,3 +147,57 @@ body {
   z-index: 2;
 }
 
+/**********************/
+/* Home tab Elements */
+/**********************/
+.home #home-date, h1, h3{
+  margin-top: 0;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.home-container {
+  overflow: auto;
+  align-items: center;
+  position: fixed; 
+  bottom: 100px;
+  top: 5.5%;
+}
+
+/* Nutrition Table */
+.nutrition-table-container {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+    
+.nutrition-table {
+background-color: #2B3A55;
+color: #FFF7E9;
+border-collapse: collapse;
+width: 100%;
+}
+
+th, td {
+padding: 8px;
+text-align: left;
+/* border-bottom: 1px solid #ddd; */
+}
+
+.child-nutrient td{
+background-color: #256D85;
+}
+
+.parent-nutrient {
+cursor: pointer;
+}
+
+.child-nutrient {
+display: none;
+color: #FFF7E9;
+}
+
+.child-nutrient.show {
+display: table-row;
+}
