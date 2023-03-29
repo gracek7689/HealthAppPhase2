@@ -724,10 +724,26 @@
     // JS code for exercise tab
 
     function enterNewWorkout() {
+
+      const suggestions = ["curlups", "pushups", "yoga", "run"];
+      let suggestionsList = "<ul>";
+
+      for (let i = 0; i < suggestions.length; i++) {
+        suggestionsList += `
+        <div class="searchSugCont">
+          <li class="searchSug">${suggestions[i]}</li>
+        </div>
+        `;
+      }
+
+      suggestionsList += "</ul>";
+
       var exerciseContainer = document.getElementById("exerciseContainer");
       exerciseContainer.innerHTML = `
       <div class="searchContainer">
+        <h1>Today</h1>
         <input type="text" class="searchBar" placeholder="Search...">
+        ${suggestionsList}
       </div>
       `;
     }

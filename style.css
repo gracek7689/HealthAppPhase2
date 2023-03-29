@@ -64,11 +64,21 @@ body {
 
 .exercise .searchContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 20px;
   padding: 0;
+}
+
+.exercise .searchSugCont {
+  background-color: white;
+  width: 240px;
+  border: 1px solid black;
+}
+
+.exercise .searchSug {
+  list-style-type: none;
 }
 
 /* .exercise .searchBar {
