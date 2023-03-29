@@ -62,6 +62,19 @@ body {
   background-color: white;
 }
 
+.exercise .searchContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  padding: 0;
+}
+
+/* .exercise .searchBar {
+
+} */
+
 /* Style the tab 
      https://www.w3schools.com/howto/howto_js_tabs.asp
      */
