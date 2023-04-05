@@ -71,19 +71,11 @@ body {
   padding: 0;
 }
 
-.exercise .searchSugCont {
-  background-color: white;
-  width: 240px;
-  border: 1px solid black;
-}
-
 .exercise .searchSug {
   list-style-type: none;
+  background-color: white;
+  width: 100%;
 }
-
-/* .exercise .searchBar {
-
-} */
 
 /* Style the tab 
      https://www.w3schools.com/howto/howto_js_tabs.asp

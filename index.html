@@ -366,7 +366,7 @@
   <script>
     let items = [];
 
-    let exercises = ["curlups", "pushups", "yoga", "run"];
+    let exercises = ["curlups", "pushups", "pullups", "yoga", "run"];
 
     // Make HTTP request to load JSON file
     let xhr = new XMLHttpRequest();
@@ -648,7 +648,6 @@
       });
     }
 
-
     function handleKeyDown(event) {
       let input = document.getElementById("newItemInput");
       let inputValue = input.value;
@@ -658,6 +657,7 @@
         clearSuggestions();
       }
     }
+
     function fillFields(item) {
       let nameField = document.getElementById("newItemInput");
       let descField = document.getElementById("newItemDesc");
@@ -736,7 +736,7 @@
         <input type="text" id="newExerciseInput" class="form-control" placeholder="Search..." 
           oninput="showSuggestionsExercise()" 
           onkeydown="handleKeyDown(event)" />
-        <ul id="exerciseSuggestions"></ul>
+        <ul id="exerciseSuggestions" class="searchSug"></ul>
       </div>
       `;
     }
