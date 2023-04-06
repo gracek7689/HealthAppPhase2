@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="exerciseFunctions.js"></script>
 
   <title>Health App</title>
 </head>
@@ -724,81 +725,6 @@
         }
       }
     });
-
-    // JS code for exercise tab
-
-    function enterNewWorkout() {
-
-      var exerciseContainer = document.getElementById("exerciseContainer");
-      exerciseContainer.innerHTML = `
-      <div class="searchContainer">
-        <h1>Today</h1>
-        <input type="text" id="newExerciseInput" class="form-control" placeholder="Search..." 
-          oninput="showSuggestionsExercise()" 
-          onkeydown="handleKeyDown(event)" />
-        <ul id="exerciseSuggestions" class="searchSug"></ul>
-      </div>
-      `;
-    }
-
-    function showSuggestionsExercise() {
-      let input = document.getElementById("newExerciseInput");
-      let inputValue = input.value.trim().toLowerCase();
-
-      // Get the list of items that match the input value
-      let matchingExercises = exercises.filter((item) =>
-        item.toLowerCase().startsWith(inputValue)
-      );
-
-      // Clear the suggestions
-      clearSuggestionsExercise();
-
-      if (inputValue === "") {
-        return;
-      }
-
-      if (matchingExercises.length === 0) {
-        let suggestionsList = document.getElementById("exerciseSuggestions");
-        suggestionsList.style.display = "none";
-        return;
-      }
-
-      // Add the matching items to the suggestions list
-      let suggestionsList = document.getElementById("exerciseSuggestions");
-      suggestionsList.style.display = "block";
-
-      // Position the suggestions list below the input element
-      let inputRect = input.getBoundingClientRect();
-      suggestionsList.style.left = inputRect.left + "px";
-      suggestionsList.style.top = inputRect.bottom + "px";
-
-      matchingExercises.forEach((item) => {
-        let suggestion = document.createElement("li");
-        suggestion.textContent = item;
-        suggestion.addEventListener("click", () => {
-          fillFields(item);
-          clearSuggestionsExercise();
-        });
-        suggestionsList.appendChild(suggestion);
-      });
-    }
-
-
-    function handleKeyDownExercise(event) {
-      let input = document.getElementById("newExerciseInput");
-      let inputValue = input.value;
-
-      // Check for backspace key
-      if (event.keyCode === 8 && inputValue.length === 0) {
-        clearSuggestionsExercise();
-      }
-    }
-
-    function clearSuggestionsExercise() {
-      let suggestionsList = document.getElementById("exerciseSuggestions");
-      suggestionsList.innerHTML = "";
-      suggestionsList.style.display = "none";
-    }
 
   </script>
 </body>
