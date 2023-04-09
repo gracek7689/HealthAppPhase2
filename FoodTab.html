@@ -1,0 +1,232 @@
+<!---------------------------- Food Tab Start: --------------------------->
+<div id="Food" class="tabcontent">
+  <h1 class="tabHeader">Nutrition</h1>
+  <div class="container mt-5">
+    <h2>Enter Custom Food:</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <label for="newItemInput">Name:</label>
+        <input type="text" id="newItemInput" class="form-control" oninput="showSuggestions()"
+          onkeydown="handleKeyDown(event)" required/>
+      </div>
+      <ul id="suggestions"></ul>
+      <div class="col-md-4">
+        <label for="newItemQty">Calories:</label>
+        <input type="number" id="newItemQty" class="form-control" style="width:200px" required/>
+      </div>
+      <div class="col-md-4">
+        <label for="newItemCal">Quantity:</label>
+        <input type="number" id="newItemCal" class="form-control" required/>
+      </div>
+      <div class="col-md-4">
+        <label for="newItemDesc">Description:</label>
+        <input type="text" id="newItemDesc" class="form-control" />
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <button type="button" class="btn btn-secondary" id="moreBoxesBtn" onclick="toggleMoreBoxes()">More Boxes</button>
+        <div id="moreBoxes" style="display:none;">
+          <div class="row mt-3">
+            <div class="col-md-4">
+              <label for="newItemProtein">Protein:</label>
+              <input type="number" id="newItemProtein" class="form-control" />
+            </div>
+            <div class="col-md-4">
+              <label for="newItemFat">Fat:</label>
+              <input type="number" id="newItemFat" class="form-control" />
+            </div>
+            <div class="col-md-4">
+              <label for="newItemCarbs">Carbs:</label>
+              <input type="number" id="newItemCarbs" class="form-control" />
+            </div>
+          </div>
+        </div>
+        <br>
+        <button type="button" class="btn btn-primary" onclick="addItem()">
+          Add Item
+        </button>
+      </div>
+    </div>
+    <ul class="list-group mt-4 custom-list" id="itemList">
+      
+    </ul>
+  </div>
+</div>
+<script>
+  
+  var foodList = [];
+    // Create an XMLHttpRequest object
+    var xhs = new XMLHttpRequest();
+
+    // Define the function to be called when the response is received
+    xhs.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        // Parse the response text as JSON
+        foodList = JSON.parse(this.responseText);
+
+        // Do something with the data
+        console.log(foodList);
+      }
+    };
+
+    // Open the request
+    xhs.open("GET", "path/to/userFood.json", true);
+
+    // Set the request header if needed
+    xhs.setRequestHeader("Content-Type", "application/json");
+
+    // Send the request
+    xhs.send();
+
+    function addItem() {
+      // Get the input field value
+      var newItem = document.getElementById("newItemInput").value;
+      var newDescription = document.getElementById("newItemDesc").value;
+      var newQty = document.getElementById("newItemQty").value;
+      var br = document.createElement("br");
+      console.log("This is a test");
+      console.log(newItem);
+      if (newItem === "") {
+      return;
+      }
+
+      var newID = Math.random().toString(36).substr(2,9);
+
+
+      var newItemObject = {
+        id:newID,
+        name:newItem,
+        description: newDescription,
+        quantity: newQty,
+      };
+      
+      foodList.push(newItemObject);
+      console.log(foodList);
+      // Create a new li element with remove button
+      var li = document.createElement("li");
+      li.className = "list-group-item";
+      li.appendChild(document.createTextNode(newItem));
+      li.appendChild(document.createElement("br"));
+      li.appendChild(document.createTextNode(newDescription));
+      li.appendChild(document.createElement("br"));
+      li.appendChild(document.createTextNode(newQty));
+
+      var removeBtn = document.createElement("button");
+      removeBtn.className = "btn btn-danger btn-sm float-right";
+      removeBtn.appendChild(document.createTextNode("Remove"));
+      removeBtn.onclick = function () {
+        removeItem(this);
+      };
+      li.appendChild(removeBtn);
+
+      // Add the new li element to the list
+      document.getElementById("itemList").appendChild(li);
+
+      // Clear the input field
+      document.getElementById("newItemInput").value = "";
+      document.getElementById("newItemDesc").value = "";
+      document.getElementById("newItemQty").value = "";
+      localStorage.setItem('foodList',JSON.stringify(foodList));
+    }
+    function removeItem(button) {
+      // Get the parent li element
+      var li = button.parentNode;
+
+      // Get the ID of the item to remove
+      var itemId = li.getAttribute("data-item-id");
+
+      // Find the index of the item with that ID in the foodList array
+      var itemIndex = foodList.findIndex(function (item) {
+        return item.id === itemId;
+      });
+
+      // If the item was found, remove it from the foodList array
+      if (itemIndex !== -1) {
+        foodList.splice(itemIndex, 1);
+        fs.writeFileSync("userFood.json", JSON.stringify(data));
+      }
+
+      // Remove the li element from the list
+      document.getElementById("itemList").removeChild(li);
+    }
+    function toggleMoreBoxes() {
+      var moreBoxes = document.getElementById("moreBoxes");
+      var moreBoxesBtn = document.getElementById("moreBoxesBtn");
+      if (moreBoxes.style.display === "none") {
+        moreBoxes.style.display = "block";
+        moreBoxesBtn.textContent = "Less Boxes";
+      } else {
+        moreBoxes.style.display = "none";
+        moreBoxesBtn.textContent = "More Boxes";
+      }
+    }
+
+    function showSuggestions() {
+      let input = document.getElementById("newItemInput");
+      let inputValue = input.value.trim().toLowerCase();
+
+      // Get the list of items that match the input value
+      let matchingItems = items.filter((item) =>
+        item.name.toLowerCase().startsWith(inputValue)
+      );
+
+      // Clear the suggestions
+      // clearSuggestions();
+
+      if (inputValue === "") {
+        return;
+      }
+
+      if (matchingItems.length === 0) {
+        let suggestionsList = document.getElementById("suggestions");
+        suggestionsList.style.display = "none";
+        return;
+      }
+
+      // Add the matching items to the suggestions list
+      let suggestionsList = document.getElementById("suggestions");
+      suggestionsList.style.display = "block";
+
+      // Position the suggestions list below the input element
+      let inputRect = input.getBoundingClientRect();
+      suggestionsList.style.left = inputRect.left + "px";
+      suggestionsList.style.top = inputRect.bottom + "px";
+
+      matchingItems.forEach((item) => {
+        let suggestion = document.createElement("li");
+        suggestion.textContent = item.name;
+        suggestion.addEventListener("click", () => {
+          fillFields(item);
+          clearSuggestions();
+        });
+        suggestionsList.appendChild(suggestion);
+      });
+    }
+
+
+    function handleKeyDown(event) {
+      let input = document.getElementById("newItemInput");
+      let inputValue = input.value;
+
+      // Check for backspace key
+      if (event.keyCode === 8 && inputValue.length === 0) {
+        clearSuggestions();
+      }
+    }
+    function fillFields(item) {
+      let nameField = document.getElementById("newItemInput");
+      let descField = document.getElementById("newItemDesc");
+      let qtyField = document.getElementById("newItemQty");
+
+      nameField.value = item.name;
+      descField.value = item.description;
+      qtyField.value = item.quantity;
+    }
+    function clearSuggestions() {
+      let suggestionsList = document.getElementById("suggestions");
+      suggestionsList.innerHTML = "";
+      suggestionsList.style.display = "none";
+    }
+   
+</script>

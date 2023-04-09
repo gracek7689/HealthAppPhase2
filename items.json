@@ -1,17 +1,20 @@
 [
     {
       "name": "Apple",
-      "description": "Item 1 description",
+      "description": "Granny Smith Apple",
+      "calories": 80,
       "quantity": 1
     },
     {
-      "name": "Item 2",
-      "description": "Item 2 description",
+      "name": "Banana",
+      "description": "Had a brown spot :(",
+      "calories": 80,
       "quantity": 2
     },
     {
-      "name": "Item 3",
-      "description": "Item 3 description",
+      "name": "Pear",
+      "description": "Pear",
+      "calories": 80,
       "quantity": 3
     }
     
