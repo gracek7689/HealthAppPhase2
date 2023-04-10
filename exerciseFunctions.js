@@ -85,22 +85,22 @@ function showNewWorkoutFields() {
   `;
 }
 
-function showInputWorkoutFields(workoutName) {
+function showInputWorkoutFields(workoutName, userExercises, exerciseTypes) {
   var exerciseContainer = document.getElementById("exerciseContainer");
   exerciseContainer.innerHTML = `
     <div class="newWorkoutContainer">
     <h1>${workoutName}</h1>
       <form>
-        <label for="workoutName">Workout Name: </label><br>
-        <input class="newWorkoutField" type="text" id="workoutName" name="workoutName"><br><br>
-        <label for="weight">Weight: </label><br>
-        <input class="newWorkoutField" type="text" id="weight" name="weight"><br><br>
-        <label for="reps">Reps: </label><br>
-        <input class="newWorkoutField" type="text" id="reps" name="reps"><br><br>
-        <label for="distance">Distance: </label><br>
-        <input class="newWorkoutField" type="text" id="distance" name="distance"><br><br>
-        <label for="time">Time: </label><br>
-        <input class="newWorkoutField" type="text" id="time" name="time"><br><br>
+      <ul id="cardDetails"></ul>
+      ${Object.keys(exerciseTypes[workoutName])
+        .filter((k) => exerciseTypes[workoutName][k])
+        .map(
+          (k) => `
+          <label for="${k}">${k}: </label><br>
+          <input class="newWorkoutField" type="text" id="${k}" name="${k}"><br><br>
+        `
+        )
+        .join("")}
         <input class="addButton" type="submit" value="Add">
       </form>
     </div>
@@ -112,9 +112,9 @@ function showSuggestionsExercise(userExercises, exerciseTypes) {
   let inputValue = input.value.trim().toLowerCase();
 
   // Get the list of items that match the input value
-  let matchingExercises = Object.values(exerciseTypes)
-    .filter((exercise) => exercise.name.toLowerCase().startsWith(inputValue))
-    .map((exercise) => exercise.name);
+  let matchingExercises = Object.keys(exerciseTypes)
+    .filter((exercise) => exercise.toLowerCase().startsWith(inputValue))
+    .map((exercise) => exercise);
 
   // Prepend the plus button to the matchingExercises list
   matchingExercises.unshift("+ New Workout");
@@ -140,7 +140,7 @@ function showSuggestionsExercise(userExercises, exerciseTypes) {
     suggestion.addEventListener("click", () => {
       exerSugClicked(item);
       fillFields(item);
-      clearSuggestionsExercise();
+      // clearSuggestionsExercise();
     });
     suggestionsList.appendChild(suggestion);
   });
@@ -170,6 +170,6 @@ function exerSugClicked(item) {
 
   // If the user selected a pre-existing workout
   else {
-    showInputWorkoutFields(item);
+    showInputWorkoutFields(item, userExercises, exerciseTypes);
   }
 }
