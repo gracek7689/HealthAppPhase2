@@ -229,65 +229,9 @@
 
     <div id="Exercise" class="tabcontent">
       <h1 class="tabHeader">Exercise</h1>
-
       <section class="exercise">
         <div class="container" id="exerciseContainer">
-          <ul class="card-list">
-
-            <li class="card-container">
-              <h2>Tuesday, March 26th</h2>
-              <div class="card">
-                <div class="card-body">
-                  <div class="card-title-wrapper">
-                    <h3 class="card-title">Run</h3>
-                    <h4>8:31 am</h4>
-                  </div>
-                  <div>
-                    <h4>3.1 miles</h4>
-                    <h4>39 min 12 sec</h4>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <li class="card-container">
-              <h2>Wednesday, March 27th</h2>
-              <div class="card">
-                <div class="card-body">
-                  <div class="card-title-wrapper">
-                    <h3 class="card-title">Yoga</h3>
-                    <h4>10:40 am</h4>
-                  </div>
-                  <div>
-                    <h4>41 min</h4>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <li class="card-container">
-              <h2>Thursday, March 28th</h2>
-              <div class="card">
-                <div class="card-body">
-                  <div class="card-title-wrapper">
-                    <h3 class="card-title">Curl Ups</h3>
-                    <h4>5:36 pm</h4>
-                  </div>
-                  <div>
-                    <h4>30x reps</h4>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <li class="card-container">
-              <h2>Today</h2>
-              <div class="plus-button" onclick="enterNewWorkout()">
-                <h1 style="font-weight:500">&#43;</h1>
-              </div>
-            </li>
-
-          </ul>
+          <ul class="card-list" id="userExerciseList"></ul>
         </div>
       </section>
     </div>
@@ -367,9 +311,70 @@
   <script>
     let items = [];
 
-    let exercises = ["curlups", "pushups", "pullups", "yoga", "run"];
+     // Represents the different exercises users have entered (including the metrics)
+    let userExercises = {
+      0: {
+        name: "Run",
+        weight: false,
+        reps: false,
+        distance: "3.1 miles",
+        duration: "39 min 12 sec",
+        time: "8:31 am",
+        date: "Wednesday, March 27th"
+      },
+      1: {
+        name: "Yoga",
+        weight: false,
+        reps: false,
+        distance: false,
+        duration: "41 min",
+        time: "10:40 am",
+        date: "Thursday, March 28th"
+      },
+      2: {
+        name: "Curlups",
+        weight: "15 lbs",
+        reps: "30x",
+        distance: false,
+        duration: false,
+        time: "5:36 pm",
+        date: "Friday, March 28th"
+      },
+    };
 
-    // Make HTTP request to load JSON file
+    // Represents the different types of exercises and fields associated with them
+    let exerciseTypes = {
+      0: {
+        "name": "Run",
+        "weight": false,
+        "reps": false,
+        "distance": true,
+        "duration": true,
+        "time": true,
+        "date": true
+      },
+      1: {
+        "name": "Yoga",
+        "weight": false,
+        "reps": false,
+        "distance": false,
+        "duration": true,
+        "time": true,
+        "date": true
+      },
+      2: {
+        "name": "Curlups",
+        "weight": true,
+        "reps": true,
+        "distance": false,
+        "duration": false,
+        "time": true,
+        "date": true
+      }
+      
+    };
+
+    // Make HTTP request to load JSON file for items.json
     let xhr = new XMLHttpRequest();
     xhr.open("GET", "items.json");
     xhr.onload = function () {
@@ -396,6 +401,10 @@
         tablinks[i].classList.remove("active");
       }
       document.getElementById(tabName).style.display = "block";
+
+      if (tabName === "Exercise") {
+        showUserExercises(userExercises);
+      }
     }
 
     function editProfile() {

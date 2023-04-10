@@ -61,6 +61,15 @@ body {
   background-color: white;
 }
 
+.exercise .searchBar {
+  /* display: block; */
+  border: 1px solid black;
+  /* margin-top: 10px; */
+  display: block;
+   left: 220px;
+   top: 195.969px;
+}
+
 .exercise .searchContainer {
   display: flex;
   flex-direction: column;

@@ -1,16 +1,50 @@
 // JS functions for exercise tab
 
+// Populates list of exercise cards when exercise tab is first rendered.
+function showUserExercises(userExercises) {
+  let exerciseList = document.getElementById("userExerciseList");
+
+  for (let i in userExercises) {
+    // Object.keys(userExercises).forEach((exercise) => {
+    let exerciseCard = document.createElement("li");
+    exerciseCard.className = "card-container";
+
+    exerciseCard.innerHTML = `
+    <h2>${userExercises[i].date}</h2>
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title-wrapper">
+          <h3 class="card-title">${userExercises[i].name}</h3>
+          <h4>${userExercises[i].time}</h4>
+        </div>
+        <ul id="cardDetails"></ul>
+        ${Object.keys(userExercises[i])
+          .filter((k) => k !== "name" && k != "date" && userExercises[i][k])
+          .map((k) => `<h4>${userExercises[i][k]}</h4>`)
+          .join("")}
+      </div>
+    </div>
+    `;
+
+    exerciseList.appendChild(exerciseCard);
+  }
+}
+
 function enterNewWorkout() {
   var exerciseContainer = document.getElementById("exerciseContainer");
   exerciseContainer.innerHTML = `
       <div class="searchContainer">
         <h1>Today</h1>
-        <input type="text" id="newExerciseInput" class="form-control" placeholder="Search..." 
+        <input type="text" id="newExerciseInput" placeholder="Search Workouts" 
           oninput="showSuggestionsExercise()" 
           onkeydown="handleKeyDown(event)" />
         <ul id="exerciseSuggestions" class="searchSug"></ul>
       </div>
       `;
+
+  // Makes it so that suggestions are shown as soon as this page is toggled
+  // Without it, they will not be populated until the search field is clicked on
+  showSuggestionsExercise();
 }
 
 function showNewWorkoutFields() {
@@ -18,6 +52,28 @@ function showNewWorkoutFields() {
   exerciseContainer.innerHTML = `
     <div class="newWorkoutContainer">
     <h1>New Workout</h1>
+      <form>
+        <label for="workoutName">Workout Name: </label><br>
+        <input class="newWorkoutField" type="text" id="workoutName" name="workoutName"><br><br>
+        <label for="weight">Weight: </label><br>
+        <input class="newWorkoutField" type="text" id="weight" name="weight"><br><br>
+        <label for="reps">Reps: </label><br>
+        <input class="newWorkoutField" type="text" id="reps" name="reps"><br><br>
+        <label for="distance">Distance: </label><br>
+        <input class="newWorkoutField" type="text" id="distance" name="distance"><br><br>
+        <label for="time">Time: </label><br>
+        <input class="newWorkoutField" type="text" id="time" name="time"><br><br>
+        <input class="addButton" type="submit" value="Add">
+      </form>
+    </div>
+  `;
+}
+
+function showInputWorkoutFields(workoutName) {
+  var exerciseContainer = document.getElementById("exerciseContainer");
+  exerciseContainer.innerHTML = `
+    <div class="newWorkoutContainer">
+    <h1>${workoutName}</h1>
       <form>
         <label for="workoutName">Workout Name: </label><br>
         <input class="newWorkoutField" type="text" id="workoutName" name="workoutName"><br><br>
@@ -108,6 +164,6 @@ function exerSugClicked(item) {
 
   // If the user selected a pre-existing workout
   else {
-    console.log(item);
+    showInputWorkoutFields(item);
   }
 }
