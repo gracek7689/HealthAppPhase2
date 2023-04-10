@@ -115,9 +115,6 @@ function showSuggestionsExercise(userExercises, exerciseTypes) {
   let matchingExercises = Object.values(exerciseTypes)
     .filter((exercise) => exercise.name.toLowerCase().startsWith(inputValue))
     .map((exercise) => exercise.name);
-  // let matchingExercises = userExercises.filter((item) =>
-  //   item.toLowerCase().startsWith(inputValue)
-  // );
 
   // Prepend the plus button to the matchingExercises list
   matchingExercises.unshift("+ New Workout");
