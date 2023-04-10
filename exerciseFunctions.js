@@ -1,11 +1,15 @@
 // JS functions for exercise tab
 
 // Populates list of exercise cards when exercise tab is first rendered.
-function showUserExercises(userExercises) {
+function showUserExercises(userExercises, exerciseTypes) {
   let exerciseList = document.getElementById("userExerciseList");
 
+  // WHY TF DOES THIS WORK
+  if (document.getElementById("cardDetails") != null) {
+    document.getElementById("cardDetail").remove();
+  }
+
   for (let i in userExercises) {
-    // Object.keys(userExercises).forEach((exercise) => {
     let exerciseCard = document.createElement("li");
     exerciseCard.className = "card-container";
 
@@ -28,15 +32,27 @@ function showUserExercises(userExercises) {
 
     exerciseList.appendChild(exerciseCard);
   }
+  let plusButton = document.createElement("li");
+  plusButton.className = "card-container";
+
+  plusButton.innerHTML = `
+    <h2>Today</h2>
+    <div class="plus-button" onclick="enterNewWorkout(userExercises, exerciseTypes)">
+      <h1 style="font-weight:500">&#43;</h1>
+    </div>
+  `;
+
+  let exerciseContainer = document.querySelector("#exerciseContainer");
+  exerciseContainer.insertAdjacentElement("beforeend", plusButton);
 }
 
-function enterNewWorkout() {
+function enterNewWorkout(userExercises, exerciseTypes) {
   var exerciseContainer = document.getElementById("exerciseContainer");
   exerciseContainer.innerHTML = `
       <div class="searchContainer">
         <h1>Today</h1>
         <input type="text" id="newExerciseInput" placeholder="Search Workouts" 
-          oninput="showSuggestionsExercise()" 
+          oninput="showSuggestionsExercise(userExercises, exerciseTypes)" 
           onkeydown="handleKeyDown(event)" />
         <ul id="exerciseSuggestions" class="searchSug"></ul>
       </div>
@@ -44,7 +60,7 @@ function enterNewWorkout() {
 
   // Makes it so that suggestions are shown as soon as this page is toggled
   // Without it, they will not be populated until the search field is clicked on
-  showSuggestionsExercise();
+  showSuggestionsExercise(userExercises, exerciseTypes);
 }
 
 function showNewWorkoutFields() {
@@ -91,30 +107,23 @@ function showInputWorkoutFields(workoutName) {
   `;
 }
 
-function showSuggestionsExercise() {
+function showSuggestionsExercise(userExercises, exerciseTypes) {
   let input = document.getElementById("newExerciseInput");
   let inputValue = input.value.trim().toLowerCase();
 
   // Get the list of items that match the input value
-  let matchingExercises = exercises.filter((item) =>
-    item.toLowerCase().startsWith(inputValue)
-  );
+  let matchingExercises = Object.values(exerciseTypes)
+    .filter((exercise) => exercise.name.toLowerCase().startsWith(inputValue))
+    .map((exercise) => exercise.name);
+  // let matchingExercises = userExercises.filter((item) =>
+  //   item.toLowerCase().startsWith(inputValue)
+  // );
 
   // Prepend the plus button to the matchingExercises list
   matchingExercises.unshift("+ New Workout");
 
   // Clear the suggestions
   clearSuggestionsExercise();
-
-  // if (inputValue === "") {
-  //   return;
-  // }
-
-  // if (matchingExercises.length === 0) {
-  //   let suggestionsList = document.getElementById("exerciseSuggestions");
-  //   suggestionsList.style.display = "none";
-  //   return;
-  // }
 
   // Add the matching items to the suggestions list
   let suggestionsList = document.getElementById("exerciseSuggestions");

@@ -229,6 +229,7 @@
 
     <div id="Exercise" class="tabcontent">
       <h1 class="tabHeader">Exercise</h1>
+
       <section class="exercise">
         <div class="container" id="exerciseContainer">
           <ul class="card-list" id="userExerciseList"></ul>
@@ -371,7 +372,6 @@
         "time": true,
         "date": true
       }
-      
     };
 
     // Make HTTP request to load JSON file for items.json
@@ -403,7 +403,7 @@
       document.getElementById(tabName).style.display = "block";
 
       if (tabName === "Exercise") {
-        showUserExercises(userExercises);
+        showUserExercises(userExercises, exerciseTypes);
       }
     }
 
