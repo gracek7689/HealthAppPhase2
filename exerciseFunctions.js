@@ -50,22 +50,25 @@ function showUserExercises() {
     exerciseCard.className = "card-container";
 
     exerciseCard.innerHTML = `
-    <h2>${userExercises[i].date}</h2>
+    <h2 class="cardDate">${userExercises[i].date}</h2>
     <div class="card">
-      <div class="card-body">
         <div class="card-title-wrapper">
-          <h3 class="card-title">${userExercises[i].name}</h3>
-          <h4>${userExercises[i].time}</h4>
+          <h2 class="card-title">${userExercises[i].name}</h2>
+          <h3>${userExercises[i].time}</h3>
         </div>
-        <ul id="cardDetails"></ul>
-        ${Object.keys(userExercises[i])
-          .filter(
-            (k) =>
-              k !== "name" && k != "date" && k != "time" && userExercises[i][k]
-          )
-          .map((k) => `<h4>${userExercises[i][k]}</h4>`)
-          .join("")}
-      </div>
+        <div class="detailText">
+          <ul id="cardDetails"></ul>
+          ${Object.keys(userExercises[i])
+            .filter(
+              (k) =>
+                k !== "name" &&
+                k != "date" &&
+                k != "time" &&
+                userExercises[i][k]
+            )
+            .map((k) => `<h3>${userExercises[i][k]}</h3>`)
+            .join("")}
+          </div>
     </div>
     `;
 
@@ -78,7 +81,7 @@ function showUserExercises() {
     plusButton.id = "card-container";
 
     plusButton.innerHTML = `
-      <h2>Today</h2>
+      <h2 class="cardDate">Today</h2>
       <div class="plus-button" onclick="enterNewWorkout()">
         <h1 style="font-weight:500">&#43;</h1>
       </div>
@@ -106,6 +109,10 @@ function enterNewWorkout() {
   showSuggestionsExercise();
 }
 
+function calculateCalories() {
+  console.log(Math.floor(Math.random() * 400) + 150);
+}
+
 function showNewWorkoutFields() {
   let exerciseContainer = document.getElementById("exerciseContainer");
   const placeholder = "Leave blank if not applicable";
@@ -123,6 +130,13 @@ function showNewWorkoutFields() {
         <input class="newWorkoutField" type="text" id="distance" name="distance" placeholder="${placeholder}"><br><br>
         <label for="duration">Duration: </label><br>
         <input class="newWorkoutField" type="text" id="duration" name="duration" placeholder="${placeholder}"><br><br>
+        <div>
+          <div class="calorieButton" onclick="calculateCalories()">
+            <h2 class="calorieButtonText">Calculate Calories</h2>
+          </div>
+          <h4>OR</h4>
+          <input class="newWorkoutField" type="text" id="calories" name="calories" placeholder="Enter calories manually"><br><br>
+        </div>
         <label for="time">Time: </label><br>
         <input class="newWorkoutField" type="text" id="time" name="time"><br><br>
         <label for="date">Date: </label><br>
