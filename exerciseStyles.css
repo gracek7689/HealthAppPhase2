@@ -1,0 +1,136 @@
+.exercise .card-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+}
+
+.exercise .card-container {
+  display: flex;
+  flex-direction: column;
+  /* align-items: start; */
+  list-style-type: none;
+  padding: 10px;
+  width: 100%;
+}
+
+.exercise .detailText {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.exercise .container {
+  margin-top: 20px;
+  margin-bottom: 100px;
+}
+
+.exercise .card-title-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.exercise .card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  width: 100%;
+  align-items: space-between;
+  padding: 20px;
+  border: 5px solid #2B3A55; 
+  border-radius: 35px;
+  background-color: #FFF7E9;
+}
+
+.exercise .plus-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  height: 80px;
+  border: 5px solid #2B3A55; 
+  border-radius: 35px;
+
+  background-color: #FFF7E9;
+}
+
+.exercise .searchBar {
+  /* display: block; */
+  border: 1px solid black; 
+  /* margin-top: 10px; */
+  display: block;
+   left: 220px;
+   top: 195.969px;
+}
+
+.exercise .searchContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  padding: 0;
+}
+
+.exercise .searchSug {
+  list-style-type: none;
+  background-color: white;
+  width: 100%;
+  padding-inline-start: 0px;
+}
+
+.exercise .sugResult {
+  border: 1px solid black;
+  width: 100%;
+  padding-inline-start: 10px;
+}
+
+.exercise .newWorkout {
+  border: 1px solid black;
+  text-align: center;
+}
+
+.exercise .newWorkoutContainer {
+  width: 100%;
+}
+
+.exercise .newWorkoutField {
+  width: 100%;
+  /* display: flex;
+  justify-content: center; */
+}
+
+.exercise .addButton {
+  display: flex;
+  align-self: center;
+}
+
+.exercise .calorieCounter {
+  display: flex;
+  flex-direction: row;
+}
+
+.exercise .calorieButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 80%;
+  padding: 10px;
+  height: 80px;
+  background-color: #2B3A55;
+  margin-bottom: 10px;                 
+}
+
+.exercise .calorieButtonText {
+  color: #FFF7E9;
+}
+
+.exercise .cardDate {
+  font-weight: 550;
+  color: #2B3A55;
+}
