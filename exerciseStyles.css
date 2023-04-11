@@ -144,7 +144,7 @@
   border: 5px solid #2B3A55; 
   border-radius: 35px;
   padding-left: 20px;
-  font-weight: 500;
+  font-weight: 475;
   background-color: #FFF7E9;
 }
 
@@ -163,15 +163,18 @@
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  width: 80%;
+  width: 100%;
   padding: 10px;
-  height: 80px;
+  height: 70px;
   background-color: #2B3A55;
+  border-radius: 35px;
   margin-bottom: 10px;                 
 }
 
 .exercise .calorieButtonText {
   color: #FFF7E9;
+  font-weight: 550;
+  font-size: 30px;
 }
 
 .exercise .cardDate {
@@ -179,8 +182,19 @@
   color: #2B3A55;
 }
 
+.exercise .newWorkoutFieldLabel {
+  font-weight: 550;
+  color: #2B3A55;
+}
+
 .exercise .todayHeader {
   font-weight: 550;
   color: #2B3A55;
+  margin-bottom: 20px;
+}
+
+.exercise .orText {
+  text-align: center;
+  font-weight: 550;
   margin-bottom: 20px;
 }

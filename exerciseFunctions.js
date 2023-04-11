@@ -110,42 +110,46 @@ function enterNewWorkout() {
   showSuggestionsExercise();
 }
 
-function calculateCalories() {
-  console.log(Math.floor(Math.random() * 400) + 150);
-}
-
 function showNewWorkoutFields() {
   let exerciseContainer = document.getElementById("exerciseContainer");
   const placeholder = "Leave blank if not applicable";
   exerciseContainer.innerHTML = `
     <div class="newWorkoutContainer">
-    <h1>New Workout</h1>
+    <h1 class="todayHeader">New Workout</h1>
       <form>
-        <label for="workoutName">Workout Name: </label><br>
+        <label for="workoutName" class="newWorkoutFieldLabel">Workout Name: </label><br>
         <input class="newWorkoutField" type="text" id="workoutName" name="workoutName"><br><br>
-        <label for="weight">Weight: </label><br>
+        <label for="weight" class="newWorkoutFieldLabel">Weight: </label><br>
         <input class="newWorkoutField" type="text" id="weight" name="weight" placeholder="${placeholder}"><br><br>
-        <label for="reps">Reps: </label><br>
+        <label for="reps" class="newWorkoutFieldLabel">Reps: </label><br>
         <input class="newWorkoutField" type="text" id="reps" name="reps" placeholder="${placeholder}"><br><br>
-        <label for="distance">Distance: </label><br>
+        <label for="distance" class="newWorkoutFieldLabel">Distance: </label><br>
         <input class="newWorkoutField" type="text" id="distance" name="distance" placeholder="${placeholder}"><br><br>
-        <label for="duration">Duration: </label><br>
+        <label for="duration" class="newWorkoutFieldLabel">Duration: </label><br>
         <input class="newWorkoutField" type="text" id="duration" name="duration" placeholder="${placeholder}"><br><br>
+        <label for="time" class="newWorkoutFieldLabel">Calories: </label><br>
         <div>
-          <div class="calorieButton" onclick="calculateCalories()">
+          <div class="calorieButton" id="calorieButton">
             <h2 class="calorieButtonText">Calculate Calories</h2>
           </div>
-          <h4>OR</h4>
-          <input class="newWorkoutField" type="text" id="calories" name="calories" placeholder="Enter calories manually"><br><br>
+          <input class="newWorkoutField" type="text" id="calories" name="calories" placeholder="OR enter calories manually"><br><br>
         </div>
-        <label for="time">Time: </label><br>
+        <label for="time" class="newWorkoutFieldLabel">Time: </label><br>
         <input class="newWorkoutField" type="text" id="time" name="time"><br><br>
-        <label for="date">Date: </label><br>
+        <label for="date" class="newWorkoutFieldLabel">Date: </label><br>
         <input class="newWorkoutField" type="text" id="date" name="date"><br><br>
         <input class="addButton" type="submit" value="Add">
       </form>
     </div>
   `;
+
+  let calorieButton = document.getElementById("calorieButton");
+  let calorieField = document.getElementById("calories");
+
+  calorieButton.addEventListener("click", function () {
+    const randomNumber = Math.floor(Math.random() * 400) + 150;
+    calorieField.value = randomNumber;
+  });
 
   let form = document.querySelector("form");
   form.addEventListener("submit", function (e) {
@@ -225,11 +229,6 @@ function showInputWorkoutFields(workoutName) {
   form.addEventListener("submit", function (e) {
     e.preventDefault(); // Prevent page from reloading
 
-    // Get input values
-    // let workoutName =
-    //   document.getElementById("workoutName") != null
-    //     ? document.getElementById("workoutName").value
-    //     : "";
     let weight = exerciseTypes[workoutName].includes("Weight")
       ? document.getElementById("weight").value
       : "";
