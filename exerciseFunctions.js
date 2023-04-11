@@ -96,10 +96,11 @@ function enterNewWorkout() {
   let exerciseContainer = document.getElementById("exerciseContainer");
   exerciseContainer.innerHTML = `
       <div class="searchContainer">
-        <h1>Today</h1>
+        <h1 class="todayHeader">Today's Workout</h1>
         <input type="text" id="newExerciseInput" placeholder="Search Workouts" 
           oninput="showSuggestionsExercise()" 
-          onkeydown="handleKeyDown(event)" />
+          onkeydown="handleKeyDown(event)" 
+          class="searchInput"/>
         <ul id="exerciseSuggestions" class="searchSug"></ul>
       </div>
       `;
@@ -302,10 +303,15 @@ function showSuggestionsExercise() {
   suggestionsList.style.left = inputRect.left + "px";
   suggestionsList.style.top = inputRect.bottom + "px";
 
-  matchingExercises.forEach((item) => {
+  matchingExercises.forEach((item, index) => {
     let suggestion = document.createElement("li");
 
-    suggestion.className = item == "+ New Workout" ? "newWorkout" : "sugResult";
+    if (index == matchingExercises.length - 1) {
+      suggestion.className = "lastSug";
+    } else {
+      suggestion.className =
+        item == "+ New Workout" ? "newWorkout" : "sugResult";
+    }
 
     suggestion.textContent = item;
     suggestion.addEventListener("click", () => {
