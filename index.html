@@ -312,65 +312,6 @@
   <script>
     let items = [];
 
-     // Represents the different exercises users have entered (including the metrics)
-    let userExercises = {
-      0: {
-        name: "Run",
-        weight: false,
-        reps: false,
-        distance: "3.1 miles",
-        duration: "39 min 12 sec",
-        time: "8:31 am",
-        date: "Wednesday, March 27th"
-      },
-      1: {
-        name: "Yoga",
-        weight: false,
-        reps: false,
-        distance: false,
-        duration: "41 min",
-        time: "10:40 am",
-        date: "Thursday, March 28th"
-      },
-      2: {
-        name: "Curlups",
-        weight: "15 lbs",
-        reps: "30x",
-        distance: false,
-        duration: false,
-        time: "5:36 pm",
-        date: "Friday, March 28th"
-      },
-    };
-
-    // Represents the different types of exercises and fields associated with them
-    let exerciseTypes = {
-      "Run": {
-        "Weight": false,
-        "Reps": false,
-        "Distance": true,
-        "Duration": true,
-        "Time": true,
-        "Date": true
-      },
-      "Yoga": {
-        "Weight": false,
-        "Reps": false,
-        "Distance": false,
-        "Duration": true,
-        "Time": true,
-        "Date": true
-      },
-      "Curlups": {
-        "Weight": true,
-        "Reps": true,
-        "Distance": false,
-        "Duration": false,
-        "Time": true,
-        "Date": true
-      }
-    };
-
     // Make HTTP request to load JSON file for items.json
     let xhr = new XMLHttpRequest();
     xhr.open("GET", "items.json");
@@ -400,7 +341,7 @@
       document.getElementById(tabName).style.display = "block";
 
       if (tabName === "Exercise") {
-        showUserExercises(userExercises, exerciseTypes);
+        showUserExercises();
       }
     }
 

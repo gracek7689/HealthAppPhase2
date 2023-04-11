@@ -40,6 +40,11 @@ body {
   width: 100%;
 }
 
+.exercise .container {
+  margin-top: 20px;
+  margin-bottom: 100px;
+}
+
 .exercise .card-body {
   align-items: space-between;
 }
