@@ -42,7 +42,7 @@
       </ul>
     </div>
   </nav>
-  
+
   <div class="container-fluid">
     <!---------------------------- Home Tab Start: ----------------------------->
     <div id="Home" class="tabcontent home" style="display: block">
@@ -54,7 +54,7 @@
         <div class="nutrition-table-container">
           <table class="w3-table w3-hoverable w3-card nutrition-table">
             <thead>
-              <tr> 
+              <tr>
                 <th>Nutrition <br> Type</th>
                 <th>Total <br> Intake</th>
                 <th>Recommended <br> Intake</th>
@@ -289,7 +289,7 @@
       <div class="container py-5" id="settingsCont">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col col-lg-9 col-xl-7">
-            <div class="card" style="width: 100%;">
+            <div class="card" style="width: 100%; background-color: #FFF7E9; border-color: #2B3A55;">
               <div class=" card-body p-4 text-black">
                 <div class="mb-3">
                   <p class="lead fw-normal mb-1" style="font-size: 2.3rem;">About</p>
@@ -331,12 +331,13 @@
                   </div>
                 </div>
                 <p class="lead fw-normal mb-1" style="font-size: 2.3rem;">Health Goal</p>
-                <div class="p-1" style="background-color: #f8f9fa;">
+                <div class="p-1" style="background-color: #FFF7E9;">
                   <p>Lose 10 pounds by June 23, 2023</p>
                 </div>
               </div>
               <button type="button" class="btn btn-outline-dark mx-auto mb-2" data-mdb-ripple-color="dark"
-                style="z-index: 1; width: 150px" onclick="editProfile()">
+                style="z-index: 1; width: 190px; background-color: #2B3A55; border-radius: 35px; color: #FFF7E9;"
+                onclick="editProfile()">
                 Edit profile
               </button>
             </div>
@@ -456,7 +457,7 @@
     <input type="checkbox" id="workout3" name="preferredWorkouts" value="Strength Training">
     <label for="workout3">Strength Training</label><br><br>
 <div style="display: flex; justify-content: center;">
-  <button type="button" class="btn btn-outline-dark" onclick="saveChanges()">
+  <button type="button" class="btn btn-outline-dark" style = "width: 190px; background-color: #2B3A55; border-radius: 35px; color: #FFF7E9;" onclick="saveChanges()">
     Save Changes
   </button>
 </div> 
@@ -582,11 +583,11 @@
         <div class="container h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-lg-9 col-xl-7">
-              <div class="card">
+              <div class="card" style = "background-color: #FFF7E9; border-color: #2B3A55">
                 <div class="card-body p-4 text-black">
                   <div class="mb-3">
                     <p class="lead fw-normal mb-1" style="font-size: 2.3rem;">About</p>
-                    <div class="p-4" style="background-color: #f8f9fa;">
+                    <div class="p-4" style="background-color: #FFF7E9;">
                       <table class="table">
                         <tbody>
                           <tr>
@@ -623,12 +624,12 @@
                     </div>
                   </div>
                   <p class="lead fw-normal mb-1" style="font-size: 2.3rem;">Health Goals</p>
-                  <div class="p-1" style="background-color: #f8f9fa;">
+                  <div class="p-1" style="background-color: #FFF7E9;">
                     <p>Lose 10 pounds by June 23, 2023</p>
                   </div>
                 </div>
                 <button type="button" class="btn btn-outline-dark mx-auto mb-2" data-mdb-ripple-color="dark"
-                  style="z-index: 1; width: 150px" onclick="editProfile()">
+                  style="z-index: 1; width: 150px; background-color: #2B3A55; border-radius: 35px; color: #FFF7E9;" onclick="editProfile()">
                   Edit profile
                 </button>
               </div>
@@ -801,11 +802,11 @@
           text: "Breakdown of all Nutrients Consumed",
           fontSize: 30
         },
-        legend:{
+        legend: {
           labels: {
-          fontSize: 20,
-          fontColor: '#2B3A55'
-        }
+            fontSize: 20,
+            fontColor: '#2B3A55'
+          }
         }
       }
     });
