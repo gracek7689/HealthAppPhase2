@@ -368,8 +368,7 @@
       document.getElementById("homeID").focus();
     });
     window.onload = function(){
-      console.log("Test on load");
-      console.log(items[0]);
+
       document.getElementById("newItemInput").value = items[0].name;
       document.getElementById("newItemCal").value = items[0].calories;
       document.getElementById("newItemQty").value = items[0].quantity;
@@ -709,12 +708,12 @@
         return item.name.toLowerCase() === newItem.toLowerCase();
       });
       if (existingItem) {
-        console.log("Item already exsits")
+        // console.log("Item already exsits")
       }
       else{
         items.push(newItemObject);
       }
-      console.log(items);
+      // console.log(items);
       clearForms();
 
     }
@@ -725,8 +724,7 @@
       // Get the ID of the item to remove
       // var itemId = li.getAttribute("data-item-id");
       var itemId = li.getAttribute("data-item-id");
-      console.log(itemId);
-      console.log(li)
+
       // Find the index of the item with that ID in the foodList array
       var itemIndex = foodList.findIndex(function (item) {
         return item.id === itemId;
@@ -741,9 +739,7 @@
 
       // Remove the li element from the list
       document.getElementById("itemList").removeChild(li);
-      console.log("Start");
-      console.log(foodList);
-      console.log("end");
+
 
       // localStorage.setItem('foodList',JSON.stringify(foodList));
 
@@ -822,8 +818,6 @@
       let carbField = document.getElementById("newItemCarbs");
       let vitField = document.getElementById("newItemVit");
       let minField = document.getElementById("newItemMin");
-      console.log("We are in fillFields");
-      console.log(item);
       nameField.value = item.name;
       qtyField.value = item.quantity;
       calField.value = item.calories;
@@ -832,8 +826,7 @@
       carbField.value = item.carbs;
       // vitField = item.vitamins;
       // minField = item.minerals;
-      console.log("THIS IS IT");
-      console.log(minField);
+
     }
     function clearSuggestions() {
       let suggestionsList = document.getElementById("suggestions");
