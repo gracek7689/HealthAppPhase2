@@ -665,64 +665,62 @@
 
       // Replace the current content with a form
       container.innerHTML = `
-      <section class="h-100 gradient-custom-2">
-        <div class="container h-100">
-          <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col col-lg-9 col-xl-7">
-              <div class="card" style = " border-radius: 35px; border-width: 5px; background-color: #FFF7E9; border-color: #2B3A55">
-                <div class="card-body p-4 text-black">
-                  <div class="mb-3">
-                    <p class="lead fw-normal mb-1" style="font-size: 2.3rem;">About</p>
-                    <div class="p-4" style="color: #2B3A55">
-                      <table class="table">
-                        <tbody>
-                          <tr>
-                            <th scope="row">Name</th>
-                            <td style="color">Jim Kam</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Fitness Level</th>
-                            <td>Beginner</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Age</th>
-                            <td>27 years</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Current Weight</th>
-                            <td>180 lbs</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Current Height</th>
-                            <td>6'3</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Preferred Workouts</th>
-                            <td>
-                              <ul class="list-group">
-                                <li class="list-group-item">Yoga</li>
-                                <li class="list-group-item">Cardio</li>
-                              </ul>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                  <p class="lead fw-normal mb-1" style="font-size: 2.3rem;">Health Goals</p>
-                  <div class="p-1" style="background-color: #FFF7E9;">
-                    <p>Lose 10 pounds by June 23, 2023</p>
+      <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col col-lg-9 col-xl-7">
+            <div class="card"
+              style="border-radius: 35px; width: 100%; border-width: 5px; background-color: #FFF7E9; border-color: #2B3A55;">
+              <div class=" card-body p-4">
+                <div class="mb-3 align-items-center " style="color: #2B3A55; ">
+                  <p class="lead fw-normal mb-1" style="font-size: 2.3rem; font-weight: bold; padding-left: 42%;">About</p>
+                  <div class="p-4">
+                    <table class="table">
+                      <tbody>
+                        <tr>
+                          <th scope="row" style="width: 50%; color: #2B3A55;">Name</th>
+                          <td style="color: #2B3A55;">Jim Kam</td>
+                        </tr>
+                        <tr>
+                          <th scope="row" style="color: #2B3A55;">Fitness Level</th>
+                          <td style="color: #2B3A55;">Beginner</td>
+                        </tr>
+                        <tr>
+                          <th scope="row" style="color: #2B3A55;">Age</th>
+                          <td style="color: #2B3A55;">27 years</td>
+                        </tr>
+                        <tr>
+                          <th scope="row" style="color: #2B3A55;">Current Weight</th>
+                          <td style="color: #2B3A55;">180 lbs</td>
+                        </tr>
+                        <tr>
+                          <th scope="row" style="color: #2B3A55;">Current Height</th>
+                          <td style="color: #2B3A55;">6'3</td>
+                        </tr>
+                        <tr>
+                          <th scope="row" style="color: #2B3A55;">Preferred Workouts</th>
+                          <td>
+                            <ul class="list-group">
+                              <li class="list-group-item" style="color: #2B3A55;">Yoga</li>
+                              <li class="list-group-item"style="color: #2B3A55;">Cardio</li>
+
+                            </ul>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
-                <button type="button" class="btn btn-outline-dark mx-auto mb-3" data-mdb-ripple-color="dark"
-                  style="font-size: 30px; border-width: 5px; z-index: 1; width: 290px; background-color: #2B3A55; border-radius: 35px; color: #FFF7E9;" onclick="editProfile()">
-                  Edit profile
-                </button>
+                <p class="lead fw-normal mb-1" style="font-size: 2.3rem; font-weight: bold; padding-left: 35%;">Health Goal</p>
+                <div class="p-1" style="background-color: #FFF7E9;">
+                  <p style="padding-left: 15%">Lose 10 pounds by June 23, 2023</p>
+                </div>
               </div>
+              <button type="button" class="btn btn-outline-dark mx-auto mb-3" data-mdb-ripple-color="dark"
+                style="font-size: 30px; border-width: 5px; z-index: 1; width: 290px; background-color: #2B3A55; border-radius: 35px; color: #FFF7E9;"
+                onclick="editProfile()">
+                Edit profile
+              </button>
             </div>
           </div>
-        </div>
-      </section>
       `
     }
 
