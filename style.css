@@ -79,8 +79,10 @@ body {
   width: 100%;
   position: relative;
   background-color: #FFF7E9;
+  border-width: 5px;
+  border-style: solid;
   border-color: #2B3A55;
-
+  border-radius: 35px;
   /* add spacing around the form */
 }
 
@@ -96,10 +98,7 @@ input[type="radio"] {
 
 }
 
-input[type="text"] {
-  width: 150px;
 
-}
 
 
 select option {
