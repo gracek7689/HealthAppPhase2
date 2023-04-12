@@ -49,9 +49,9 @@
     <div id="Home" class="tabcontent home" style="display: block">
       <h1 class="tabHeader"><b>Home</b></h1>
       <div class="container home-container">
-        <h2 id="home-date"></h2>
+        <h2 id="home-date" style="font-weight: bold"></h2>
         <br>
-        <h3 id="section-title"><b>NUTRITION</b></h3>
+        <h3 id="section-title" style="font-size: 100%; margin-top:-3%"><b>NUTRITION</b></h3>
         <div class="nutrition-table-container">
           <table class="w3-table w3-hoverable w3-card nutrition-table">
             <thead>
@@ -68,7 +68,7 @@
                   <span class="arrow"></span>
                   <span class="main-nutrient">Carbohydrate</span>
                 </td>
-                <td>189 g</td>
+                <td cal>189 g</td>
                 <td>270 g</td>
               </tr>
               <tr class="child-nutrient carbohydrate">
@@ -115,15 +115,15 @@
                 <td>
                   <span class="main-nutrient">Vitamins</span>
                 </td>
-                <td>0.9 g</td>
-                <td>1.4 g</td>
+                <td>9 g</td>
+                <td>14 g</td>
               </tr>
               <tr class="parent-nutrient">
                 <td>
                   <span class="main-nutrient">Minerals</span>
                 </td>
-                <td>48 g</td>
-                <td>50 g</td>
+                <td>4.8 g</td>
+                <td>5 g</td>
               </tr>
             </tbody>
           </table>
@@ -131,7 +131,7 @@
 
         <br>
         <div class="container pie-chart-container">
-          <canvas id="myChart" style="width:100%"></canvas>
+          <canvas id="myChart" style="width:100%; background-color: #2B3A55; padding-bottom: 20px;"></canvas>
           <!-- <canvas id="recommendedChart" style="width:100%"></canvas> -->
           <!--https://www.chartjs.org/docs/latest/samples/other-charts/multi-series-pie.html-->
           <!-- Not feeling this current pie chart, may need to use this ^^ -->
@@ -158,7 +158,7 @@
         </div>
 
         <br>
-        <h3 id="section-title"><b>ACTIVITY</b></h3>
+        <h3 id="section-title" style="font-size: 100%"><b>ACTIVITY</b></h3>
         <div class="card activity-container">
           <div class="w3-grey w3-round-large progress-bar">
             <div class="w3-container w3-sand w3-round-large progress-bar-content" style="width:62%">62%</div>
@@ -340,6 +340,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script>
     let items = [];
+    var totalCarb = 0;
+    var totalFat = 0;
 
     // Make HTTP request to load JSON file for items.json
     let xhr = new XMLHttpRequest();
@@ -641,8 +643,7 @@
     /*******************************/
 
     var foodList = [];
-    var totalCarb = 0;
-    var totalFat = 0;
+
     // Create an XMLHttpRequest object
     var xhs = new XMLHttpRequest();
 
@@ -673,17 +674,26 @@
       }
     }
 
-    // function calculateNutrition(){
-    //   for(let i = 0; i < foodList.length; i++){
-    //     totalCarb += parseFloat(foodList[i].carbs);
-    //     totalFat += parseFloat(foodList[i].fat);
-    //   }
+    
+    function calculateNutrition(){
+      console.log("CODE REACHED");
+      console.log(foodList);
+      // for(let i = 0; i < 3; i++){
+      //   totalCarb += parseFloat(foodList[i].carbs);
+      //   console.log(foodList);
+      //   totalFat += parseFloat(foodList[i].fat);
+      //   totalFat += 1;
+      // }
+      // Object.keys(foodList[0]).forEach(val => {
+      //   console.log(val);
+      // });
 
-    //   console.log(totalCarb);
-    //   console.log(totalFat);
-    //   return [totalCarb, totalFat];
-    // }
+      console.log(totalCarb);
+      console.log(totalFat);
+      return [totalCarb, totalFat];
+    }
 
+    console.log(calculateNutrition());
 
     function addItem() {
       console.log("WE LOADED IN ON LOAD");
@@ -977,13 +987,13 @@
       });
     });
 
-
+    
     document.getElementById("calories-burned-populate").innerHTML = calculateTotalCalories();
 
 
     // CHARTS //
     var xValues = ["Carbs", "Fats", "Vitamins", "Minerals", "Proteins"];
-    var yValues = [55, 49, 44, 24, 15];
+    var yValues = [189, 50, 9, 4.8, 100];
     var barColors = ["red", "green", "blue", "orange", "brown"];
 
     new Chart("myChart", {
@@ -999,20 +1009,17 @@
         title: {
           display: true,
           text: "Breakdown of all Nutrients Consumed",
+          fontColor: '#FFF7E9',
           fontSize: 30
         },
         legend: {
           labels: {
             fontSize: 20,
-            fontColor: '#2B3A55'
+            fontColor: '#FFF7E9'
           }
         }
       }
     });
-
-    var xValues = ["Carbs", "Fats", "Vitamins", "Minerals", "Proteins"];
-    var yValues = [55, 49, 44, 24, 15];
-    var barColors = ["red", "green", "blue", "orange", "brown"];
 
   </script>
 </body>
