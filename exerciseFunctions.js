@@ -1,41 +1,5 @@
 // JS functions for exercise tab
 
-/* Represents the actual individual workout sessions that users enter. 
-The fields in each mapping (integer => object containing values) are
-dependent on the type of exercise the individual object is (the name field) */
-var userExercises = {
-  0: {
-    name: "Run",
-    weight: false,
-    reps: false,
-    distance: "3.1 miles",
-    duration: "39 min 12 sec",
-    calories: 460,
-    time: "8:31 am",
-    date: "Wednesday, March 27th",
-  },
-  1: {
-    name: "Yoga",
-    weight: false,
-    reps: false,
-    distance: false,
-    duration: "41 min",
-    calories: 320,
-    time: "10:40 am",
-    date: "Thursday, March 28th",
-  },
-  2: {
-    name: "Curlups",
-    weight: "15 lbs",
-    reps: "30x",
-    distance: false,
-    duration: false,
-    calories: 200,
-    time: "5:36 pm",
-    date: "Friday, March 28th",
-  },
-};
-
 /* Represents the different types of exercises and fields associated with them. 
 Updates when a user creates a new type of exercise. */
 var exerciseTypes = {
@@ -47,6 +11,8 @@ var exerciseTypes = {
 /* Populates list of exercise cards. Is called each time that screen
 needs to be rendered. */
 function showUserExercises() {
+  let userExercises = JSON.parse(localStorage.getItem("userExercises"));
+
   let exerciseList = document.getElementById("userExerciseList");
 
   exerciseList.innerHTML = ``;
@@ -125,6 +91,8 @@ function enterNewWorkout() {
 /* Form to be shown when the user selects the + New Workout option from the
 workout suggestion dropdown menu. Updates both userExercises[] and exerciseTypes[] */
 function showNewWorkoutFields() {
+  let userExercises = JSON.parse(localStorage.getItem("userExercises"));
+
   let exerciseContainer = document.getElementById("exerciseContainer");
   const placeholder = "Leave blank if not applicable";
   exerciseContainer.innerHTML = `
@@ -215,6 +183,11 @@ function showNewWorkoutFields() {
     // Add new workout to exerciseTypes object
     exerciseTypes[workoutName] = newWorkoutFields;
 
+    // NEW: write userExercises to local storage
+    localStorage.clear();
+    localStorage.setItem("userExercises", JSON.stringify(userExercises));
+    // window.location.href = "index.html";
+
     exerciseContainer.innerHTML = `
     <ul class="card-list" id="userExerciseList"></ul>
     `;
@@ -224,6 +197,8 @@ function showNewWorkoutFields() {
 
 /* Called when an existing workout type is selected from the workout suggestion dropdown menu. */
 function showInputWorkoutFields(workoutName) {
+  let userExercises = JSON.parse(localStorage.getItem("userExercises"));
+
   let exerciseContainer = document.getElementById("exerciseContainer");
   exerciseContainer.innerHTML = `
     <div class="newWorkoutContainer">
@@ -265,7 +240,6 @@ function showInputWorkoutFields(workoutName) {
   let addButton = document.getElementById("add");
 
   addButton.addEventListener("click", function (e) {
-    console.log("CLICKED");
     e.preventDefault(); // Prevent page from reloading
 
     let weight = exerciseTypes[workoutName].includes("Weight")
@@ -314,7 +288,8 @@ function showInputWorkoutFields(workoutName) {
     userExercises[newIndex].time = time;
     userExercises[newIndex].date = date;
 
-    console.log(userExercises);
+    localStorage.clear();
+    localStorage.setItem("userExercises", JSON.stringify(userExercises));
 
     exerciseContainer.innerHTML = `
     <ul class="card-list" id="userExerciseList"></ul>
@@ -360,7 +335,7 @@ function showSuggestionsExercise() {
 
     suggestion.textContent = item;
     suggestion.addEventListener("click", () => {
-      exerSugClicked(item, userExercises, exerciseTypes);
+      exerSugClicked(item);
       fillFields(item);
     });
     suggestionsList.appendChild(suggestion);

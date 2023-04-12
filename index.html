@@ -355,6 +355,56 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script>
+
+    /* Represents the actual individual workout sessions that users enter. 
+    The fields in each mapping (integer => object containing values) are
+    dependent on the type of exercise the individual object is (the name field) */
+    var baseUserExercises = {
+    0: {
+      name: "Run",
+      weight: false,
+      reps: false,
+      distance: "3.1 miles",
+      duration: "39 min 12 sec",
+      calories: 460,
+      time: "8:31 am",
+      date: "Wednesday, March 27th",
+    },
+    1: {
+      name: "Yoga",
+      weight: false,
+      reps: false,
+      distance: false,
+      duration: "41 min",
+      calories: 320,
+      time: "10:40 am",
+      date: "Thursday, March 28th",
+    },
+    2: {
+      name: "Curlups",
+      weight: "15 lbs",
+      reps: "30x",
+      distance: false,
+      duration: false,
+      calories: 200,
+      time: "5:36 pm",
+      date: "Friday, March 28th",
+    },
+    };
+
+    // If userExercises has been modified, do not overwrite the changes
+    if (localStorage.getItem("userExercises") == null) {
+      localStorage.setItem("userExercises", JSON.stringify(baseUserExercises));
+    }
+
+    // Will store the contents of userExercises
+    let userExercises = {};
+
+    window.addEventListener("storage", function () {
+      userExercises = localStorage.getItem("userExercises");
+    }, false);
+
+
     let items = [];
 
     // Make HTTP request to load JSON file for items.json
@@ -396,6 +446,10 @@
       
       document.getElementById(tabName).style.display = "block";
       evt.currentTarget.classList.add("active");
+
+      if (tabName == "Home") {
+        userExercises = JSON.parse(localStorage.getItem("userExercises"));
+      }
 
       if (tabName === "Exercise") {
         showUserExercises();
@@ -949,7 +1003,6 @@
     const formattedDate = currentDate.toLocaleDateString('en-US', options);
     const dateElement = document.getElementById("home-date");
     dateElement.innerText = formattedDate;
-
 
     // Code to open and close the table rows
     // Get all parent rows
