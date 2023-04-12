@@ -20,7 +20,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mx-auto">
         <li class="nav-item">
-          <button class="nav-link btn btn-link" id="homeID" onclick="openTab(event, 'Home')">
+          <button class="nav-link btn btn-link active" id="homeID" onclick="openTab(event, 'Home'); updateHomePage()">
             <img src="assets/homeIcon.png" />
           </button>
         </li>
@@ -148,12 +148,16 @@
               </tr>
               <tr>
                 <td>Recommended Calories</td>
-                <td>1800 cals</td>
+                <td>2100 cals</td>
               </tr>
-              <tr>
+              <!-- <tr>
                 <td>Calories Burned</td>
                 <td id="calories-burned-populate">1800 cals</td>
               </tr>
+              <tr>
+                <td>Target Energy Burn</td>
+                <td>2500 cals</td>
+              </tr> -->
           </table>
         </div>
 
@@ -161,7 +165,11 @@
         <h3 id="section-title" style="font-size: 100%"><b>ACTIVITY</b></h3>
         <div class="card activity-container">
           <div class="w3-grey w3-round-large progress-bar">
-            <div class="w3-container w3-sand w3-round-large progress-bar-content" style="width:62%">62%</div>
+            <div class="w3-container w3-sand w3-round-large" id="progress-bar-content" style="width:62%">62%</div>
+          </div>
+          <div class="w3-container bar-labels-container">
+            <span id="left-text" style="color: #FFF7E9; font-size: 70%;">Curr: 980 cals</span>
+            <span id="right-text"style="color: #FFF7E9; font-size: 70%;">Target: 2500 cals</span>
           </div>
           <br>
           <div class="container streak-container">
@@ -274,38 +282,38 @@
           <div class="col col-lg-9 col-xl-7">
             <div class="card"
               style="border-radius: 35px; width: 100%; border-width: 5px; background-color: #FFF7E9; border-color: #2B3A55;">
-              <div class=" card-body p-4 text-black">
-                <div class="mb-3">
-                  <p class="lead fw-normal mb-1" style="font-size: 2.3rem;">About</p>
+              <div class=" card-body p-4">
+                <div class="mb-3 align-items-center " style="color: #2B3A55; ">
+                  <p class="lead fw-normal mb-1" style="font-size: 2.3rem; font-weight: bold; padding-left: 42%;">About</p>
                   <div class="p-4">
                     <table class="table">
                       <tbody>
                         <tr>
-                          <th scope="row" style="width: 50%">Name</th>
-                          <td>Jim Kam</td>
+                          <th scope="row" style="width: 50%; color: #2B3A55;">Name</th>
+                          <td style="color: #2B3A55;">Jim Kam</td>
                         </tr>
                         <tr>
-                          <th scope="row">Fitness Level</th>
-                          <td>Beginner</td>
+                          <th scope="row" style="color: #2B3A55;">Fitness Level</th>
+                          <td style="color: #2B3A55;">Beginner</td>
                         </tr>
                         <tr>
-                          <th scope="row">Age</th>
-                          <td>27 years</td>
+                          <th scope="row" style="color: #2B3A55;">Age</th>
+                          <td style="color: #2B3A55;">27 years</td>
                         </tr>
                         <tr>
-                          <th scope="row">Current Weight</th>
-                          <td>180 lbs</td>
+                          <th scope="row" style="color: #2B3A55;">Current Weight</th>
+                          <td style="color: #2B3A55;">180 lbs</td>
                         </tr>
                         <tr>
-                          <th scope="row">Current Height</th>
-                          <td>6'3</td>
+                          <th scope="row" style="color: #2B3A55;">Current Height</th>
+                          <td style="color: #2B3A55;">6'3</td>
                         </tr>
                         <tr>
-                          <th scope="row">Preferred Workouts</th>
+                          <th scope="row" style="color: #2B3A55;">Preferred Workouts</th>
                           <td>
                             <ul class="list-group">
-                              <li class="list-group-item">Yoga</li>
-                              <li class="list-group-item">Cardio</li>
+                              <li class="list-group-item" style="color: #2B3A55;">Yoga</li>
+                              <li class="list-group-item"style="color: #2B3A55;">Cardio</li>
 
                             </ul>
                           </td>
@@ -314,9 +322,9 @@
                     </table>
                   </div>
                 </div>
-                <p class="lead fw-normal mb-1" style="font-size: 2.3rem;">Health Goal</p>
+                <p class="lead fw-normal mb-1" style="font-size: 2.3rem; font-weight: bold; padding-left: 35%;">Health Goal</p>
                 <div class="p-1" style="background-color: #FFF7E9;">
-                  <p>Lose 10 pounds by June 23, 2023</p>
+                  <p style="padding-left: 15%">Lose 10 pounds by June 23, 2023</p>
                 </div>
               </div>
               <button type="button" class="btn btn-outline-dark mx-auto mb-3" data-mdb-ripple-color="dark"
@@ -381,17 +389,39 @@
       localStorage.setItem("userExercises", JSON.stringify(baseUserExercises));
     }
 
+
     // Will store the contents of userExercises
-    let userExercises = {};
+    var userExercises = {};
+    userExercises = JSON.parse(localStorage.getItem("userExercises"));
 
-    window.addEventListener("storage", function () {
-      userExercises = localStorage.getItem("userExercises");
-    }, false);
+    function updateHomePage(){
+      var totalCalories = 0;
+      var caloriesToBurnTarget = 2500; 
+      for (let i = 0; i < Object.keys(userExercises).length; i++){
+        totalCalories += parseInt(userExercises[i].calories);
+      }
+      // document.getElementById('calories-burned-populate').innerHTML = totalCalories + ' cals'
+      document.getElementById('left-text').innerHTML = totalCalories + ' cals'
 
+      var progress_ratio = parseFloat(totalCalories)/parseFloat(2500);
+      var progerss_percentage = 0; 
+      console.log(progress_ratio)
+      if (progress_ratio >= 1) {
+        progerss_percentage = 100;
+      } else {
+        progerss_percentage = progress_ratio * 100; 
+      }
+
+      console.log(progerss_percentage)
+
+      document.getElementById('progress-bar-content').style.width = progerss_percentage + '%';
+      document.getElementById('progress-bar-content').innerHTML = progerss_percentage + '%';
+
+    }
+
+    updateHomePage();
 
     let items = [];
-    var totalCarb = 0;
-    var totalFat = 0;
 
     // Make HTTP request to load JSON file for items.json
     let xhr = new XMLHttpRequest();
@@ -431,7 +461,6 @@
       }
 
       document.getElementById(tabName).style.display = "block";
-      evt.currentTarget.classList.add("active");
 
       if (tabName == "Home") {
         userExercises = JSON.parse(localStorage.getItem("userExercises"));
@@ -639,12 +668,12 @@
                 <div class="card-body p-4 text-black">
                   <div class="mb-3">
                     <p class="lead fw-normal mb-1" style="font-size: 2.3rem;">About</p>
-                    <div class="p-4" style="background-color: #FFF7E9;">
+                    <div class="p-4" style="color: #2B3A55">
                       <table class="table">
                         <tbody>
                           <tr>
                             <th scope="row">Name</th>
-                            <td>Jim Kam</td>
+                            <td style="color">Jim Kam</td>
                           </tr>
                           <tr>
                             <th scope="row">Fitness Level</th>
@@ -728,27 +757,6 @@
       }
     }
 
-    
-    function calculateNutrition(){
-      console.log("CODE REACHED");
-      console.log(foodList);
-      // for(let i = 0; i < 3; i++){
-      //   totalCarb += parseFloat(foodList[i].carbs);
-      //   console.log(foodList);
-      //   totalFat += parseFloat(foodList[i].fat);
-      //   totalFat += 1;
-      // }
-      // Object.keys(foodList[0]).forEach(val => {
-      //   console.log(val);
-      // });
-
-      console.log(totalCarb);
-      console.log(totalFat);
-      return [totalCarb, totalFat];
-    }
-
-    console.log(calculateNutrition());
-
     function addItem() {
       console.log("WE LOADED IN ON LOAD");
       // Get the input field value
@@ -800,15 +808,12 @@
       li.className = "list-group-item";
       li.appendChild(document.createTextNode(newItem));
       li.appendChild(document.createElement("br"));
-      // li.appendChild(document.createTextNode(newDescription));
-      // li.appendChild(document.createElement("br"));
       li.appendChild(document.createTextNode("Cals:\t"));
       li.appendChild(document.createTextNode(newCal));
       li.appendChild(document.createElement("br"));
       li.appendChild(document.createTextNode("Quantity:\t"));
       li.appendChild(document.createTextNode(newQty));
       li.setAttribute("data-item-id", newID);
-      // Add click event listener to new li element
       li.addEventListener("click", function () {
         expandItem(this);
       });
@@ -1004,10 +1009,6 @@
 
     }
 
-    console.log("Helloooooooo")
-    // console.log(calculateNutrition());
-
-
 
     /*******************************/
     /********* HOME PAGE ***********/
@@ -1040,8 +1041,7 @@
       });
     });
 
-    
-    document.getElementById("calories-burned-populate").innerHTML = calculateTotalCalories();
+    // document.getElementById("calories-burned-populate").innerHTML = calculateTotalCalories();
 
 
     // CHARTS //

@@ -295,7 +295,6 @@ function showInputWorkoutFields(workoutName) {
     <ul class="card-list" id="userExerciseList"></ul>
     `;
     showUserExercises();
-    calculateTotalCalories();
   });
 }
 
@@ -365,11 +364,11 @@ function exerSugClicked(item) {
 
 console.log(Object.values(userExercises))
 
-function calculateTotalCalories() {
-  let totalCalories = 0
-  for (let exercise of Object.values(userExercises)) {
-    totalCalories += exercise.calories;
-  }
-  console.log(totalCalories)
-  return totalCalories
-}
+// function calculateTotalCalories() {
+//   let totalCalories = 0
+//   for (let exercise of Object.values(userExercises)) {
+//     totalCalories += exercise.calories;
+//   }
+//   console.log(totalCalories)
+//   return totalCalories
+// }
