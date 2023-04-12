@@ -157,57 +157,65 @@
     <div id="Food" class="tabcontent">
       <h1 class="tabHeader">Nutrition</h1>
       <div class="container mt-5">
-        <h2>Enter Custom Food:</h2>
         <div class="row">
           <div class="col-md-4">
-            <label for="newItemInput">Name:</label>
+            <label for="newItemInput">Name</label>
             <input type="text" id="newItemInput" class="form-control" oninput="showSuggestions()"
-              onkeydown="handleKeyDown(event)" required/>
+              onkeydown="handleKeyDown(event)" style="font-size:28px" required/>
           </div>
           <ul id="suggestions"></ul>
           <div class="col-md-4">
-            <label for="newItemCal">Calories:</label>
-            <input type="number" id="newItemCal" class="form-control" style="width:200px" required/>
+            <label for="newItemCal">Calories</label>
+            <input type="number" id="newItemCal" class="form-control" style="font-size:28px" required/>
           </div>
           <div class="col-md-4">
-            <label for="newItemQty">Quantity:</label>
-            <input type="number" id="newItemQty" class="form-control" required/>
+            <label for="newItemQty">Quantity</label>
+            <input type="number" id="newItemQty" class="form-control" style="font-size:28px" required/>
           </div>
-          <div class="col-md-4">
-            <label for="newItemDesc">Description:</label>
+          <!-- <div class="col-md-4">
+            <label for="newItemDesc">Description</label>
             <input type="text" id="newItemDesc" class="form-control" />
+          </div> -->
+        </div>
+        <div id="moreBoxes" style="display:none;">
+          <div class="row mt-3">
+            <div class="col-md-4">
+              <label for="newItemProtein">Protein</label>
+              <input type="number" id="newItemProtein" class="form-control" style="font-size:28px" />
+            </div>
+            <div class="col-md-4">
+              <label for="newItemFat">Fat</label>
+              <input type="number" id="newItemFat" class="form-control" style="font-size:28px" />
+            </div>
+            <div class="col-md-4">
+              <label for="newItemCarbs">Carbs</label>
+              <input type="number" id="newItemCarbs" class="form-control" style="font-size:28px" />
+            </div>
+            <div class="col-md-4">
+              <label for="newItemVit">Vitamins</label>
+              <input type="number" id="newItemVit" class="form-control" style="font-size:28px" />
+            </div>
+            <div class="col-md-4">
+              <label for="newItemMin">Minerals</label>
+              <input type="number" id="newItemMin" class="form-control" style="font-size:28px" />
+            </div>
           </div>
         </div>
         <div class="row mt-3">
           <div class="col-md-12">
                       
-            <button type="button" class="btn btn-xl btn-primary" onclick="addItem()">
+            <button type="button" class="btn btn-xl btn-primary btn-spacing" onclick="addItem()">
               Add Item
             </button>
-            <button type="button" class="btn btn-primary btn-xl btn-danger" onclick="clearForms()">
+            <button type="button" class="btn btn-primary btn-xl btn-danger btn-spacing" onclick="clearForms()">
               Clear
             </button>
-            <button type="button" class="btn btn-xl btn-secondary" id="moreBoxesBtn" onclick="toggleMoreBoxes()">More Options</button>
-            <div id="moreBoxes" style="display:none;">
-              <div class="row mt-3">
-                <div class="col-md-4">
-                  <label for="newItemProtein">Protein:</label>
-                  <input type="number" id="newItemProtein" class="form-control" />
-                </div>
-                <div class="col-md-4">
-                  <label for="newItemFat">Fat:</label>
-                  <input type="number" id="newItemFat" class="form-control" />
-                </div>
-                <div class="col-md-4">
-                  <label for="newItemCarbs">Carbs:</label>
-                  <input type="number" id="newItemCarbs" class="form-control" />
-                </div>
-              </div>
-            </div>
+            <button type="button" class="btn btn-xl btn-secondary btn-spacing" id="moreBoxesBtn" onclick="toggleMoreBoxes()">More Options</button>
+            
 
           </div>
         </div>
-        <ul class="list-group mt-4 custom-list" id="itemList" style="height: 400px; overflow-y: auto;">
+        <ul class="list-group mt-4 custom-list" id="itemList" style="height: 600px; overflow-y: auto;">
           
         </ul>
       </div>
@@ -380,7 +388,9 @@
       for (i = 0; i < tablinks.length; i++) {
         tablinks[i].classList.remove("active");
       }
+      
       document.getElementById(tabName).style.display = "block";
+      evt.currentTarget.classList.add("active");
     }
 
     function editProfile() {
@@ -571,13 +581,36 @@
       }
     };
 
+    function showNutrition(li) {
+      var id = li.getAttribute("data-id");
+      var item = foodList.find(function(item) {
+        return item.id === id;
+      });
+
+      var nutrition = li.querySelector(".nutrition");
+      if (nutrition.style.display === "none") {
+        nutrition.style.display = "block";
+        nutrition.innerHTML = "Protein: " + item.protein + "g<br>Carbs: " + item.carbs + "g";
+      } else {
+        nutrition.style.display = "none";
+        nutrition.innerHTML = "";
+      }
+  }
+
 
     function addItem() {
       // Get the input field value
       var newItem = document.getElementById("newItemInput").value;
       var newCal = document.getElementById("newItemCal").value;
-      var newDescription = document.getElementById("newItemDesc").value;
+      // var newDescription = document.getElementById("newItemDesc").value;
       var newQty = document.getElementById("newItemQty").value;
+      var newFat = document.getElementById("newItemFat").value || 0;
+      var newProtein = document.getElementById("newItemProtein").value || 0;
+      var newCarbs = document.getElementById("newItemCarbs").value || 0;
+      var newMin = document.getElementById("newItemMin").value || 0
+      var newVit = document.getElementById("newItemVit").value || 0
+ 
+
       var br = document.createElement("br");
       console.log("This is a test");
       console.log(newItem);
@@ -594,9 +627,14 @@
       var newItemObject = {
         id:newID,
         name:newItem,
-        description: newDescription,
+        // description: newDescription,
         calories: newCal,
         quantity: newQty,
+        fat: newFat,
+        protein: newProtein,
+        carbs: newCarbs,
+        minerals: newMin,
+        vitamins: newVit
       };
       
       foodList.push(newItemObject);
@@ -606,14 +644,42 @@
       li.className = "list-group-item";
       li.appendChild(document.createTextNode(newItem));
       li.appendChild(document.createElement("br"));
-      li.appendChild(document.createTextNode(newDescription));
-      li.appendChild(document.createElement("br"));
+      // li.appendChild(document.createTextNode(newDescription));
+      // li.appendChild(document.createElement("br"));
       li.appendChild(document.createTextNode("Cals:\t"));
       li.appendChild(document.createTextNode(newCal));
       li.appendChild(document.createElement("br"));
       li.appendChild(document.createTextNode("Quantity:\t"));
       li.appendChild(document.createTextNode(newQty));
       li.setAttribute("data-item-id",newID);
+      // Add click event listener to new li element
+      li.addEventListener("click", function () {
+        expandItem(this);
+      });
+      function expandItem(item) {
+        var id = item.getAttribute("data-item-id");
+        var itemData = foodList.find(function (element) {
+          return element.id === id;
+        });
+
+        var details = item.querySelector(".item-details");
+        if (!details) {
+          // Create details element if it doesn't exist
+          details = document.createElement("div");
+          details.className = "item-details";
+          details.innerHTML =
+            "Protein: " + itemData.protein + "<br>" +
+            "Fats: " + itemData.fat + "<br>" + 
+            "Carbs: " + itemData.carbs + "<br>" + 
+            "Vitamins: " + itemData.vitamins + "<br>" + 
+            "Minerals: " + itemData.minerals + "<br>";
+          item.appendChild(details);
+        } else {
+          // Toggle visibility of details element
+          details.style.display = details.style.display === "none" ? "block" : "none";
+        }
+      }
+
       var removeBtn = document.createElement("button");
       removeBtn.className = "btn btn-danger btn-sm float-right";
       removeBtn.appendChild(document.createTextNode("Remove"));
@@ -626,13 +692,25 @@
       document.getElementById("itemList").appendChild(li);
 
       // Clear the input field
-      document.getElementById("newItemInput").value = "";
-      document.getElementById("newItemDesc").value = "";
-      document.getElementById("newItemQty").value = "";
-      document.getElementById("newItemCal").value = "";
+      // document.getElementById("newItemInput").value = "";
+      // document.getElementById("newItemDesc").value = "";
+      // document.getElementById("newItemQty").value = "";
+      // document.getElementById("newItemCal").value = "";
       localStorage.setItem('foodList',JSON.stringify(foodList));
       var itemList = document.getElementById("itemList");
       itemList.scrollTop = itemList.scrollHeight;
+      var existingItem = items.find(function(item) {
+        return item.name.toLowerCase() === newItem.toLowerCase();
+      });
+      if (existingItem) {
+        console.log("Item already exsits")
+      }
+      else{
+        items.push(newItemObject);
+      }
+      console.log(items);
+      clearForms();
+
     }
     function removeItem(button) {
       // Get the parent li element
@@ -730,14 +808,27 @@
     }
     function fillFields(item) {
       let nameField = document.getElementById("newItemInput");
-      let descField = document.getElementById("newItemDesc");
+      // let descField = document.getElementById("newItemDesc");
       let qtyField = document.getElementById("newItemQty");
       let calField = document.getElementById("newItemCal");
+      let proField = document.getElementById("newItemProtein");
+      let fatField = document.getElementById("newItemFat");
+      let carbField = document.getElementById("newItemCarbs");
+      let vitField = document.getElementById("newItemVit");
+      let minField = document.getElementById("newItemMin");
+
+
+
+
 
       nameField.value = item.name;
-      descField.value = item.description;
       qtyField.value = item.quantity;
-      calField.value = item.calories
+      calField.value = item.calories;
+      proField = item.protein;
+      fatField = item.fat;
+      carbField = item.carbs;
+      vitField = item.vitamins;
+      minField = item.minerals;
     }
     function clearSuggestions() {
       let suggestionsList = document.getElementById("suggestions");
@@ -746,13 +837,20 @@
     }
     function clearForms(){
       document.getElementById("newItemInput").value = "";
-      document.getElementById("newItemDesc").value = "";
+      // document.getElementById("newItemDesc").value = "";
       document.getElementById("newItemQty").value = "";
       document.getElementById("newItemCal").value = "";
       document.getElementById("newItemProtein").value = "";
       document.getElementById("newItemFat").value = "";
       document.getElementById("newItemCarbs").value = "";
+      document.getElementById("newItemFat").value = "";
+      document.getElementById("newItemMin").value = "";
+      document.getElementById("newItemVit").value = "";
 
+
+    }
+    function enterNewFood() {
+      
     }
    
 
