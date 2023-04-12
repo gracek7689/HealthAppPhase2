@@ -471,6 +471,7 @@
     document.addEventListener("DOMContentLoaded", function () {
       openTab(event, "Home");
       document.getElementById("homeID").focus();
+      evt.currentTarget.classList.add("active");
     });
 
     console.log(items);
