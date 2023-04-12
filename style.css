@@ -121,9 +121,9 @@ body {
 }
 
 #formContainer {
-  background-color: #f8f9fa;
   padding: 5px;
   width: 100%;
+  position: relative;
   /* add spacing around the form */
 }
 
@@ -138,6 +138,12 @@ input[type="radio"] {
   margin-left: 10px;
 
 }
+
+input[type="text"] {
+  width: 150px;
+
+}
+
 
 select option {
   font-size: 10px;
@@ -179,14 +185,31 @@ select option {
   background-color: #256D85
 }
 
+
+
+
+.keyboard-image {
+  position: absolute;
+  bottom: 0px;
+
+  height: auto;
+  width: 100%;
+  display: none;
+  z-index: 100000;
+
+}
+
+
 /* Style the tab content */
 .tabcontent {
   background-color: #8fe3cf
 }
 
 #healthGoals {
-  width: 150px; /* adjust this value to your liking */
+  width: 240px;
+  /* adjust this value to your liking */
 }
+
 /* When clicked on, add a background color and strike out text */
 
 /* Style the close button */
