@@ -295,8 +295,10 @@ function showInputWorkoutFields(workoutName) {
     <ul class="card-list" id="userExerciseList"></ul>
     `;
     showUserExercises();
+    calculateTotalCalories();
   });
 }
+
 
 /* Populates the suggestion list when the user opts to enter a new workout session. */
 function showSuggestionsExercise() {
@@ -359,4 +361,15 @@ function exerSugClicked(item) {
   else {
     showInputWorkoutFields(item);
   }
+}
+
+console.log(Object.values(userExercises))
+
+function calculateTotalCalories() {
+  let totalCalories = 0
+  for (let exercise of Object.values(userExercises)) {
+    totalCalories += exercise.calories;
+  }
+  console.log(totalCalories)
+  return totalCalories
 }
