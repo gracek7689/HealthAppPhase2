@@ -7,7 +7,11 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="exerciseStyles.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="exerciseFunctions.js"></script>
+
   <title>Health App</title>
 </head>
 
@@ -270,63 +274,8 @@
       <h1 class="tabHeader">Exercise</h1>
 
       <section class="exercise">
-        <div class="container">
-          <ul class="card-list">
-
-            <li class="card-container">
-              <h3>Tuesday, March 26th</h3>
-              <div class="card">
-                <div class="card-body">
-                  <div class="card-title-wrapper">
-                    <h4 class="card-title">Run</h4>
-                    <h6>8:31 am</h6>
-                  </div>
-                  <div>
-                    <h6>3.1 miles</h6>
-                    <h6>39 min 12 sec</h6>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <li class="card-container">
-              <h3>Wednesday, March 27th</h3>
-              <div class="card">
-                <div class="card-body">
-                  <div class="card-title-wrapper">
-                    <h4 class="card-title">Yoga</h4>
-                    <h6>10:40 am</h6>
-                  </div>
-                  <div>
-                    <h6>41 min</h6>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <li class="card-container">
-              <h3>Thursday, March 28th</h3>
-              <div class="card">
-                <div class="card-body">
-                  <div class="card-title-wrapper">
-                    <h5 class="card-title">Curl Ups</h5>
-                    <h6>5:36 pm</h6>
-                  </div>
-                  <div>
-                    <h6>30x reps</h6>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <li class="card-container">
-              <h3>Today</h3>
-              <div class="plus-button" onclick="enterNewWorkout()">
-                <h1 style="font-weight:500">&#43;</h1>
-              </div>
-            </li>
-
-          </ul>
+        <div class="container" id="exerciseContainer">
+          <ul class="card-list" id="userExerciseList"></ul>
         </div>
       </section>
     </div>
@@ -405,7 +354,7 @@
   <script>
     let items = [];
 
-    // Make HTTP request to load JSON file
+    // Make HTTP request to load JSON file for items.json
     let xhr = new XMLHttpRequest();
     xhr.open("GET", "items.json");
     xhr.onload = function () {
@@ -432,6 +381,10 @@
         tablinks[i].classList.remove("active");
       }
       document.getElementById(tabName).style.display = "block";
+
+      if (tabName === "Exercise") {
+        showUserExercises();
+      }
     }
 
     function editProfile() {
@@ -685,7 +638,6 @@
       });
     }
 
-
     function handleKeyDown(event) {
       let input = document.getElementById("newItemInput");
       let inputValue = input.value;
@@ -695,6 +647,7 @@
         clearSuggestions();
       }
     }
+
     function fillFields(item) {
       let nameField = document.getElementById("newItemInput");
       let descField = document.getElementById("newItemDesc");
