@@ -158,12 +158,38 @@ select option {
     border-radius: 35px;
     margin-bottom: 10px;  
   }
-  
+  .list-group-item{
+    position:relative;
+    background-color: #FFF7E9;
+    border-color:black;
+    border-style: solid;
+  }
+
+  .fooditemList{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    width: 100%;
+    align-items: space-between;
+    padding: 20px;
+    border: 5px solid #2B3A55; 
+    border-radius: 35px;
+    background-color: #FFF7E9;
+  }
 
 .btn:active {
   background-color: #256D85
 }
 
+.item-details {
+  display: none;
+  /* other styles */
+}
+
+.remove-button {
+  margin-top: auto;
+}
 
 
 
