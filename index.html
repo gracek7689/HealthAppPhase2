@@ -816,19 +816,18 @@
       let carbField = document.getElementById("newItemCarbs");
       let vitField = document.getElementById("newItemVit");
       let minField = document.getElementById("newItemMin");
-
-
-
-
-
+      console.log("We are in fillFields");
+      console.log(item);
       nameField.value = item.name;
       qtyField.value = item.quantity;
       calField.value = item.calories;
-      proField = item.protein;
-      fatField = item.fat;
-      carbField = item.carbs;
-      vitField = item.vitamins;
-      minField = item.minerals;
+      proField.value = item.protein;
+      fatField.value = item.fat;
+      carbField.value = item.carbs;
+      // vitField = item.vitamins;
+      // minField = item.minerals;
+      console.log("THIS IS IT");
+      console.log(minField);
     }
     function clearSuggestions() {
       let suggestionsList = document.getElementById("suggestions");

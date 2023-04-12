@@ -1,21 +1,28 @@
 [
     {
       "name": "Apple",
-      "description": "Granny Smith Apple",
-      "calories": 80,
-      "quantity": 1
+      "calories": 95,
+      "quantity": 1,
+      "fat":0.3,
+      "protein":0.5,
+      "carbs":25
     },
     {
       "name": "Banana",
-      "description": "Had a brown spot :(",
-      "calories": 80,
-      "quantity": 2
-    },
+      "calories": 110,
+      "quantity": 1,
+      "fat":0,
+      "protein":1,
+      "carbs":28
+    }, 
+
     {
       "name": "Pear",
-      "description": "Pear",
-      "calories": 80,
-      "quantity": 3
+      "calories": 101,
+      "quantity": 1,
+      "fat":0.285,
+      "protein":0.676,
+      "carbs":26.9
     }
     
   ]
