@@ -5,6 +5,11 @@
   padding: 0;
 }
 
+.exercise .card-date {
+  font-weight: 550;
+  color: #2B3A55;
+}
+
 .exercise .card-container {
   display: flex;
   flex-direction: column;
@@ -55,13 +60,6 @@
   border-radius: 35px;
 
   background-color: #FFF7E9;
-}
-
-.exercise .searchBar {
-  border: 1px solid black; 
-  display: block;
-  left: 220px;
-  top: 195.969px;
 }
 
 .exercise .searchContainer {
@@ -162,11 +160,6 @@
   margin-bottom: 10px;    
 }
 
-.exercise .calorieCounter {
-  display: flex;
-  flex-direction: row;
-}
-
 .exercise .calorieButton {
   display: flex;
   flex-direction: column;
@@ -186,9 +179,11 @@
   font-size: 30px;
 }
 
-.exercise .cardDate {
+.exercise .addButtonText {
+  color: #FFF7E9;
   font-weight: 550;
-  color: #2B3A55;
+  font-size: 30px;
+  text-align: center;
 }
 
 .exercise .newWorkoutFieldLabel {
@@ -199,11 +194,5 @@
 .exercise .todayHeader {
   font-weight: 550;
   color: #2B3A55;
-  margin-bottom: 20px;
-}
-
-.exercise .orText {
-  text-align: center;
-  font-weight: 550;
   margin-bottom: 20px;
 }

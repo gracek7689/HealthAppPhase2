@@ -1,5 +1,8 @@
 // JS functions for exercise tab
 
+/* Represents the actual individual workout sessions that users enter. 
+The fields in each mapping (integer => object containing values) are
+dependent on the type of exercise the individual object is (the name field) */
 var userExercises = {
   0: {
     name: "Run",
@@ -7,6 +10,7 @@ var userExercises = {
     reps: false,
     distance: "3.1 miles",
     duration: "39 min 12 sec",
+    calories: 460,
     time: "8:31 am",
     date: "Wednesday, March 27th",
   },
@@ -16,6 +20,7 @@ var userExercises = {
     reps: false,
     distance: false,
     duration: "41 min",
+    calories: 320,
     time: "10:40 am",
     date: "Thursday, March 28th",
   },
@@ -25,32 +30,33 @@ var userExercises = {
     reps: "30x",
     distance: false,
     duration: false,
+    calories: 200,
     time: "5:36 pm",
     date: "Friday, March 28th",
   },
 };
 
-// Represents the different types of exercises and fields associated with them
+/* Represents the different types of exercises and fields associated with them. 
+Updates when a user creates a new type of exercise. */
 var exerciseTypes = {
-  Run: ["Distance", "Duration", "Time", "Date"],
-  Yoga: ["Duration", "Time", "Date"],
-  Curlups: ["Weight", "Reps", "Time", "Date"],
+  Run: ["Distance", "Duration", "Calories", "Time", "Date"],
+  Yoga: ["Duration", "Calories", "Time", "Date"],
+  Curlups: ["Weight", "Reps", "Calories", "Time", "Date"],
 };
 
-// Populates list of exercise cards when exercise tab is first rendered.
+/* Populates list of exercise cards. Is called each time that screen
+needs to be rendered. */
 function showUserExercises() {
   let exerciseList = document.getElementById("userExerciseList");
 
   exerciseList.innerHTML = ``;
-
-  console.log(userExercises);
 
   for (let i in userExercises) {
     let exerciseCard = document.createElement("li");
     exerciseCard.className = "card-container";
 
     exerciseCard.innerHTML = `
-    <h2 class="cardDate">${userExercises[i].date}</h2>
+    <h2 class="card-date">${userExercises[i].date}</h2>
     <div class="card">
         <div class="card-title-wrapper">
           <h2 class="card-title">${userExercises[i].name}</h2>
@@ -66,7 +72,11 @@ function showUserExercises() {
                 k != "time" &&
                 userExercises[i][k]
             )
-            .map((k) => `<h3>${userExercises[i][k]}</h3>`)
+            .map((k) =>
+              k == "calories"
+                ? `<h3>${userExercises[i][k]} calories</h3>`
+                : `<h3>${userExercises[i][k]}</h3>`
+            )
             .join("")}
           </div>
     </div>
@@ -81,7 +91,7 @@ function showUserExercises() {
     plusButton.id = "card-container";
 
     plusButton.innerHTML = `
-      <h2 class="cardDate">Today</h2>
+      <h2 class="card-date">Today</h2>
       <div class="plus-button" onclick="enterNewWorkout()">
         <h1 style="font-weight:500">&#43;</h1>
       </div>
@@ -92,6 +102,8 @@ function showUserExercises() {
   }
 }
 
+/* Button embedded in the main exercise card screen that allows the user
+to enter a new workout session. */
 function enterNewWorkout() {
   let exerciseContainer = document.getElementById("exerciseContainer");
   exerciseContainer.innerHTML = `
@@ -110,6 +122,8 @@ function enterNewWorkout() {
   showSuggestionsExercise();
 }
 
+/* Form to be shown when the user selects the + New Workout option from the
+workout suggestion dropdown menu. Updates both userExercises[] and exerciseTypes[] */
 function showNewWorkoutFields() {
   let exerciseContainer = document.getElementById("exerciseContainer");
   const placeholder = "Leave blank if not applicable";
@@ -161,6 +175,7 @@ function showNewWorkoutFields() {
     let reps = document.getElementById("reps").value;
     let distance = document.getElementById("distance").value;
     let duration = document.getElementById("duration").value;
+    let calories = document.getElementById("calories").value;
     let time = document.getElementById("time").value;
     let date = document.getElementById("date").value;
 
@@ -190,6 +205,8 @@ function showNewWorkoutFields() {
       userExercises[newIndex].duration = duration;
     }
 
+    newWorkoutFields.push("Calories");
+    userExercises[newIndex].calories = calories;
     newWorkoutFields.push("Time");
     userExercises[newIndex].time = time;
     newWorkoutFields.push("Date");
@@ -205,6 +222,7 @@ function showNewWorkoutFields() {
   });
 }
 
+/* Called when an existing workout type is selected from the workout suggestion dropdown menu. */
 function showInputWorkoutFields(workoutName) {
   let exerciseContainer = document.getElementById("exerciseContainer");
   exerciseContainer.innerHTML = `
@@ -213,20 +231,41 @@ function showInputWorkoutFields(workoutName) {
       <form>
       <ul id="cardDetails"></ul>
       ${exerciseTypes[workoutName]
-        .map(
-          (k) => `
-          <label for="${k}">${k}: </label><br>
+        .map((k) =>
+          k != "Calories"
+            ? `
+          <label class="newWorkoutFieldLabel" for="${k}">${k}: </label><br>
           <input class="newWorkoutField" type="text" id="${k.toLowerCase()}" name="${k}"><br><br>
-        `
+          `
+            : `
+          <label class="newWorkoutFieldLabel" for="${k}">${k}: </label><br>
+          <div class="calorieButton" id="calorieButton">
+            <h2 class="calorieButtonText">Calculate Calories</h2>
+          </div>
+          <input class="newWorkoutField" type="text" id="calories" name="calories" placeholder="OR enter calories manually"><br><br>
+          </div>
+          `
         )
         .join("")}
-        <input class="addButton" type="submit" value="Add">
+        <div class="addButton" id="add">
+          <h2 class="addButtonText">Add</h2>
+        </div>
       </form>
     </div>
   `;
 
-  let form = document.querySelector("form");
-  form.addEventListener("submit", function (e) {
+  let calorieButton = document.getElementById("calorieButton");
+  let calorieField = document.getElementById("calories");
+
+  calorieButton.addEventListener("click", function () {
+    const randomNumber = Math.floor(Math.random() * 400) + 150;
+    calorieField.value = randomNumber;
+  });
+
+  let addButton = document.getElementById("add");
+
+  addButton.addEventListener("click", function (e) {
+    console.log("CLICKED");
     e.preventDefault(); // Prevent page from reloading
 
     let weight = exerciseTypes[workoutName].includes("Weight")
@@ -240,6 +279,9 @@ function showInputWorkoutFields(workoutName) {
       : "";
     let duration = exerciseTypes[workoutName].includes("Duration")
       ? document.getElementById("duration").value
+      : "";
+    let calories = exerciseTypes[workoutName].includes("Calories")
+      ? document.getElementById("calories").value
       : "";
     let time = exerciseTypes[workoutName].includes("Time") // NECESSARY?
       ? document.getElementById("time").value
@@ -268,8 +310,11 @@ function showInputWorkoutFields(workoutName) {
       userExercises[newIndex].duration = duration;
     }
 
+    userExercises[newIndex].calories = calories;
     userExercises[newIndex].time = time;
     userExercises[newIndex].date = date;
+
+    console.log(userExercises);
 
     exerciseContainer.innerHTML = `
     <ul class="card-list" id="userExerciseList"></ul>
@@ -278,6 +323,7 @@ function showInputWorkoutFields(workoutName) {
   });
 }
 
+/* Populates the suggestion list when the user opts to enter a new workout session. */
 function showSuggestionsExercise() {
   let input = document.getElementById("newExerciseInput");
   let inputValue = input.value.trim().toLowerCase();
@@ -316,20 +362,9 @@ function showSuggestionsExercise() {
     suggestion.addEventListener("click", () => {
       exerSugClicked(item, userExercises, exerciseTypes);
       fillFields(item);
-      // clearSuggestionsExercise();
     });
     suggestionsList.appendChild(suggestion);
   });
-}
-
-function handleKeyDownExercise(event) {
-  let input = document.getElementById("newExerciseInput");
-  let inputValue = input.value;
-
-  // Check for backspace key
-  if (event.keyCode === 8 && inputValue.length === 0) {
-    clearSuggestionsExercise();
-  }
 }
 
 function clearSuggestionsExercise() {
@@ -338,6 +373,7 @@ function clearSuggestionsExercise() {
   suggestionsList.style.display = "none";
 }
 
+/* Handles what happens when one of the workout suggestion dropdown options is clicked */
 function exerSugClicked(item) {
   // If the user opted to add a new workout
   if (item === "+ New Workout") {
