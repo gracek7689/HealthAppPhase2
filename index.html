@@ -42,7 +42,7 @@
       </ul>
     </div>
   </nav>
-  
+
   <div class="container-fluid">
     <!---------------------------- Home Tab Start: ----------------------------->
     <div id="Home" class="tabcontent home" style="display: block">
@@ -54,7 +54,7 @@
         <div class="nutrition-table-container">
           <table class="w3-table w3-hoverable w3-card nutrition-table">
             <thead>
-              <tr> 
+              <tr>
                 <th>Nutrition <br> Type</th>
                 <th>Total <br> Intake</th>
                 <th>Recommended <br> Intake</th>
@@ -286,14 +286,14 @@
   <div id="ProfileSettings" class="tabcontent">
     <h1 class="tabHeaderProfileSettings">Profile Settings</h1>
     <section class="h-100 gradient-custom-2">
-      <div class="container py-5 " id="settingsCont" >
+      <div class="container py-5" id="settingsCont">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col col-lg-9 col-xl-7">
-            <div class="card" style="width: 100%;">
-              <div class="card-body p-4 text-black">
+            <div class="card" style="width: 100%; background-color: #FFF7E9; border-color: #2B3A55;">
+              <div class=" card-body p-4 text-black">
                 <div class="mb-3">
                   <p class="lead fw-normal mb-1" style="font-size: 2.3rem;">About</p>
-                  <div class="p-4" style="background-color: #f8f9fa">
+                  <div class="p-4">
                     <table class="table">
                       <tbody>
                         <tr>
@@ -302,7 +302,7 @@
                         </tr>
                         <tr>
                           <th scope="row">Fitness Level</th>
-                          <td>Advanced</td>
+                          <td>Beginner</td>
                         </tr>
                         <tr>
                           <th scope="row">Age</th>
@@ -330,13 +330,14 @@
                     </table>
                   </div>
                 </div>
-                <p class="lead fw-normal mb-1" style="font-size: 2.3rem;">Health Goals</p>
-                <div class="p-1" style="background-color: #f8f9fa;">
+                <p class="lead fw-normal mb-1" style="font-size: 2.3rem;">Health Goal</p>
+                <div class="p-1" style="background-color: #FFF7E9;">
                   <p>Lose 10 pounds by June 23, 2023</p>
                 </div>
               </div>
               <button type="button" class="btn btn-outline-dark mx-auto mb-2" data-mdb-ripple-color="dark"
-                style="z-index: 1; width: 150px" onclick="editProfile()">
+                style="z-index: 1; width: 190px; background-color: #2B3A55; border-radius: 35px; color: #FFF7E9;"
+                onclick="editProfile()">
                 Edit profile
               </button>
             </div>
@@ -344,6 +345,8 @@
         </div>
       </div>
     </section>
+
+
   </div>
   <!------------------------- Settings Tab End --------------------------->
 
@@ -390,34 +393,35 @@
     function editProfile() {
       // Get the container element
       //var container = document.querySelector('.container');
-      var container = document.getElementById('settingsCont');
+      var container = document.getElementById('ProfileSettings');
 
       // Replace the current content with a form
       container.innerHTML = `
+      <h1 class="tabHeaderProfileSettings">Profile Settings</h1>
+    <section class="h-100 gradient-custom-2">
+      <div class="container py-5" id="settingsCont">
       <div id="formContainer">
   <form class="m-3">
     <label for="name">Name:</label>
-    <input type="text" id="name" name="name" value="Jim Kam" required><br><br>
+    <input type="text" style="width: 500px;" id="name" name="name" placeholder="Jim Kam" value="Jim Kam" required>
+    <br>
     <label for="fitnessLevel">Fitness Level:</label>
     <select id="fitnessLevel" name="fitnessLevel">
       <option value="beginner">Beginner</option>
       <option value="intermediate">Intermediate</option>
       <option value="advanced">Advanced</option>
-    </select><br><br>
+    </select><br>
+    
+    
     <label for="age">Age (Years):</label>
-    <input type="number" id="age" name="age" value="27" required><br><br>
+    <input type="text" id="age" name="age" value="27" required><br>
     <label for="currentWeight">Current Weight (lbs):</label>
-    <input type="number" id="currentWeight" name="currentWeight" required><br><br>
-    <label for="currentHeight">Current Height (Example format: 6'3):</label>
-    <input type="text" id="currentHeight" name="currentHeight" required><br><br>
-    <label for="preferredWorkouts">Preferred Workouts:</label><br>
-    <input type="checkbox" id="workout1" name="preferredWorkouts" value="Yoga">
-    <label for="workout1">Yoga</label><br>
-    <input type="checkbox" id="workout2" name="preferredWorkouts" value="Cardio">
-    <label for="workout2">Cardio</label><br>
-    <input type="checkbox" id="workout3" name="preferredWorkouts" value="Strength Training">
-    <label for="workout3">Strength Training</label><br><br>
-    <label for="healthGoals">Health Goals:</label>
+    <input type="text" id="currentWeight" value="140" name="currentWeight" required><br>
+    <label for="currentHeight">Current Height:</label>
+    <input type="text" id="currentHeight" value="6'3" name="currentHeight" required><br>
+    <br>
+    <br>
+    <label for="healthGoals">Health Goal:</label>
 <select id="healthGoals" name="healthGoals">
   <option value="none">None</option>
   <option value="loseWeight">Lose Weight</option>
@@ -426,42 +430,122 @@
   <option value="other">Other</option>
 </select>
 <div id="weightLossFields" style="display: none;">
-  <label for="targetWeight">Target Pounds to Lose:</label>
-  <input type="number" id="targetWeightLoss" name="targetWeight" required>
-  <br><br>
+  <label for="targetWeight">Target Pounds to Lose (lbs):</label>
+  <input type="text" id="targetWeightLoss" name="targetWeight" required>
+  <br>
   <label for="targetDate">Target Date:</label>
   <input type="date" id="targetDate" name="targetDate" required>
-  <br><br>
+  <br>
 </div>
 <div id="weightGainFields" style="display: none;">
-  <label for="targetWeight">Target Pounds to Gain:</label>
-  <input type="number" id="targetWeightGain" name="targetWeight" required>
-  <br><br>
+  <label for="targetWeight">Target Pounds to Gain (lbs):</label>
+  <input type="text" id="targetWeightGain" name="targetWeight" required>
+  <br>
   <label for="targetDate">Target Date:</label>
   <input type="date" id="targetDate" name="targetDate" required>
-  <br><br>
+  <br>
 </div>
 <label for="otherHealthGoal" id="instructions" name="otherHealthGoal" style="display:none;">Input other health goal: </label>
-<input type="text" id="otherHealthGoal" name="otherHealthGoal" style="display:none;">
-<p></p>
+<input type="text" style="width: 600px;" id="otherHealthGoal" name="otherHealthGoal" style="display:none;">
+<br><br>
+    
+<label for="preferredWorkouts">Preferred Workouts:</label><br>
+    <input type="checkbox" id="workout1" name="preferredWorkouts" value="Yoga" value="yes" checked>
+    <label for="workout1">Yoga</label><br>
+    <input type="checkbox" id="workout2" name="preferredWorkouts" value="Cardio" value="yes" checked>
+    <label for="workout2">Cardio</label><br>
+    <input type="checkbox" id="workout3" name="preferredWorkouts" value="Strength Training">
+    <label for="workout3">Strength Training</label><br><br>
 <div style="display: flex; justify-content: center;">
-  <button type="button" class="btn btn-outline-dark" onclick="saveChanges()">
+  <button type="button" class="btn btn-outline-dark" style = "width: 190px; background-color: #2B3A55; border-radius: 35px; color: #FFF7E9;" onclick="saveChanges()">
     Save Changes
   </button>
-</div> </form>
+</div> 
+
+
+</form>
 </div>
+</div>
+<div class="input-container">
+  <img src="assets/keyboardImage.jpg" alt="keyboard" class="keyboard-image">
+
+</div>
+    </section>
    
   `;
+      var nameTextField = document.getElementById("name");
+      var weightTextField = document.getElementById("currentWeight");
+      var heightField = document.getElementById("currentHeight");
+      var ageField = document.getElementById("age");
+      var weightLoss = document.getElementById("targetWeightLoss");
+      var weightGain = document.getElementById("targetWeightGain");
+      var otherHealthGoal = document.getElementById("otherHealthGoal");
+
+
+      var keyboardImage = document.querySelector(".keyboard-image");
+
+      nameTextField.addEventListener("focus", function () {
+        keyboardImage.style.display = "block";
+      });
+
+      nameTextField.addEventListener("blur", function () {
+        keyboardImage.style.display = "none";
+      });
+      weightTextField.addEventListener("focus", function () {
+        keyboardImage.style.display = "block";
+      });
+
+      weightTextField.addEventListener("blur", function () {
+        keyboardImage.style.display = "none";
+      });
+      heightField.addEventListener("focus", function () {
+        keyboardImage.style.display = "block";
+      });
+
+      heightField.addEventListener("blur", function () {
+        keyboardImage.style.display = "none";
+      });
+      ageField.addEventListener("focus", function () {
+        keyboardImage.style.display = "block";
+      });
+
+      ageField.addEventListener("blur", function () {
+        keyboardImage.style.display = "none";
+      });
+
+      weightLoss.addEventListener("focus", function () {
+        keyboardImage.style.display = "block";
+      });
+
+      weightLoss.addEventListener("blur", function () {
+        keyboardImage.style.display = "none";
+      });
+      weightGain.addEventListener("focus", function () {
+        keyboardImage.style.display = "block";
+      });
+
+      weightGain.addEventListener("blur", function () {
+        keyboardImage.style.display = "none";
+      });
+      otherHealthGoal.addEventListener("focus", function () {
+        keyboardImage.style.display = "block";
+      });
+
+      otherHealthGoal.addEventListener("blur", function () {
+        keyboardImage.style.display = "none";
+      });
       var healthGoalsSelect = document.getElementById('healthGoals');
       var otherHealthGoalInput = document.getElementById('otherHealthGoal');
       var otherHealthGoal = document.getElementById('instructions');
       var weightLossFields = document.getElementById('weightLossFields');
       var weightGainFields = document.getElementById('weightGainFields');
-
+      otherHealthGoalInput.style.display = 'none';
       healthGoalsSelect.addEventListener('change', function () {
         if (healthGoalsSelect.value == 'other') {
           otherHealthGoalInput.style.display = 'block';
           otherHealthGoal.style.display = 'block';
+          weightLossFields.style.display = 'none';
+          weightGainFields.style.display = 'none';
 
         } else {
           if (healthGoalsSelect.value == 'loseWeight') {
@@ -496,14 +580,14 @@
       // Replace the current content with a form
       container.innerHTML = `
       <section class="h-100 gradient-custom-2">
-        <div class="container py-5 h-100">
+        <div class="container h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-lg-9 col-xl-7">
-              <div class="card">
+              <div class="card" style = "background-color: #FFF7E9; border-color: #2B3A55">
                 <div class="card-body p-4 text-black">
                   <div class="mb-3">
                     <p class="lead fw-normal mb-1" style="font-size: 2.3rem;">About</p>
-                    <div class="p-4" style="background-color: #f8f9fa;">
+                    <div class="p-4" style="background-color: #FFF7E9;">
                       <table class="table">
                         <tbody>
                           <tr>
@@ -512,7 +596,7 @@
                           </tr>
                           <tr>
                             <th scope="row">Fitness Level</th>
-                            <td>Advanced</td>
+                            <td>Beginner</td>
                           </tr>
                           <tr>
                             <th scope="row">Age</th>
@@ -540,12 +624,12 @@
                     </div>
                   </div>
                   <p class="lead fw-normal mb-1" style="font-size: 2.3rem;">Health Goals</p>
-                  <div class="p-1" style="background-color: #f8f9fa;">
+                  <div class="p-1" style="background-color: #FFF7E9;">
                     <p>Lose 10 pounds by June 23, 2023</p>
                   </div>
                 </div>
                 <button type="button" class="btn btn-outline-dark mx-auto mb-2" data-mdb-ripple-color="dark"
-                  style="z-index: 1; width: 150px" onclick="editProfile()">
+                  style="z-index: 1; width: 150px; background-color: #2B3A55; border-radius: 35px; color: #FFF7E9;" onclick="editProfile()">
                   Edit profile
                 </button>
               </div>
@@ -555,6 +639,8 @@
       </section>
       `
     }
+
+
 
     function addItem() {
       // Get the input field value
@@ -716,11 +802,11 @@
           text: "Breakdown of all Nutrients Consumed",
           fontSize: 30
         },
-        legend:{
+        legend: {
           labels: {
-          fontSize: 20,
-          fontColor: '#2B3A55'
-        }
+            fontSize: 20,
+            fontColor: '#2B3A55'
+          }
         }
       }
     });
