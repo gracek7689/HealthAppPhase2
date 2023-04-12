@@ -124,6 +124,8 @@ body {
   padding: 5px;
   width: 100%;
   position: relative;
+  background-color: #f8f9fa;
+
   /* add spacing around the form */
 }
 
