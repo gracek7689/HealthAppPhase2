@@ -43,7 +43,7 @@
     </div>
   </nav>
 
-  
+
   <div class="container-fluid">
     <!---------------------------- Home Tab Start: ----------------------------->
     <div id="Home" class="tabcontent home" style="display: block">
@@ -56,7 +56,7 @@
           <table class="w3-table w3-hoverable w3-card nutrition-table">
             <thead>
               <tr>
-              <tr> 
+              <tr>
                 <th>Nutrition <br> Type</th>
                 <th>Total <br> Intake</th>
                 <th>Recommended <br> Intake</th>
@@ -209,16 +209,16 @@
           <div class="col-md-4">
             <label for="newItemInput">Name</label>
             <input type="text" id="newItemInput" class="form-control" oninput="showSuggestions()"
-              onkeydown="handleKeyDown(event)" style="font-size:28px" required/>
+              onkeydown="handleKeyDown(event)" style="font-size:28px" required />
           </div>
           <ul id="suggestions"></ul>
           <div class="col-md-4">
             <label for="newItemCal">Calories</label>
-            <input type="number" id="newItemCal" class="form-control" style="font-size:28px" required/>
+            <input type="number" id="newItemCal" class="form-control" style="font-size:28px" required />
           </div>
           <div class="col-md-4">
             <label for="newItemQty">Quantity</label>
-            <input type="number" id="newItemQty" class="form-control" style="font-size:28px" required/>
+            <input type="number" id="newItemQty" class="form-control" style="font-size:28px" required />
           </div>
           <!-- <div class="col-md-4">
             <label for="newItemDesc">Description</label>
@@ -251,20 +251,22 @@
         </div>
         <div class="row mt-3">
           <div class="col-md-12">
-                      
+
             <button type="button" class="btn btn-xl btn-primary btn-spacing addButton" onclick="addItem()">
               Add Item
             </button>
-            <button type="button" class="btn btn-primary btn-xl btn-danger btn-spacing clearButton" onclick="clearForms()">
+            <button type="button" class="btn btn-primary btn-xl btn-danger btn-spacing clearButton"
+              onclick="clearForms()">
               Clear
             </button>
-            <button type="button" class="btn btn-xl btn-secondary btn-spacing clearButton" id="moreBoxesBtn" onclick="toggleMoreBoxes()">More Options</button>
-            
+            <button type="button" class="btn btn-xl btn-secondary btn-spacing clearButton" id="moreBoxesBtn"
+              onclick="toggleMoreBoxes()">More Options</button>
+
 
           </div>
         </div>
         <ul class="list-group mt-4 custom-list fooditemList" id="itemList" style="height: 600px; overflow-y: auto;">
-          
+
         </ul>
       </div>
     </div>
@@ -289,7 +291,8 @@
       <div class="container py-5" id="settingsCont">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col col-lg-9 col-xl-7">
-            <div class="card" style="width: 100%; background-color: #FFF7E9; border-color: #2B3A55;">
+            <div class="card"
+              style="border-radius: 35px; width: 100%; border-width: 5px; background-color: #FFF7E9; border-color: #2B3A55;">
               <div class=" card-body p-4 text-black">
                 <div class="mb-3">
                   <p class="lead fw-normal mb-1" style="font-size: 2.3rem;">About</p>
@@ -310,7 +313,7 @@
                         </tr>
                         <tr>
                           <th scope="row">Current Weight</th>
-                          <td>140 lbs</td>
+                          <td>180 lbs</td>
                         </tr>
                         <tr>
                           <th scope="row">Current Height</th>
@@ -335,8 +338,8 @@
                   <p>Lose 10 pounds by June 23, 2023</p>
                 </div>
               </div>
-              <button type="button" class="btn btn-outline-dark mx-auto mb-2" data-mdb-ripple-color="dark"
-                style="z-index: 1; width: 190px; background-color: #2B3A55; border-radius: 35px; color: #FFF7E9;"
+              <button type="button" class="btn btn-outline-dark mx-auto mb-3" data-mdb-ripple-color="dark"
+                style="font-size: 30px; border-width: 5px; z-index: 1; width: 290px; background-color: #2B3A55; border-radius: 35px; color: #FFF7E9;"
                 onclick="editProfile()">
                 Edit profile
               </button>
@@ -372,7 +375,7 @@
       openTab(event, "Home");
       document.getElementById("homeID").focus();
     });
-    window.onload = function(){
+    window.onload = function () {
 
       document.getElementById("newItemInput").value = items[0].name;
       document.getElementById("newItemCal").value = items[0].calories;
@@ -393,7 +396,7 @@
       for (i = 0; i < tablinks.length; i++) {
         tablinks[i].classList.remove("active");
       }
-      
+
       document.getElementById(tabName).style.display = "block";
       evt.currentTarget.classList.add("active");
 
@@ -411,7 +414,7 @@
       container.innerHTML = `
       <h1 class="tabHeaderProfileSettings">Profile Settings</h1>
     <section class="h-100 gradient-custom-2">
-      <div class="container py-5" id="settingsCont">
+      <div class="container py-5" style="border-color: #2B3A55;" id="settingsCont">
       <div id="formContainer">
   <form class="m-3">
     <label for="name">Name:</label>
@@ -426,11 +429,11 @@
     
     
     <label for="age">Age (Years):</label>
-    <input type="text" id="age" name="age" value="27" required><br>
+    <input type="text" style = "width: 150px;" id="age" name="age" value="27" required><br>
     <label for="currentWeight">Current Weight (lbs):</label>
-    <input type="text" id="currentWeight" value="140" name="currentWeight" required><br>
+    <input type="text" style = "width: 150px;" id="currentWeight" value="180" name="currentWeight" required><br>
     <label for="currentHeight">Current Height:</label>
-    <input type="text" id="currentHeight" value="6'3" name="currentHeight" required><br>
+    <input type="text" style = "width: 150px;" id="currentHeight" value="6'3" name="currentHeight" required><br>
     <br>
     <br>
     <label for="healthGoals">Health Goal:</label>
@@ -443,7 +446,7 @@
 </select>
 <div id="weightLossFields" style="display: none;">
   <label for="targetWeight">Target Pounds to Lose (lbs):</label>
-  <input type="text" id="targetWeightLoss" name="targetWeight" required>
+  <input type="text" style = "width: 150px;" id="targetWeightLoss" name="targetWeight" required>
   <br>
   <label for="targetDate">Target Date:</label>
   <input type="date" id="targetDate" name="targetDate" required>
@@ -451,7 +454,7 @@
 </div>
 <div id="weightGainFields" style="display: none;">
   <label for="targetWeight">Target Pounds to Gain (lbs):</label>
-  <input type="text" id="targetWeightGain" name="targetWeight" required>
+  <input type="text" style = "width: 150px;" id="targetWeightGain" name="targetWeight" required>
   <br>
   <label for="targetDate">Target Date:</label>
   <input type="date" id="targetDate" name="targetDate" required>
@@ -469,7 +472,7 @@
     <input type="checkbox" id="workout3" name="preferredWorkouts" value="Strength Training">
     <label for="workout3">Strength Training</label><br><br>
 <div style="display: flex; justify-content: center;">
-  <button type="button" class="btn btn-outline-dark" style = "width: 190px; background-color: #2B3A55; border-radius: 35px; color: #FFF7E9;" onclick="saveChanges()">
+  <button type="button" class="btn btn-outline-dark" style = "font-size: 30px; border-width: 5px; width: 290px; background-color: #2B3A55; border-radius: 35px; color: #FFF7E9;" onclick="saveChanges()">
     Save Changes
   </button>
 </div> 
@@ -595,7 +598,7 @@
         <div class="container h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-lg-9 col-xl-7">
-              <div class="card" style = "background-color: #FFF7E9; border-color: #2B3A55">
+              <div class="card" style = " border-radius: 35px; border-width: 5px; background-color: #FFF7E9; border-color: #2B3A55">
                 <div class="card-body p-4 text-black">
                   <div class="mb-3">
                     <p class="lead fw-normal mb-1" style="font-size: 2.3rem;">About</p>
@@ -616,7 +619,7 @@
                           </tr>
                           <tr>
                             <th scope="row">Current Weight</th>
-                            <td>140 lbs</td>
+                            <td>180 lbs</td>
                           </tr>
                           <tr>
                             <th scope="row">Current Height</th>
@@ -640,8 +643,8 @@
                     <p>Lose 10 pounds by June 23, 2023</p>
                   </div>
                 </div>
-                <button type="button" class="btn btn-outline-dark mx-auto mb-2" data-mdb-ripple-color="dark"
-                  style="z-index: 1; width: 150px; background-color: #2B3A55; border-radius: 35px; color: #FFF7E9;" onclick="editProfile()">
+                <button type="button" class="btn btn-outline-dark mx-auto mb-3" data-mdb-ripple-color="dark"
+                  style="font-size: 30px; border-width: 5px; z-index: 1; width: 290px; background-color: #2B3A55; border-radius: 35px; color: #FFF7E9;" onclick="editProfile()">
                   Edit profile
                 </button>
               </div>
@@ -655,13 +658,13 @@
     /*******************************/
     /********* FOOD PAGE ***********/
     /*******************************/
-  
+
     var foodList = [];
     // Create an XMLHttpRequest object
     var xhs = new XMLHttpRequest();
 
     // Define the function to be called when the response is received
-    xhs.onreadystatechange = function() {
+    xhs.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
         // Parse the response text as JSON
         foodList = JSON.parse(this.responseText);
@@ -673,7 +676,7 @@
 
     function showNutrition(li) {
       var id = li.getAttribute("data-id");
-      var item = foodList.find(function(item) {
+      var item = foodList.find(function (item) {
         return item.id === id;
       });
 
@@ -685,7 +688,7 @@
         nutrition.style.display = "none";
         nutrition.innerHTML = "";
       }
-  }
+    }
 
 
     function addItem() {
@@ -700,24 +703,24 @@
       var newCarbs = document.getElementById("newItemCarbs").value || 0;
       var newMin = document.getElementById("newItemMin").value || 0
       var newVit = document.getElementById("newItemVit").value || 0
- 
+
 
       var br = document.createElement("br");
       console.log("This is a test");
       console.log(newItem);
       if (newItem === "" || newQty === "" || newCal === "") {
-      return;
+        return;
       }
       //Have something like this for protein fats, carbs... and set to 0 if field empty
       // if (newItem === "" || newQty === "" || newCal === "") {
       // return;
       // }
-      var newID = Math.random().toString(36).substr(2,9);
+      var newID = Math.random().toString(36).substr(2, 9);
 
 
       var newItemObject = {
-        id:newID,
-        name:newItem,
+        id: newID,
+        name: newItem,
         // description: newDescription,
         calories: newCal,
         quantity: newQty,
@@ -727,7 +730,7 @@
         minerals: newMin,
         vitamins: newVit
       };
-      
+
       foodList.push(newItemObject);
       console.log(foodList);
       // Create a new li element with remove button
@@ -742,7 +745,7 @@
       li.appendChild(document.createElement("br"));
       li.appendChild(document.createTextNode("Quantity:\t"));
       li.appendChild(document.createTextNode(newQty));
-      li.setAttribute("data-item-id",newID);
+      li.setAttribute("data-item-id", newID);
       // Add click event listener to new li element
       li.addEventListener("click", function () {
         expandItem(this);
@@ -760,11 +763,11 @@
           details.className = "item-details";
           details.innerHTML =
             "Protein: " + itemData.protein + "<br>" +
-            "Fats: " + itemData.fat + "<br>" + 
-            "Carbs: " + itemData.carbs + "<br>" + 
-            "Vitamins: " + itemData.vitamins + "<br>" + 
+            "Fats: " + itemData.fat + "<br>" +
+            "Carbs: " + itemData.carbs + "<br>" +
+            "Vitamins: " + itemData.vitamins + "<br>" +
             "Minerals: " + itemData.minerals + "<br>";
-            
+
           item.appendChild(details);
         } else {
           // Toggle visibility of details element
@@ -788,16 +791,16 @@
       // document.getElementById("newItemDesc").value = "";
       // document.getElementById("newItemQty").value = "";
       // document.getElementById("newItemCal").value = "";
-      localStorage.setItem('foodList',JSON.stringify(foodList));
+      localStorage.setItem('foodList', JSON.stringify(foodList));
       var itemList = document.getElementById("itemList");
       itemList.scrollTop = itemList.scrollHeight;
-      var existingItem = items.find(function(item) {
+      var existingItem = items.find(function (item) {
         return item.name.toLowerCase() === newItem.toLowerCase();
       });
       if (existingItem) {
         // console.log("Item already exsits")
       }
-      else{
+      else {
         items.push(newItemObject);
       }
       // console.log(items);
@@ -820,7 +823,7 @@
       // If the item was found, remove it from the foodList array
       if (itemIndex !== -1) {
         foodList.splice(itemIndex, 1);
-        localStorage.setItem('foodList',JSON.stringify(foodList));
+        localStorage.setItem('foodList', JSON.stringify(foodList));
         // fs.writeFileSync("userFood.json", JSON.stringify(data));
       }
 
@@ -920,7 +923,7 @@
       suggestionsList.innerHTML = "";
       suggestionsList.style.display = "none";
     }
-    function clearForms(){
+    function clearForms() {
       document.getElementById("newItemInput").value = "";
       // document.getElementById("newItemDesc").value = "";
       document.getElementById("newItemQty").value = "";
@@ -935,9 +938,9 @@
 
     }
     function enterNewFood() {
-      
+
     }
-   
+
 
     /*******************************/
     /********* HOME PAGE ***********/
@@ -992,11 +995,11 @@
           text: "Breakdown of all Nutrients Consumed",
           fontSize: 30
         },
-        legend:{
+        legend: {
           labels: {
-          fontSize: 20,
-          fontColor: '#2B3A55'
-        }
+            fontSize: 20,
+            fontColor: '#2B3A55'
+          }
         }
       }
     });
