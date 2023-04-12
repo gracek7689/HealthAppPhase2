@@ -98,7 +98,6 @@ input[type="radio"] {
 
 input[type="text"] {
   width: 150px;
-
 }
 
 
@@ -136,7 +135,30 @@ select option {
     text-decoration: none;
     font-size: 17px;
   } */
-
+  .addButton {
+    /* display: block; */
+    margin: 0 auto;
+    font-weight: 550;
+    font-size: 30px;
+    width: 30%;
+    padding: 10px;
+    height: 70px;
+    background-color: #2B3A55;
+    color: #FFF7E9;
+    border-radius: 35px;
+    margin-bottom: 10px;  
+  }
+  .clearButton{
+    margin: 0 auto;
+    font-weight: 550;
+    font-size: 30px;
+    width: 30%;
+    padding: 10px;
+    height: 70px;
+    border-radius: 35px;
+    margin-bottom: 10px;  
+  }
+  
 
 .btn:active {
   background-color: #256D85
