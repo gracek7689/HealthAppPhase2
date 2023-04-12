@@ -43,6 +43,7 @@
     </div>
   </nav>
 
+  
   <div class="container-fluid">
     <!---------------------------- Home Tab Start: ----------------------------->
     <div id="Home" class="tabcontent home" style="display: block">
@@ -55,6 +56,7 @@
           <table class="w3-table w3-hoverable w3-card nutrition-table">
             <thead>
               <tr>
+              <tr> 
                 <th>Nutrition <br> Type</th>
                 <th>Total <br> Intake</th>
                 <th>Recommended <br> Intake</th>
@@ -203,68 +205,66 @@
     <div id="Food" class="tabcontent">
       <h1 class="tabHeader">Nutrition</h1>
       <div class="container mt-5">
-        <h2>Enter Custom Food:</h2>
         <div class="row">
           <div class="col-md-4">
-            <label for="newItemInput">Name:</label>
+            <label for="newItemInput">Name</label>
             <input type="text" id="newItemInput" class="form-control" oninput="showSuggestions()"
-              onkeydown="handleKeyDown(event)" />
+              onkeydown="handleKeyDown(event)" style="font-size:28px" required/>
           </div>
           <ul id="suggestions"></ul>
-
           <div class="col-md-4">
-            <label for="newItemDesc">Description:</label>
-            <input type="text" id="newItemDesc" class="form-control" />
+            <label for="newItemCal">Calories</label>
+            <input type="number" id="newItemCal" class="form-control" style="font-size:28px" required/>
           </div>
           <div class="col-md-4">
-            <label for="newItemQty">Quantity:</label>
-            <input type="number" id="newItemQty" class="form-control" />
+            <label for="newItemQty">Quantity</label>
+            <input type="number" id="newItemQty" class="form-control" style="font-size:28px" required/>
+          </div>
+          <!-- <div class="col-md-4">
+            <label for="newItemDesc">Description</label>
+            <input type="text" id="newItemDesc" class="form-control" />
+          </div> -->
+        </div>
+        <div id="moreBoxes" style="display:none;">
+          <div class="row mt-3">
+            <div class="col-md-4">
+              <label for="newItemProtein">Protein</label>
+              <input type="number" id="newItemProtein" class="form-control" style="font-size:28px" />
+            </div>
+            <div class="col-md-4">
+              <label for="newItemFat">Fat</label>
+              <input type="number" id="newItemFat" class="form-control" style="font-size:28px" />
+            </div>
+            <div class="col-md-4">
+              <label for="newItemCarbs">Carbs</label>
+              <input type="number" id="newItemCarbs" class="form-control" style="font-size:28px" />
+            </div>
+            <div class="col-md-4">
+              <label for="newItemVit">Vitamins</label>
+              <input type="number" id="newItemVit" class="form-control" style="font-size:28px" />
+            </div>
+            <div class="col-md-4">
+              <label for="newItemMin">Minerals</label>
+              <input type="number" id="newItemMin" class="form-control" style="font-size:28px" />
+            </div>
           </div>
         </div>
         <div class="row mt-3">
           <div class="col-md-12">
-            <button type="button" class="btn btn-primary" onclick="addItem()">
+                      
+            <button type="button" class="btn btn-xl btn-primary btn-spacing addButton" onclick="addItem()">
               Add Item
             </button>
+            <button type="button" class="btn btn-primary btn-xl btn-danger btn-spacing clearButton" onclick="clearForms()">
+              Clear
+            </button>
+            <button type="button" class="btn btn-xl btn-secondary btn-spacing clearButton" id="moreBoxesBtn" onclick="toggleMoreBoxes()">More Options</button>
+            
+
           </div>
         </div>
-        <ul class="list-group mt-4 custom-list" id="itemList">
-          <li class="list-group-item">
-            <button type="button" class="btn btn-danger btn-sm float-right" onclick="removeItem(this)">
-              Remove
-            </button>
-            <div class="row mt-2">
-              <div class="col-md-4"><label>Name:</label> Item 1</div>
-              <div class="col-md-4">
-                <label>Description:</label> Item 1 Description
-              </div>
-              <div class="col-md-4"><label>Quantity:</label> 1</div>
-            </div>
-          </li>
-          <li class="list-group-item">
-            <button type="button" class="btn btn-danger btn-sm float-right" onclick="removeItem(this)">
-              Remove
-            </button>
-            <div class="row mt-2">
-              <div class="col-md-4"><label>Name:</label> Apple</div>
-              <div class="col-md-4">
-                <label>Description:</label> Calories: 90....
-              </div>
-              <div class="col-md-4"><label>Quantity:</label> 2</div>
-            </div>
-          </li>
-          <li class="list-group-item">
-            <button type="button" class="btn btn-danger btn-sm float-right" onclick="removeItem(this)">
-              Remove
-            </button>
-            <div class="row mt-2">
-              <div class="col-md-4"><label>Name:</label> Banana</div>
-              <div class="col-md-4">
-                <label>Description:</label> Calories: 90...
-              </div>
-              <div class="col-md-4"><label>Quantity:</label> 3</div>
-            </div>
-          </li>
+        <ul class="list-group mt-4 custom-list" id="itemList" style="height: 600px; overflow-y: auto;">
+          
         </ul>
       </div>
     </div>
@@ -373,7 +373,17 @@
       openTab(event, "Home");
       document.getElementById("homeID").focus();
     });
+    window.onload = function(){
 
+      document.getElementById("newItemInput").value = items[0].name;
+      document.getElementById("newItemCal").value = items[0].calories;
+      document.getElementById("newItemQty").value = items[0].quantity;
+      document.getElementById("newItemProtein").value = items[0].protein;
+      document.getElementById("newItemCarbs").value = items[0].carbs;
+      document.getElementById("newItemFat").value = items[0].fat;
+      addItem();
+      clearForms();
+    };
     function openTab(evt, tabName) {
       var i, tabcontent, tablinks;
       tabcontent = document.getElementsByClassName("tabcontent");
@@ -384,7 +394,9 @@
       for (i = 0; i < tablinks.length; i++) {
         tablinks[i].classList.remove("active");
       }
+      
       document.getElementById(tabName).style.display = "block";
+      evt.currentTarget.classList.add("active");
 
       if (tabName === "Exercise") {
         showUserExercises();
@@ -641,23 +653,124 @@
       `
     }
 
+    /*******************************/
+    /********* FOOD PAGE ***********/
+    /*******************************/
+  
+    var foodList = [];
+    // Create an XMLHttpRequest object
+    var xhs = new XMLHttpRequest();
+
+    // Define the function to be called when the response is received
+    xhs.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        // Parse the response text as JSON
+        foodList = JSON.parse(this.responseText);
+
+        // Do something with the data
+        console.log(foodList);
+      }
+    };
+
+    function showNutrition(li) {
+      var id = li.getAttribute("data-id");
+      var item = foodList.find(function(item) {
+        return item.id === id;
+      });
+
+      var nutrition = li.querySelector(".nutrition");
+      if (nutrition.style.display === "none") {
+        nutrition.style.display = "block";
+        nutrition.innerHTML = "Protein: " + item.protein + "g<br>Carbs: " + item.carbs + "g";
+      } else {
+        nutrition.style.display = "none";
+        nutrition.innerHTML = "";
+      }
+  }
 
 
     function addItem() {
+      console.log("WE LOADED IN ON LOAD");
       // Get the input field value
       var newItem = document.getElementById("newItemInput").value;
-      var newDescription = document.getElementById("newItemDesc").value;
+      var newCal = document.getElementById("newItemCal").value;
+      // var newDescription = document.getElementById("newItemDesc").value;
       var newQty = document.getElementById("newItemQty").value;
+      var newFat = document.getElementById("newItemFat").value || 0;
+      var newProtein = document.getElementById("newItemProtein").value || 0;
+      var newCarbs = document.getElementById("newItemCarbs").value || 0;
+      var newMin = document.getElementById("newItemMin").value || 0
+      var newVit = document.getElementById("newItemVit").value || 0
+ 
+
       var br = document.createElement("br");
+      console.log("This is a test");
       console.log(newItem);
+      if (newItem === "" || newQty === "" || newCal === "") {
+      return;
+      }
+      //Have something like this for protein fats, carbs... and set to 0 if field empty
+      // if (newItem === "" || newQty === "" || newCal === "") {
+      // return;
+      // }
+      var newID = Math.random().toString(36).substr(2,9);
+
+
+      var newItemObject = {
+        id:newID,
+        name:newItem,
+        // description: newDescription,
+        calories: newCal,
+        quantity: newQty,
+        fat: newFat,
+        protein: newProtein,
+        carbs: newCarbs,
+        minerals: newMin,
+        vitamins: newVit
+      };
+      
+      foodList.push(newItemObject);
+      console.log(foodList);
       // Create a new li element with remove button
       var li = document.createElement("li");
       li.className = "list-group-item";
       li.appendChild(document.createTextNode(newItem));
       li.appendChild(document.createElement("br"));
-      li.appendChild(document.createTextNode(newDescription));
+      // li.appendChild(document.createTextNode(newDescription));
+      // li.appendChild(document.createElement("br"));
+      li.appendChild(document.createTextNode("Cals:\t"));
+      li.appendChild(document.createTextNode(newCal));
       li.appendChild(document.createElement("br"));
+      li.appendChild(document.createTextNode("Quantity:\t"));
       li.appendChild(document.createTextNode(newQty));
+      li.setAttribute("data-item-id",newID);
+      // Add click event listener to new li element
+      li.addEventListener("click", function () {
+        expandItem(this);
+      });
+      function expandItem(item) {
+        var id = item.getAttribute("data-item-id");
+        var itemData = foodList.find(function (element) {
+          return element.id === id;
+        });
+
+        var details = item.querySelector(".item-details");
+        if (!details) {
+          // Create details element if it doesn't exist
+          details = document.createElement("div");
+          details.className = "item-details";
+          details.innerHTML =
+            "Protein: " + itemData.protein + "<br>" +
+            "Fats: " + itemData.fat + "<br>" + 
+            "Carbs: " + itemData.carbs + "<br>" + 
+            "Vitamins: " + itemData.vitamins + "<br>" + 
+            "Minerals: " + itemData.minerals + "<br>";
+          item.appendChild(details);
+        } else {
+          // Toggle visibility of details element
+          details.style.display = details.style.display === "none" ? "block" : "none";
+        }
+      }
 
       var removeBtn = document.createElement("button");
       removeBtn.className = "btn btn-danger btn-sm float-right";
@@ -671,18 +784,65 @@
       document.getElementById("itemList").appendChild(li);
 
       // Clear the input field
-      document.getElementById("newItemInput").value = "";
-      document.getElementById("newItemDesc").value = "";
-      document.getElementById("newItemQty").value = "";
-    }
+      // document.getElementById("newItemInput").value = "";
+      // document.getElementById("newItemDesc").value = "";
+      // document.getElementById("newItemQty").value = "";
+      // document.getElementById("newItemCal").value = "";
+      localStorage.setItem('foodList',JSON.stringify(foodList));
+      var itemList = document.getElementById("itemList");
+      itemList.scrollTop = itemList.scrollHeight;
+      var existingItem = items.find(function(item) {
+        return item.name.toLowerCase() === newItem.toLowerCase();
+      });
+      if (existingItem) {
+        // console.log("Item already exsits")
+      }
+      else{
+        items.push(newItemObject);
+      }
+      // console.log(items);
+      clearForms();
 
+    }
     function removeItem(button) {
       // Get the parent li element
       var li = button.parentNode;
 
+      // Get the ID of the item to remove
+      // var itemId = li.getAttribute("data-item-id");
+      var itemId = li.getAttribute("data-item-id");
+
+      // Find the index of the item with that ID in the foodList array
+      var itemIndex = foodList.findIndex(function (item) {
+        return item.id === itemId;
+      });
+
+      // If the item was found, remove it from the foodList array
+      if (itemIndex !== -1) {
+        foodList.splice(itemIndex, 1);
+        localStorage.setItem('foodList',JSON.stringify(foodList));
+        // fs.writeFileSync("userFood.json", JSON.stringify(data));
+      }
+
       // Remove the li element from the list
       document.getElementById("itemList").removeChild(li);
+
+
+      // localStorage.setItem('foodList',JSON.stringify(foodList));
+
     }
+    function toggleMoreBoxes() {
+      var moreBoxes = document.getElementById("moreBoxes");
+      var moreBoxesBtn = document.getElementById("moreBoxesBtn");
+      if (moreBoxes.style.display === "none") {
+        moreBoxes.style.display = "block";
+        moreBoxesBtn.textContent = "Less Options";
+      } else {
+        moreBoxes.style.display = "none";
+        moreBoxesBtn.textContent = "More Options";
+      }
+    }
+
     function showSuggestions() {
       let input = document.getElementById("newItemInput");
       let inputValue = input.value.trim().toLowerCase();
@@ -737,18 +897,47 @@
 
     function fillFields(item) {
       let nameField = document.getElementById("newItemInput");
-      let descField = document.getElementById("newItemDesc");
+      // let descField = document.getElementById("newItemDesc");
       let qtyField = document.getElementById("newItemQty");
-
+      let calField = document.getElementById("newItemCal");
+      let proField = document.getElementById("newItemProtein");
+      let fatField = document.getElementById("newItemFat");
+      let carbField = document.getElementById("newItemCarbs");
+      let vitField = document.getElementById("newItemVit");
+      let minField = document.getElementById("newItemMin");
       nameField.value = item.name;
-      descField.value = item.description;
       qtyField.value = item.quantity;
+      calField.value = item.calories;
+      proField.value = item.protein;
+      fatField.value = item.fat;
+      carbField.value = item.carbs;
+      // vitField = item.vitamins;
+      // minField = item.minerals;
+
     }
     function clearSuggestions() {
       let suggestionsList = document.getElementById("suggestions");
       suggestionsList.innerHTML = "";
       suggestionsList.style.display = "none";
     }
+    function clearForms(){
+      document.getElementById("newItemInput").value = "";
+      // document.getElementById("newItemDesc").value = "";
+      document.getElementById("newItemQty").value = "";
+      document.getElementById("newItemCal").value = "";
+      document.getElementById("newItemProtein").value = "";
+      document.getElementById("newItemFat").value = "";
+      document.getElementById("newItemCarbs").value = "";
+      document.getElementById("newItemFat").value = "";
+      document.getElementById("newItemMin").value = "";
+      document.getElementById("newItemVit").value = "";
+
+
+    }
+    function enterNewFood() {
+      
+    }
+   
 
     /*******************************/
     /********* HOME PAGE ***********/
@@ -803,11 +992,11 @@
           text: "Breakdown of all Nutrients Consumed",
           fontSize: 30
         },
-        legend: {
+        legend:{
           labels: {
-            fontSize: 20,
-            fontColor: '#2B3A55'
-          }
+          fontSize: 20,
+          fontColor: '#2B3A55'
+        }
         }
       }
     });

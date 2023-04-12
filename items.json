@@ -1,18 +1,28 @@
 [
-    {
-      "name": "Apple",
-      "description": "Item 1 description",
-      "quantity": 1
-    },
-    {
-      "name": "Item 2",
-      "description": "Item 2 description",
-      "quantity": 2
-    },
-    {
-      "name": "Item 3",
-      "description": "Item 3 description",
-      "quantity": 3
-    }
-    
-  ]
+  {
+    "name": "Apple",
+    "calories": 95,
+    "quantity": 1,
+    "fat":0.3,
+    "protein":0.5,
+    "carbs":25
+  },
+  {
+    "name": "Banana",
+    "calories": 110,
+    "quantity": 1,
+    "fat":0,
+    "protein":1,
+    "carbs":28
+  }, 
+
+  {
+    "name": "Pear",
+    "calories": 101,
+    "quantity": 1,
+    "fat":0.285,
+    "protein":0.676,
+    "carbs":26.9
+  }
+  
+]
