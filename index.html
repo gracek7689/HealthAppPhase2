@@ -377,7 +377,18 @@
       openTab(event, "Home");
       document.getElementById("homeID").focus();
     });
-
+    window.onload = function(){
+      console.log("Test on load");
+      console.log(items[0]);
+      document.getElementById("newItemInput").value = items[0].name;
+      document.getElementById("newItemCal").value = items[0].calories;
+      document.getElementById("newItemQty").value = items[0].quantity;
+      document.getElementById("newItemProtein").value = items[0].protein;
+      document.getElementById("newItemCarbs").value = items[0].carbs;
+      document.getElementById("newItemFat").value = items[0].fat;
+      addItem();
+      clearForms();
+    };
     function openTab(evt, tabName) {
       var i, tabcontent, tablinks;
       tabcontent = document.getElementsByClassName("tabcontent");
@@ -599,6 +610,7 @@
 
 
     function addItem() {
+      console.log("WE LOADED IN ON LOAD");
       // Get the input field value
       var newItem = document.getElementById("newItemInput").value;
       var newCal = document.getElementById("newItemCal").value;
