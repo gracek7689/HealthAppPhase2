@@ -88,21 +88,10 @@
               </tr>
               <tr class="parent-nutrient">
                 <td>
-                  <span class="arrow"></span>
                   <span class="main-nutrient">Protein</span>
                 </td>
                 <td>64 g</td>
                 <td>100 g</td>
-              </tr>
-              <tr class="child-nutrient protein">
-                <td>TBD</td>
-                <td>tbd</td>
-                <td>tbd</td>
-              </tr>
-              <tr class="child-nutrient protein">
-                <td>TBD</td>
-                <td>tbd</td>
-                <td>tbd</td>
               </tr>
               <tr class="parent-nutrient">
                 <td>
@@ -113,40 +102,28 @@
                 <td>50 g</td>
               </tr>
               <tr class="child-nutrient fat">
-                <td>TBD</td>
-                <td>tbd</td>
-                <td>tbd</td>
+                <td>Saturated</td>
+                <td>13 g</td>
+                <td>12 g</td>
               </tr>
               <tr class="child-nutrient fat">
-                <td>TBD</td>
-                <td>tbd</td>
-                <td>tbd</td>
+                <td>Unsaturated</td>
+                <td>48 g</td>
+                <td>38 g</td>
               </tr>
               <tr class="parent-nutrient">
                 <td>
-                  <span class="arrow"></span>
                   <span class="main-nutrient">Vitamins</span>
                 </td>
-                <td>61 g</td>
-                <td>50 g</td>
-              </tr>
-              <tr class="child-nutrient vitamins">
-                <td>TBD</td>
-                <td>tbd</td>
-                <td>tbd</td>
+                <td>0.9 g</td>
+                <td>1.4 g</td>
               </tr>
               <tr class="parent-nutrient">
                 <td>
-                  <span class="arrow"></span>
                   <span class="main-nutrient">Minerals</span>
                 </td>
-                <td>61 g</td>
+                <td>48 g</td>
                 <td>50 g</td>
-              </tr>
-              <tr class="child-nutrient minerals">
-                <td>TBD</td>
-                <td>tbd</td>
-                <td>tbd</td>
               </tr>
             </tbody>
           </table>
@@ -172,6 +149,10 @@
               <tr>
                 <td>Recommended Calories</td>
                 <td>1800 cals</td>
+              </tr>
+              <tr>
+                <td>Calories Burned</td>
+                <td id="calories-burned-populate">1800 cals</td>
               </tr>
           </table>
         </div>
@@ -660,6 +641,8 @@
     /*******************************/
 
     var foodList = [];
+    var totalCarb = 0;
+    var totalFat = 0;
     // Create an XMLHttpRequest object
     var xhs = new XMLHttpRequest();
 
@@ -689,6 +672,17 @@
         nutrition.innerHTML = "";
       }
     }
+
+    // function calculateNutrition(){
+    //   for(let i = 0; i < foodList.length; i++){
+    //     totalCarb += parseFloat(foodList[i].carbs);
+    //     totalFat += parseFloat(foodList[i].fat);
+    //   }
+
+    //   console.log(totalCarb);
+    //   console.log(totalFat);
+    //   return [totalCarb, totalFat];
+    // }
 
 
     function addItem() {
@@ -731,8 +725,12 @@
         vitamins: newVit
       };
 
+
       foodList.push(newItemObject);
       console.log(foodList);
+      console.log(foodList.length);
+      // calculateNutrition();
+      
       // Create a new li element with remove button
       var li = document.createElement("li");
       li.className = "list-group-item";
@@ -807,6 +805,7 @@
       clearForms();
 
     }
+
     function removeItem(button) {
       // Get the parent li element
       var li = button.parentNode;
@@ -941,6 +940,10 @@
 
     }
 
+    console.log("Helloooooooo")
+    // console.log(calculateNutrition());
+
+
 
     /*******************************/
     /********* HOME PAGE ***********/
@@ -975,6 +978,9 @@
     });
 
 
+    document.getElementById("calories-burned-populate").innerHTML = calculateTotalCalories();
+
+
     // CHARTS //
     var xValues = ["Carbs", "Fats", "Vitamins", "Minerals", "Proteins"];
     var yValues = [55, 49, 44, 24, 15];
@@ -1007,30 +1013,6 @@
     var xValues = ["Carbs", "Fats", "Vitamins", "Minerals", "Proteins"];
     var yValues = [55, 49, 44, 24, 15];
     var barColors = ["red", "green", "blue", "orange", "brown"];
-
-    // new Chart("recommendedChart", {
-    //   type: "pie",
-    //   data: {
-    //     labels: xValues,
-    //     datasets: [{
-    //       backgroundColor: barColors,
-    //       data: yValues
-    //     }]
-    //   },
-    //   options: {
-    //     title: {
-    //       display: true,
-    //       text: "Breakdown of all Recommended Nutrients",
-    //       fontSize: 30
-    //     },
-    //     legend:{
-    //       labels: {
-    //       fontSize: 20,
-    //       fontColor: '#2B3A55'
-    //     }
-    //     }
-    //   }
-    // });
 
   </script>
 </body>

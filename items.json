@@ -11,7 +11,7 @@
     "name": "Banana",
     "calories": 110,
     "quantity": 1,
-    "fat":0,
+    "fat":0.67,
     "protein":1,
     "carbs":28
   }, 
