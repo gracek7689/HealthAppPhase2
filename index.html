@@ -7,7 +7,11 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="exerciseStyles.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="exerciseFunctions.js"></script>
+
   <title>Health App</title>
 </head>
 
@@ -38,6 +42,7 @@
       </ul>
     </div>
   </nav>
+  
   <div class="container-fluid">
     <!---------------------------- Home Tab Start: ----------------------------->
     <div id="Home" class="tabcontent home" style="display: block">
@@ -49,15 +54,18 @@
         <div class="nutrition-table-container">
           <table class="w3-table w3-hoverable w3-card nutrition-table">
             <thead>
-              <tr>
-                <th>Nutrition Type</th>
-                <th>Total Intake </th>
-                <th>Recommended Intake</th>
+              <tr> 
+                <th>Nutrition <br> Type</th>
+                <th>Total <br> Intake</th>
+                <th>Recommended <br> Intake</th>
               </tr>
             </thead>
             <tbody>
               <tr class="parent-nutrient">
-                <td id="main-nutrient">Carbohydrate</td>
+                <td>
+                  <span class="arrow"></span>
+                  <span class="main-nutrient">Carbohydrate</span>
+                </td>
                 <td>189 g</td>
                 <td>270 g</td>
               </tr>
@@ -77,7 +85,10 @@
                 <td>50 g</td>
               </tr>
               <tr class="parent-nutrient">
-                <td id="main-nutrient">Protein</td>
+                <td>
+                  <span class="arrow"></span>
+                  <span class="main-nutrient">Protein</span>
+                </td>
                 <td>64 g</td>
                 <td>100 g</td>
               </tr>
@@ -92,7 +103,10 @@
                 <td>tbd</td>
               </tr>
               <tr class="parent-nutrient">
-                <td id="main-nutrient">Fat</td>
+                <td>
+                  <span class="arrow"></span>
+                  <span class="main-nutrient">Fat</span>
+                </td>
                 <td>61 g</td>
                 <td>50 g</td>
               </tr>
@@ -106,13 +120,40 @@
                 <td>tbd</td>
                 <td>tbd</td>
               </tr>
+              <tr class="parent-nutrient">
+                <td>
+                  <span class="arrow"></span>
+                  <span class="main-nutrient">Vitamins</span>
+                </td>
+                <td>61 g</td>
+                <td>50 g</td>
+              </tr>
+              <tr class="child-nutrient vitamins">
+                <td>TBD</td>
+                <td>tbd</td>
+                <td>tbd</td>
+              </tr>
+              <tr class="parent-nutrient">
+                <td>
+                  <span class="arrow"></span>
+                  <span class="main-nutrient">Minerals</span>
+                </td>
+                <td>61 g</td>
+                <td>50 g</td>
+              </tr>
+              <tr class="child-nutrient minerals">
+                <td>TBD</td>
+                <td>tbd</td>
+                <td>tbd</td>
+              </tr>
             </tbody>
           </table>
         </div>
 
         <br>
-        <div class="pie-chart-container">
+        <div class="container pie-chart-container">
           <canvas id="myChart" style="width:100%"></canvas>
+          <!-- <canvas id="recommendedChart" style="width:100%"></canvas> -->
           <!--https://www.chartjs.org/docs/latest/samples/other-charts/multi-series-pie.html-->
           <!-- Not feeling this current pie chart, may need to use this ^^ -->
         </div>
@@ -137,15 +178,20 @@
         <h3 id="section-title"><b>ACTIVITY</b></h3>
         <div class="card activity-container">
           <div class="w3-grey w3-round-large progress-bar">
-            <div class="w3-container w3-sand w3-round-large" style="width:25%">25%</div>
+            <div class="w3-container w3-sand w3-round-large progress-bar-content" style="width:62%">62%</div>
           </div>
           <br>
           <div class="container streak-container">
             <img src="assets/exerciseIcon.png" alt="calories image" id="calories-image">
             <div class="card streak-card">
-              <h2> Streak: </h2>
+              <p id="your-streak"> Your Streak: </p>
               <h2 id="steak-number"> 8 Days</h2>
               <p id="encouragement-message" style="margin: 1%"> Keep going!</p>
+            </div>
+            <img src="assets/exerciseIcon.png" alt="calories image" id="steps-image">
+            <div class="card steps-card">
+              <h2> Steps: </h2>
+              <p id="steps-message" style="margin: 1%"> 6593</p>
             </div>
           </div>
         </div>
@@ -228,63 +274,8 @@
       <h1 class="tabHeader">Exercise</h1>
 
       <section class="exercise">
-        <div class="container">
-          <ul class="card-list">
-
-            <li class="card-container">
-              <h3>Tuesday, March 26th</h3>
-              <div class="card">
-                <div class="card-body">
-                  <div class="card-title-wrapper">
-                    <h4 class="card-title">Run</h4>
-                    <h6>8:31 am</h6>
-                  </div>
-                  <div>
-                    <h6>3.1 miles</h6>
-                    <h6>39 min 12 sec</h6>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <li class="card-container">
-              <h3>Wednesday, March 27th</h3>
-              <div class="card">
-                <div class="card-body">
-                  <div class="card-title-wrapper">
-                    <h4 class="card-title">Yoga</h4>
-                    <h6>10:40 am</h6>
-                  </div>
-                  <div>
-                    <h6>41 min</h6>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <li class="card-container">
-              <h3>Thursday, March 28th</h3>
-              <div class="card">
-                <div class="card-body">
-                  <div class="card-title-wrapper">
-                    <h5 class="card-title">Curl Ups</h5>
-                    <h6>5:36 pm</h6>
-                  </div>
-                  <div>
-                    <h6>30x reps</h6>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <li class="card-container">
-              <h3>Today</h3>
-              <div class="plus-button" onclick="enterNewWorkout()">
-                <h1 style="font-weight:500">&#43;</h1>
-              </div>
-            </li>
-
-          </ul>
+        <div class="container" id="exerciseContainer">
+          <ul class="card-list" id="userExerciseList"></ul>
         </div>
       </section>
     </div>
@@ -346,7 +337,6 @@
               </div>
               <button type="button" class="btn btn-outline-dark mx-auto mb-2" data-mdb-ripple-color="dark"
                 style="z-index: 1; width: 150px" onclick="editProfile()">
-
                 Edit profile
               </button>
             </div>
@@ -366,7 +356,7 @@
   <script>
     let items = [];
 
-    // Make HTTP request to load JSON file
+    // Make HTTP request to load JSON file for items.json
     let xhr = new XMLHttpRequest();
     xhr.open("GET", "items.json");
     xhr.onload = function () {
@@ -393,6 +383,10 @@
         tablinks[i].classList.remove("active");
       }
       document.getElementById(tabName).style.display = "block";
+
+      if (tabName === "Exercise") {
+        showUserExercises();
+      }
     }
 
     function editProfile() {
@@ -729,7 +723,6 @@
       });
     }
 
-
     function handleKeyDown(event) {
       let input = document.getElementById("newItemInput");
       let inputValue = input.value;
@@ -739,6 +732,7 @@
         clearSuggestions();
       }
     }
+
     function fillFields(item) {
       let nameField = document.getElementById("newItemInput");
       let descField = document.getElementById("newItemDesc");
@@ -765,23 +759,27 @@
     const dateElement = document.getElementById("home-date");
     dateElement.innerText = formattedDate;
 
-    // * Logic to expand and collapse rows on the nutrition table * //
-    // Get all the parent rows
-    const parentRows = document.querySelectorAll('.parent-nutrient');
-    // Loop through each parent row and add a click event listener
-    parentRows.forEach(row => {
-      row.addEventListener('click', function () {
-        // Get the nutrient type of the clicked parent row
-        const nutrientType = this.querySelector('td:first-child').innerText.toLowerCase();
-        // Get all the child rows that belong to the nutrient type
-        const childRows = document.querySelectorAll(`.child-nutrient.${nutrientType}`);
-        // Toggle the visibility of the child rows
-        childRows.forEach(childRow => {
-          childRow.classList.toggle('show');
-        });
-        this.classList.toggle('expanded');
+
+    // Code to open and close the table rows
+    // Get all parent rows
+    const parentRows = document.querySelectorAll(".parent-nutrient");
+    // Loop through each parent row and attach a click event listener
+    parentRows.forEach((row) => {
+      row.addEventListener("click", () => {
+        // Toggle the "open" class on the arrow to rotate it
+        row.querySelector(".arrow").classList.toggle("open");
+        // Get the next sibling row
+        let nextRow = row.nextElementSibling;
+        // Loop through all sibling rows until a parent row is found
+        while (nextRow && !nextRow.classList.contains("parent-nutrient")) {
+          // Toggle the "show" class on the child row to display/hide it
+          nextRow.classList.toggle("show");
+          // Get the next sibling row
+          nextRow = nextRow.nextElementSibling;
+        }
       });
     });
+
 
     // CHARTS //
     var xValues = ["Carbs", "Fats", "Vitamins", "Minerals", "Proteins"];
@@ -800,16 +798,45 @@
       options: {
         title: {
           display: true,
-          text: "Total Breakdown of all Nutrients",
+          text: "Breakdown of all Nutrients Consumed",
           fontSize: 30
+        },
+        legend:{
+          labels: {
+          fontSize: 20,
+          fontColor: '#2B3A55'
+        }
         }
       }
     });
 
+    var xValues = ["Carbs", "Fats", "Vitamins", "Minerals", "Proteins"];
+    var yValues = [55, 49, 44, 24, 15];
+    var barColors = ["red", "green", "blue", "orange", "brown"];
 
-    function enterNewWorkout() {
-      console.log("This function will display search bar for workouts");
-    }
+    // new Chart("recommendedChart", {
+    //   type: "pie",
+    //   data: {
+    //     labels: xValues,
+    //     datasets: [{
+    //       backgroundColor: barColors,
+    //       data: yValues
+    //     }]
+    //   },
+    //   options: {
+    //     title: {
+    //       display: true,
+    //       text: "Breakdown of all Recommended Nutrients",
+    //       fontSize: 30
+    //     },
+    //     legend:{
+    //       labels: {
+    //       fontSize: 20,
+    //       fontColor: '#2B3A55'
+    //     }
+    //     }
+    //   }
+    // });
 
   </script>
 </body>

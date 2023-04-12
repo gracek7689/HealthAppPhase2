@@ -11,55 +11,9 @@ body {
 .profileContainer {
   text-align: center;
 }
-
+ 
 .smileyText {
   text-align: center;
-}
-
-.exercise .card-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 20px;
-  padding: 0;
-}
-
-.exercise .card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  width: 100%;
-}
-
-.exercise .card-container {
-  display: flex;
-  flex-direction: column;
-  /* align-items: start; */
-  list-style-type: none;
-  padding: 10px;
-  width: 550px;
-}
-
-.exercise .card-body {
-  align-items: space-between;
-}
-
-.exercise .card-title-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.exercise .plus-button {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 530px;
-  padding: 10px;
-  height: 80px;
-  background-color: white;
 }
 
 /* Style the tab 
@@ -282,7 +236,7 @@ h3 {
 
 /* Nutrition Table */
 .nutrition-table-container {
-  margin-top: 2%;
+  margin-top: 1%;
   overflow-x: auto;
   white-space: nowrap;
 }
@@ -297,7 +251,7 @@ h3 {
 th,
 td {
   padding: 8px;
-  text-align: left;
+  text-align: center;
   /* border-bottom: 1px solid #ddd; */
 }
 
@@ -318,11 +272,63 @@ td {
   display: table-row;
 }
 
+.arrow:before {
+  content: "\25B6";
+  margin-right: 5px;
+}
+
+.parent-nutrient td:first-child {
+  cursor: pointer;
+}
+
+.arrow:before {
+  content: "\25B6";
+  display: inline-block;
+  margin-right: 5px;
+  transform: rotate(0deg);
+  transition: transform 0.2s;
+}
+
+.arrow.open:before {
+  transform: rotate(90deg);
+}
+
+.main-nutrient {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.parent-nutrient:hover td:first-child .arrow:before {
+  transform: rotate(90deg);
+}
+
+.parent-nutrient.collapsed .arrow:before {
+  transform: rotate(0deg);
+}
+
+.parent-nutrient.collapsed ~ .child-nutrient {
+  display: none;
+}
+
+.parent-nutrient.open .arrow:before {
+  transform: rotate(90deg);
+}
+
+.parent-nutrient.open ~ .child-nutrient {
+  display: table-row;
+}
+
+
 /* Pie chart container */
 
 .pie-chart-container {
   margin-top: 5%;
   margin-bottom: 5%;
+  align-items: center;
+}
+
+#myChart{
+   margin-bottom: 5%;
 }
 
 /* Calories Table */
@@ -353,12 +359,57 @@ td {
 .streak-container {
   display: flex;
   align-items: center;
+  padding: 0; 
+}
+
+#your-streak{
+  font-size: 2rem;
+  margin-bottom: 0;
 }
 
 .streak-card {
   text-align: left;
-  padding-left: 5%;
+  padding-left: 3%;
   color: #FFF7E9;
   width: 100%;
   background-color: #2B3A55;
+}
+
+#steps-image {
+  margin-left: 13%;
+}
+
+.steps-card {
+  text-align: left;
+  padding-left: 3%;
+  color: #FFF7E9;
+  width: 100%;
+  background-color: #2B3A55;
+}
+
+#steps-message {
+  font-size: 3rem;
+}
+
+::-webkit-scrollbar {
+  width: 12px !important;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+ -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3) !important;
+ -webkit-border-radius: 10px !important;
+ border-radius: 10px !important;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+ -webkit-border-radius: 10px !important;
+ border-radius: 10px !important;
+ background: #41617D !important; 
+ -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5) !important; 
+
+}
+::-webkit-scrollbar-thumb:window-inactive {
+ background: #41617D !important; 
 }
