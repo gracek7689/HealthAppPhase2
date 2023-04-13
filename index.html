@@ -144,7 +144,7 @@
             <tbody>
               <tr>
                 <td>Calories Consumed</td>
-                <td>1128 cals</td>
+                <td id="calories-consumed-content">1128 cals</td>
               </tr>
               <tr>
                 <td>Recommended Calories</td>
@@ -903,6 +903,7 @@
       var currFoodList = {};
       var currFoodList = JSON.parse(localStorage.getItem('foodList'));
 
+      let totalCalories = 1128;
       let totalCarbs = 189;
       let totalProtein = 64; 
       let totalFats = 61;
@@ -910,6 +911,7 @@
       let totalMinerals = 3.6; 
       console.log(currFoodList[0]);
       for (let i = 0; i < Object.keys(currFoodList).length; i++){
+        totalCalories += parseFloat(currFoodList[i].calories);
         totalCarbs += parseFloat(currFoodList[i].carbs);
         totalProtein += parseFloat(currFoodList[i].protein);
         totalFats += parseFloat(currFoodList[i].fat);
@@ -923,6 +925,7 @@
       yValues[3] = yValues[3] + totalProtein
       yValues[4] = yValues[4] + totalProtein
       
+      document.getElementById('calories-consumed-content').innerHTML = totalCalories.toFixed(0) + ' cals';
       document.getElementById('carbs-content').innerHTML = totalCarbs.toFixed(2) + ' g';
       document.getElementById('protein-content').innerHTML = totalProtein.toFixed(2) + ' g';
       document.getElementById('fats-content').innerHTML = totalFats.toFixed(2) + ' g';
