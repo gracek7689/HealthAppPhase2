@@ -903,12 +903,12 @@
       var currFoodList = {};
       var currFoodList = JSON.parse(localStorage.getItem('foodList'));
 
-      let totalCalories = 1128;
-      let totalCarbs = 189;
-      let totalProtein = 64; 
-      let totalFats = 61;
-      let totalVitamins = 9; 
-      let totalMinerals = 3.6; 
+      let totalCalories = 0;
+      let totalCarbs = 0;
+      let totalProtein = 0; 
+      let totalFats = 0;
+      let totalVitamins = 0; 
+      let totalMinerals = 0; 
       console.log(currFoodList[0]);
       for (let i = 0; i < Object.keys(currFoodList).length; i++){
         totalCalories += parseFloat(currFoodList[i].calories);
