@@ -40,6 +40,33 @@
 
 }
 
+.exercise .sortBy {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #FFF7E9;
+  font-weight: 600;
+  font-size: 30px;
+  padding-top: 15px;
+  padding-left: 15px;
+  border-bottom: 5px solid #FFF7E9;
+  width:100%
+}
+
+.exercise .sortDropdown {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #FFF7E9;
+  color: #2B3A55;
+  width: 35%;
+  height: 40px;
+  margin-bottom: 15px;
+  margin-right: 10px;
+  padding-right: 20px;
+  border-radius: 7px;
+}
+
 .exercise .card-title-wrapper {
   display: flex;
   flex-direction: row;

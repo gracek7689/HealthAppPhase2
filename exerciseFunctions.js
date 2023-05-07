@@ -73,6 +73,22 @@ function showUserExercises() {
     `;
 
     exercise.insertAdjacentElement("afterbegin", workouttitle);
+
+    let exerciseContainer = document.querySelector("#exerciseContainer");
+
+    let sortBy = document.createElement("div");
+    sortBy.className = "sortBy";
+    sortBy.id = "sortBy";
+    sortBy.innerHTML = `
+    <p>Sort By:</p>
+    <div class="sortDropdown">
+      <p>&#x25BC</p>
+      <p>Newest</p>
+    </div>
+    
+    `;
+
+    exerciseContainer.insertAdjacentElement("afterbegin", sortBy);
   }
 }
 
