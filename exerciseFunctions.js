@@ -52,19 +52,27 @@ function showUserExercises() {
   }
 
   if (document.getElementById("card-container") == null) {
-    let plusButton = document.createElement("li");
+    let plusButton = document.createElement("div");
     plusButton.className = "card-container";
     plusButton.id = "card-container";
 
     plusButton.innerHTML = `
-      <h2 class="card-date">Today</h2>
       <div class="plus-button" onclick="enterNewWorkout()">
-        <h1 style="font-weight:500">&#43;</h1>
+        <h1 style="font-weight:600">Enter a New Workout</h1>
       </div>
     `;
 
-    let exerciseContainer = document.querySelector("#exerciseContainer");
-    exerciseContainer.insertAdjacentElement("beforeend", plusButton);
+    let exercise = document.querySelector("#exercise");
+    exercise.insertAdjacentElement("beforeend", plusButton);
+
+    let workouttitle = document.createElement("div");
+    workouttitle.id = "workouttitle";
+
+    workouttitle.innerHTML = `
+      <p style="font-weight:550;color:#2B3A55;font-size:45px;text-align:center">Previous Workouts</p>
+    `;
+
+    exercise.insertAdjacentElement("afterbegin", workouttitle);
   }
 }
 
@@ -298,7 +306,6 @@ function showInputWorkoutFields(workoutName) {
   });
 }
 
-
 /* Populates the suggestion list when the user opts to enter a new workout session. */
 function showSuggestionsExercise() {
   let input = document.getElementById("newExerciseInput");
@@ -362,7 +369,7 @@ function exerSugClicked(item) {
   }
 }
 
-console.log(Object.values(userExercises))
+console.log(Object.values(userExercises));
 
 // function calculateTotalCalories() {
 //   let totalCalories = 0

@@ -1,19 +1,26 @@
+.exercise {
+  padding: 50px;
+}
+
 .exercise .card-list {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 750px;
   padding: 0;
+  overflow-y: scroll;
 }
 
 .exercise .card-date {
   font-weight: 550;
-  color: #2B3A55;
+  color: #FFF7E9;
 }
 
 .exercise .card-container {
   display: flex;
   flex-direction: column;
   list-style-type: none;
+  align-items: center;
   padding: 10px;
   width: 100%;
 }
@@ -26,7 +33,11 @@
 
 .exercise .container {
   margin-top: 20px;
-  margin-bottom: 100px;
+  margin-bottom: 30px;
+  border-radius: 35px;
+  background-color: #2B3A55;
+  border: 5px solid #2B3A55; 
+
 }
 
 .exercise .card-title-wrapper {
@@ -40,8 +51,8 @@
   display: flex;
   flex-direction: column;
   list-style: none;
-  width: 100%;
-  align-items: space-between;
+  width: 95%;
+  /* align-items: space-between; */
   padding: 20px;
   border: 5px solid #2B3A55; 
   border-radius: 35px;
