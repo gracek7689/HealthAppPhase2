@@ -79,17 +79,29 @@ function showUserExercises() {
     let sortBy = document.createElement("div");
     sortBy.className = "sortBy";
     sortBy.id = "sortBy";
+    sortBy.onclick = "toggleSortDropdown()";
     sortBy.innerHTML = `
     <p>Sort By:</p>
     <div class="sortDropdown">
       <p>&#x25BC</p>
-      <p>Newest</p>
+      <p>Run</p>
     </div>
-    
     `;
 
     exerciseContainer.insertAdjacentElement("afterbegin", sortBy);
   }
+}
+
+function toggleSortDropdown() {
+  let sortBy = document.querySelector("#sortBy");
+  sortBy.innerHTML = `
+    <ul>
+      <li>Oldest</li>
+      <li>Running</li>
+      <li>Yoga</li>
+      <li>Run</li>
+    </ul>
+  `;
 }
 
 /* Button embedded in the main exercise card screen that allows the user
