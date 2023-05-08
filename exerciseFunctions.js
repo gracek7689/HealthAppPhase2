@@ -100,7 +100,7 @@ function showNewWorkoutFields() {
     <h1 class="todayHeader">New Workout</h1>
       <form>
         <label for="workoutName" class="newWorkoutFieldLabel">Workout Name: </label><br>
-        <input class="newWorkoutField" type="text" id="workoutName" name="workoutName"><br><br>
+        <input class="newWorkoutField" type="text" id="workoutName" name="workoutName" placeholder="ex: Jumping Jacks"><br><br>
         <div class="optionGroupings">
           <label for="weight" class="newWorkoutFieldLabel">Include Weight?</label><br>
           <div class="yesNoButton">
@@ -143,9 +143,10 @@ function showNewWorkoutFields() {
           </div>
         </div>
         <label for="time" class="newWorkoutFieldLabel">Time: </label><br>
-        <input class="newWorkoutField" type="text" id="time" name="time"><br><br>
+        <input type="time" class="timePicker">
+        <br><br>
         <label for="date" class="newWorkoutFieldLabel">Date: </label><br>
-        <input class="newWorkoutField" type="text" id="date" name="date"><br><br>
+        <input type="date" class="datePicker">
         <input class="addButton" type="submit" value="Add">
       </form>
     </div>
