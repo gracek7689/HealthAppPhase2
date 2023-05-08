@@ -160,6 +160,61 @@
   margin-bottom: 10px;    
 }
 
+.exercise .yesNoButton {
+  display: flex;
+  flex-direction: row;
+  width: 35%;
+  border-radius: 35px;
+  background-color: #FFF7E9;
+  border: 5px solid #2B3A55;
+  justify-content: space-evenly;
+  position: relative; /* Add this property to set the outer div as a reference for the ::before pseudo-element */
+}
+
+.exercise .yesNoButton::before {
+  content: "";
+  position: absolute; /* Set the position of the pseudo-element */
+  top: 0;
+  bottom: 0;
+  left: 50%; /* Position the pseudo-element to the middle of the outer div */
+  border-left: 5px solid #2B3A55; /* Add a 2px solid border to the left side of the pseudo-element */
+}
+
+.exercise .yesNoButtonOption {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #2B3A55;
+  font-weight: 600;
+  font-size: 35px;
+}
+
+.exercise .optionGroupings {
+  padding: 0;
+}
+
+
+/* .exercise .yesNoButton {
+  display: flex;
+  flex-direction: row;
+  width: 35%;
+  border-radius: 35px;
+  background-color: #FFF7E9;
+  border: 5px solid #2B3A55; 
+  justify-content: space-evenly;
+  position: relative;
+}
+
+.exercise .yesNoButtonOption {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #2B3A55;
+  font-weight: 600;
+  font-size: 35px;
+
+} */
+
 .exercise .calorieButton {
   display: flex;
   flex-direction: column;
@@ -189,10 +244,12 @@
 .exercise .newWorkoutFieldLabel {
   font-weight: 550;
   color: #2B3A55;
+  font-size: 40px;
 }
 
 .exercise .todayHeader {
   font-weight: 550;
   color: #2B3A55;
   margin-bottom: 20px;
+  font-size: 45px;
 }

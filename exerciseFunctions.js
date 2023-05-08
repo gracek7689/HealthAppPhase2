@@ -101,20 +101,46 @@ function showNewWorkoutFields() {
       <form>
         <label for="workoutName" class="newWorkoutFieldLabel">Workout Name: </label><br>
         <input class="newWorkoutField" type="text" id="workoutName" name="workoutName"><br><br>
-        <label for="weight" class="newWorkoutFieldLabel">Weight: </label><br>
-        <input class="newWorkoutField" type="text" id="weight" name="weight" placeholder="${placeholder}"><br><br>
-        <label for="reps" class="newWorkoutFieldLabel">Reps: </label><br>
-        <input class="newWorkoutField" type="text" id="reps" name="reps" placeholder="${placeholder}"><br><br>
-        <label for="distance" class="newWorkoutFieldLabel">Distance: </label><br>
-        <input class="newWorkoutField" type="text" id="distance" name="distance" placeholder="${placeholder}"><br><br>
-        <label for="duration" class="newWorkoutFieldLabel">Duration: </label><br>
-        <input class="newWorkoutField" type="text" id="duration" name="duration" placeholder="${placeholder}"><br><br>
-        <label for="time" class="newWorkoutFieldLabel">Calories: </label><br>
-        <div>
-          <div class="calorieButton" id="calorieButton">
-            <h2 class="calorieButtonText">Calculate Calories</h2>
+        <div class="optionGroupings">
+          <label for="weight" class="newWorkoutFieldLabel">Include Weight?</label><br>
+          <div class="yesNoButton">
+            <div class="yesNoButtonOption">Yes</div>
+            <div class="yesNoButtonOption">No</div>
           </div>
-          <input class="newWorkoutField" type="text" id="calories" name="calories" placeholder="OR enter calories manually"><br><br>
+        </div>
+        <br><br>
+        <div class="optionGroupings">
+          <label for="reps" class="newWorkoutFieldLabel">Include Reps?</label><br>
+          <div class="yesNoButton">
+            <div class="yesNoButtonOption">Yes</div>
+            <div class="yesNoButtonOption">No</div>
+          </div>
+        </div>
+        <br><br>
+        <div class="optionGroupings">
+          <label for="distance" class="newWorkoutFieldLabel">Include Distance?</label><br>
+          <div class="yesNoButton">
+            <div class="yesNoButtonOption">Yes</div>
+            <div class="yesNoButtonOption">No</div>
+          </div>
+        </div>
+        <br><br>
+        <div class="optionGroupings">
+          <label for="duration" class="newWorkoutFieldLabel">Include Duration?</label><br>
+          <div class="yesNoButton">
+            <div class="yesNoButtonOption">Yes</div>
+            <div class="yesNoButtonOption">No</div>
+          </div>
+        </div>
+        <br><br>
+        <div class="optionGroupings">
+          <label for="time" class="newWorkoutFieldLabel">Calories: </label><br>
+          <div>
+            <div class="calorieButton" id="calorieButton">
+              <h2 class="calorieButtonText">Calculate Calories</h2>
+            </div>
+            <input class="newWorkoutField" type="text" id="calories" name="calories" placeholder="OR enter calories manually"><br><br>
+          </div>
         </div>
         <label for="time" class="newWorkoutFieldLabel">Time: </label><br>
         <input class="newWorkoutField" type="text" id="time" name="time"><br><br>
@@ -298,7 +324,6 @@ function showInputWorkoutFields(workoutName) {
   });
 }
 
-
 /* Populates the suggestion list when the user opts to enter a new workout session. */
 function showSuggestionsExercise() {
   let input = document.getElementById("newExerciseInput");
@@ -362,7 +387,7 @@ function exerSugClicked(item) {
   }
 }
 
-console.log(Object.values(userExercises))
+console.log(Object.values(userExercises));
 
 // function calculateTotalCalories() {
 //   let totalCalories = 0
