@@ -103,7 +103,7 @@ function showNewWorkoutFields() {
         <input class="newWorkoutField" type="text" id="workoutName" name="workoutName" placeholder="ex: Jumping Jacks"><br><br>
         <div class="optionGroupings">
           <label for="weight" class="newWorkoutFieldLabel">Include Weight?</label><br>
-          <div class="yesNoButton">
+          <div class="yesNoButton2">
             <div class="yesNoButtonOption">Yes</div>
             <div class="yesNoButtonOption">No</div>
           </div>

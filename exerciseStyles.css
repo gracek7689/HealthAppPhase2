@@ -171,6 +171,29 @@
   position: relative; /* Add this property to set the outer div as a reference for the ::before pseudo-element */
 }
 
+.exercise .yesNoButton2 {
+  display: flex;
+  flex-direction: row;
+  width: 35%;
+  border-radius: 35px;
+  background-color: #2B3A55;
+  color: #FFF7E9;
+  border: 5px solid #2B3A55 ;
+  justify-content: space-evenly;
+  position: relative; /* Add this property to set the outer div as a reference for the ::before pseudo-element */
+}
+
+.exercise .yesNoButtonOn {
+  display: flex;
+  flex-direction: row;
+  width: 35%;
+  border-radius: 35px;
+  background-color: #2B3A55;
+  border: 5px solid #FFF7E9;
+  justify-content: space-evenly;
+  position: relative; /* Add this property to set the outer div as a reference for the ::before pseudo-element */
+}
+
 .exercise .yesNoButton::before {
   content: "";
   position: absolute; /* Set the position of the pseudo-element */
@@ -184,7 +207,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #2B3A55;
   font-weight: 600;
   font-size: 35px;
 }
