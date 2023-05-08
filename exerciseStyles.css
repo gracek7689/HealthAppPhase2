@@ -61,11 +61,53 @@
   background-color: #FFF7E9;
   color: #2B3A55;
   width: 35%;
-  height: 40px;
-  margin-bottom: 15px;
+  height: 45px;
+  margin-bottom: 5px;
   margin-right: 10px;
   padding-right: 20px;
   border-radius: 7px;
+  z-index: 10;
+}
+
+.exercise .sortDropdownOption {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #FFF7E9;
+  color: #2B3A55;
+  height: 45px;
+  width: 110%;
+  margin-left: 0px;
+  margin-bottom: 5px;
+  border-radius: 7px;
+  padding-right: 20px;
+  
+}
+
+.exercise .sortDropdownOption2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  background-color: #FFF7E9;
+  color: #2B3A55;
+  height: 45px;
+  width: 110%;
+  margin-left: 0px;
+  margin-bottom: 2px;
+  border-radius: 7px;
+  padding-right: 20px;
+  padding-left: 60px;
+  padding-top: 2px;
+  padding-bottom: 5px;
+  border: 3px solid #2B3A55; 
+
+}
+
+.exercise .sortDropdownContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
 }
 
 .exercise .card-title-wrapper {

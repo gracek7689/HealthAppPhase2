@@ -79,11 +79,10 @@ function showUserExercises() {
     let sortBy = document.createElement("div");
     sortBy.className = "sortBy";
     sortBy.id = "sortBy";
-    sortBy.onclick = "toggleSortDropdown()";
     sortBy.innerHTML = `
     <p>Sort By:</p>
-    <div class="sortDropdown">
-      <p>&#x25BC</p>
+    <div class="sortDropdown" onclick="toggleSortDropdown()" id="sortDropdown">
+      <p>&#x25BC</p> 
       <p>Run</p>
     </div>
     `;
@@ -93,14 +92,14 @@ function showUserExercises() {
 }
 
 function toggleSortDropdown() {
-  let sortBy = document.querySelector("#sortBy");
-  sortBy.innerHTML = `
-    <ul>
-      <li>Oldest</li>
-      <li>Running</li>
-      <li>Yoga</li>
-      <li>Run</li>
-    </ul>
+  let sortDropdown = document.querySelector("#sortDropdown");
+  sortDropdown.innerHTML = `
+    <div class="sortDropdownContainer">
+      <div class="sortDropdownOption"><p>&#x25BC</p><p>Oldest</p></div>
+      <div class="sortDropdownOption2"><p>Running</p></div>
+      <div class="sortDropdownOption2"><p>Yoga</p></div>
+      <div class="sortDropdownOption2"><p>Run</p></div>
+    </div>
   `;
 }
 
